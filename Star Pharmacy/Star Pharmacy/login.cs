@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Star_Pharmacy
 {
-    public partial class Form1 : Form
+    public partial class login : Form
     {
-        public Form1()
+        public login()
         {
             InitializeComponent();
         }
@@ -20,6 +20,16 @@ namespace Star_Pharmacy
         private void button1_Click(object sender, EventArgs e)
         {
             label1.Text = "Hello World!";
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
