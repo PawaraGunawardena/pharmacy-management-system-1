@@ -19,7 +19,7 @@ namespace Star_Pharmacy
 
         private void button1_Click(object sender, EventArgs e)
         {
-            label1.Text = "Hello World!";
+            
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -30,6 +30,11 @@ namespace Star_Pharmacy
         private void button2_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
