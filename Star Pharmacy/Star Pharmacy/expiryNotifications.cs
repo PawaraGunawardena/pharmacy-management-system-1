@@ -8,8 +8,8 @@ namespace Star_Pharmacy
 {
     class expiryNotifications
     {
-         private DateTime today = DateTime.Today;
-         private DateTime sevenDaysFromToday = new DateTime();
+         ///private DateTime today = DateTime.Today;
+         //private DateTime sevenDaysFromToday = new DateTime();
          
     }
 }

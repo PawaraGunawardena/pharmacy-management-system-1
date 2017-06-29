@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Star_Pharmacy
 {
@@ -11,6 +12,7 @@ namespace Star_Pharmacy
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
+        public static MySqlConnection con = new MySqlConnection("server=localhost;user id=root;database=pharmacy");
         [STAThread]
         static void Main()
         {
