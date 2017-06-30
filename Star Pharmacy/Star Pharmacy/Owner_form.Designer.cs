@@ -1,6 +1,6 @@
 ﻿namespace Star_Pharmacy
 {
-    partial class owner_form
+    partial class cashier_form
     {
         /// <summary>
         /// Required designer variable.
@@ -114,15 +114,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // owner_form
+            // cashier_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 518);
             this.Controls.Add(this.splitContainer1);
             this.IsMdiContainer = true;
-            this.Name = "owner_form";
+            this.Name = "cashier_form";
             this.Text = "Control Panel";
+            this.Load += new System.EventHandler(this.cashier_form_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);

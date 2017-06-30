@@ -43,7 +43,7 @@ namespace Star_Pharmacy
 
             if (dt.Rows.Count == 1 && dt.Rows[0][2].ToString() == "Owner")
             {
-                owner_form of = new owner_form();
+                cashier_form of = new cashier_form();
                 this.Hide();
                 of.Show();
             }
@@ -51,6 +51,11 @@ namespace Star_Pharmacy
             {
                 MessageBox.Show("Incorrect Password or Username!");
             }
+        }
+
+        private void login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

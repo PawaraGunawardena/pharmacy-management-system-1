@@ -10,18 +10,17 @@ using System.Windows.Forms;
 
 namespace Star_Pharmacy
 {
-    public partial class owner_form : Form
+    public partial class Expiry_Products : Form
     {
-        public owner_form()
+        public Expiry_Products()
         {
+            
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Expiry_Products_Load(object sender, EventArgs e)
         {
-            inventory_details id = new inventory_details();
-            id.MdiParent = this;
-            id.Show();
+
         }
     }
 }
