@@ -35,25 +35,38 @@ namespace Star_Pharmacy
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Program.con.Open();
-            MySqlDataAdapter sAdapter = new MySqlDataAdapter("Select * from pharmacy.people where Username= '"+textBox1.Text+"' and Password = '"+textBox2.Text+"';", Program.con);
-            DataTable dt = new DataTable("CharacterInfo");
-            sAdapter.Fill(dt);
-            Program.con.Close();
+            try
+            {
+                Program.con.Open();
+                MySqlDataAdapter sAdapter = new MySqlDataAdapter("Select * from pharmacy.people where Username= '" + textBox1.Text + "' and Password = '" + textBox2.Text + "';", Program.con);
+                DataTable dt = new DataTable("CharacterInfo");
+                sAdapter.Fill(dt);
+                Program.con.Close();
 
-            if (dt.Rows.Count == 1 && dt.Rows[0][2].ToString() == "Owner")
-            {
-                cashier_form of = new cashier_form();
-                this.Hide();
-                of.Show();
+                if (dt.Rows.Count == 1 && dt.Rows[0][2].ToString() == "Owner")
+                {
+                    cashier_form of = new cashier_form();
+                    this.Hide();
+                    of.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect Password or Username!");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Incorrect Password or Username!");
+
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
