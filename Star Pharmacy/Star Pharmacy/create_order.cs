@@ -14,6 +14,23 @@ namespace Star_Pharmacy
     public partial class create_order : Form
     {
         public DataTable dt = new DataTable();
+        private static create_order inst;
+
+        public static create_order getCreateOrder(SplitContainer s, Form f)
+        {
+            if (inst == null || inst.IsDisposed)
+            {
+                inst = new create_order();
+                
+                inst.MdiParent = f;
+                s.Panel2.Controls.Add(inst);
+                return inst;
+            }
+            else
+            {
+                return inst;
+            }
+        }
         public create_order()
         {
             InitializeComponent();
@@ -163,6 +180,15 @@ namespace Star_Pharmacy
                 dataGridView2.Rows.RemoveAt(selIndex);
 
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            while (dataGridView2.Rows.Count > 0)
+            {
+                button4_Click(sender, e);
+            }
+            
         }
 
         
