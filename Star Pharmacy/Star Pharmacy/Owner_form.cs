@@ -44,6 +44,11 @@ namespace Star_Pharmacy
             co.Show();
         }
 
+        private void cashier_form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
         
     }
 }

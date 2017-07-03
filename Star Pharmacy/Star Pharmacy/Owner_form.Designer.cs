@@ -136,6 +136,7 @@
             this.Name = "cashier_form";
             this.Text = "Control Panel";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.cashier_form_FormClosed);
             this.Load += new System.EventHandler(this.cashier_form_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
