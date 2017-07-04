@@ -37,15 +37,15 @@ namespace Star_Pharmacy
         {
             try
             {
-                Program.con.Open();
-                MySqlDataAdapter sAdapter = new MySqlDataAdapter("Select * from pharmacy.people where Username= '" + textBox1.Text + "' and Password = '" + textBox2.Text + "';", Program.con);
+                SqlCon.con.Open();
+                MySqlDataAdapter sAdapter = new MySqlDataAdapter("Select * from pharmacy.people where Username= '" + textBox1.Text + "' and Password = '" + textBox2.Text + "';", SqlCon.con);
                 DataTable dt = new DataTable("CharacterInfo");
                 sAdapter.Fill(dt);
-                Program.con.Close();
+                SqlCon.con.Close();
 
                 if (dt.Rows.Count == 1 && dt.Rows[0][2].ToString() == "Owner")
                 {
-                    cashier_form of = new cashier_form();
+                    owner_form of = new owner_form();
                     this.Hide();
                     of.Show();
                 }

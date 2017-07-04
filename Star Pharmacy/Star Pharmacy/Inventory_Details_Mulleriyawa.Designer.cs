@@ -1,6 +1,6 @@
 ﻿namespace Star_Pharmacy
 {
-    partial class inventory_details
+    partial class inventory_details_mulleriyawa
     {
         /// <summary>
         /// Required designer variable.

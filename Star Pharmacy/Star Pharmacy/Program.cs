@@ -13,7 +13,7 @@ namespace Star_Pharmacy
         /// The main entry point for the application.
         /// </summary>
         public static bool isExpire = false;
-        public static MySqlConnection con = new MySqlConnection("server=localhost;user id=root;database=pharmacy");
+        
         [STAThread]
         static void Main()
         {

@@ -11,19 +11,23 @@ using MySql.Data.MySqlClient;
 
 namespace Star_Pharmacy
 {
-    public partial class inventory_details : Form
+    public partial class inventory_details_mulleriyawa : Form
     {
-        public inventory_details()
+        public inventory_details_mulleriyawa()
         {
+           
             InitializeComponent();
+            this.Text = "Inventory-" + branch;
         }
-        private static inventory_details inst;
+        private static inventory_details_mulleriyawa inst;
+        private String branch = "Mulleriyawa";
 
-        public static inventory_details getInventoryDetails(SplitContainer s,Form f)
+        public static inventory_details_mulleriyawa getInventoryDetails(SplitContainer s,Form f)
         {
+            
             if (inst == null || inst.IsDisposed)
             {
-                inst = new inventory_details();
+                inst = new inventory_details_mulleriyawa();
                 inst.MdiParent = f;
                 s.Panel2.Controls.Add(inst);
                 return inst;
@@ -36,17 +40,14 @@ namespace Star_Pharmacy
 
         private void inventory_details_Load(object sender, EventArgs e)
         {
-            Program.con.Open();
-            MySqlDataAdapter sAdapter1 = new MySqlDataAdapter("Select * from pharmacy.inventory;", Program.con);
-            DataTable dt = new DataTable();
-            sAdapter1.Fill(dt);
-            dataGridView1.DataSource = dt;
-            Program.con.Close();
+            String query = "Select * from pharmacy.inventory where Branch = '"+branch+"';";
+            SqlCon.updateDataGridView(query, dataGridView1);
+            
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            MySqlDataAdapter sAdapter2 = new MySqlDataAdapter("Select * from pharmacy.inventory where ProductID like '" + numericUpDown1.Value.ToString() + "%" + "';", Program.con);
+            MySqlDataAdapter sAdapter2 = new MySqlDataAdapter("Select * from pharmacy.inventory where ProductID like '" + numericUpDown1.Value.ToString() + "%" + "' and Branch = '"+branch+"';", SqlCon.con);
             DataTable dt2 = new DataTable();
             sAdapter2.Fill(dt2);
             dataGridView1.DataSource = dt2;
@@ -56,7 +57,7 @@ namespace Star_Pharmacy
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            MySqlDataAdapter sAdapter3 = new MySqlDataAdapter("Select * from pharmacy.inventory where BrandName like '" + "%" + textBox1.Text + "%" + "';", Program.con);
+            MySqlDataAdapter sAdapter3 = new MySqlDataAdapter("Select * from pharmacy.inventory where BrandName like '" + "%" + textBox1.Text + "%" + "' and Branch = '" + branch + "';", SqlCon.con);
             DataTable dt3 = new DataTable();
             sAdapter3.Fill(dt3);
             dataGridView1.DataSource = dt3;
@@ -66,7 +67,7 @@ namespace Star_Pharmacy
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            MySqlDataAdapter sAdapter4 = new MySqlDataAdapter("Select * from pharmacy.inventory where MedicalName like '" + "%" + textBox2.Text + "%" + "';", Program.con);
+            MySqlDataAdapter sAdapter4 = new MySqlDataAdapter("Select * from pharmacy.inventory where MedicalName like '" + "%" + textBox2.Text + "%" + "' and Branch = '" + branch + "';", SqlCon.con);
             DataTable dt4 = new DataTable();
             sAdapter4.Fill(dt4);
             dataGridView1.DataSource = dt4;
