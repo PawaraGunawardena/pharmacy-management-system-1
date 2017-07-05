@@ -59,24 +59,31 @@ namespace Star_Pharmacy
 
         private void button2_Click(object sender, EventArgs e)
         {
-            con.Open();
-            supplier_info_form supplierInfo = new supplier_info_form();
-            string connString = "Server=localhost;Database=pharmacy;Uid=root;Pwd=;";
-            command = new MySqlCommand("SELECT * FROM pharmacy.supplierdetails WHERE SupplierID=" + supplierDetailsDgv.SelectedRows[0].Cells[0].Value, con);
-            mdr = command.ExecuteReader();
-
-            if (mdr.Read())
+            try
             {
-                supplierInfo.companyName.Text = mdr.GetString("CompanyName");
-                supplierInfo.contactNumber.Text = mdr.GetString("ContactPersonTelephone");
-                supplierInfo.contactPersonTelephone.Text = mdr.GetString("ContactPersonTelephone");
-                supplierInfo.companyTelephone.Text = mdr.GetString("CompanyTelephone");
+                con.Open();
+                supplier_info_form supplierInfo = new supplier_info_form();
+                string connString = "Server=localhost;Database=pharmacy;Uid=root;Pwd=;";
+                command = new MySqlCommand("SELECT * FROM pharmacy.supplierdetails WHERE SupplierID=" + supplierDetailsDgv.SelectedRows[0].Cells[0].Value, con);
+                mdr = command.ExecuteReader();
 
+                if (mdr.Read())
+                {
+                    supplierInfo.companyName.Text = mdr.GetString("CompanyName");
+                    supplierInfo.contactNumber.Text = mdr.GetString("ContactPersonTelephone");
+                    supplierInfo.contactPersonTelephone.Text = mdr.GetString("ContactPersonTelephone");
+                    supplierInfo.companyTelephone.Text = mdr.GetString("CompanyTelephone");
+
+                }
+
+                supplierInfo.Show();
+
+                con.Close();
             }
-
-            supplierInfo.Show();
-
-            con.Close();
+            catch (System.ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Select a supplier!");
+            }
 
         }
     }
