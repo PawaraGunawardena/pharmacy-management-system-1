@@ -43,7 +43,7 @@ namespace Star_Pharmacy
 
         private void supplier_details_Load(object sender, EventArgs e)
         {
-            con.Open();
+            //con.Open();
         }
 
         private void btnViewSupliers_Click(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace Star_Pharmacy
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            con.Open();
             supplier_info_form supplierInfo = new supplier_info_form();
             string connString = "Server=localhost;Database=pharmacy;Uid=root;Pwd=;";
             command = new MySqlCommand("SELECT * FROM pharmacy.supplierdetails WHERE SupplierID=" + supplierDetailsDgv.SelectedRows[0].Cells[0].Value, con);
@@ -76,6 +76,7 @@ namespace Star_Pharmacy
 
             supplierInfo.Show();
 
+            con.Close();
 
         }
     }
