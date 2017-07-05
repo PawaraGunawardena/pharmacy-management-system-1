@@ -57,10 +57,6 @@
             this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.button2);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
-            // 
-            // splitContainer1.Panel2
-            // 
-           
             this.splitContainer1.Size = new System.Drawing.Size(821, 598);
             this.splitContainer1.SplitterDistance = 218;
             this.splitContainer1.TabIndex = 0;
@@ -101,6 +97,7 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "Manage Suppliers";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -132,14 +129,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // cashier_form
+            // owner_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 598);
             this.Controls.Add(this.splitContainer1);
             this.IsMdiContainer = true;
-            this.Name = "cashier_form";
+            this.Name = "owner_form";
             this.Text = "Control Panel";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.cashier_form_FormClosed);

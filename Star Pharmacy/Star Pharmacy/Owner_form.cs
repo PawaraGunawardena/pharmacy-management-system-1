@@ -85,11 +85,13 @@ namespace Star_Pharmacy
             mi.Show();
         }
 
-        
-        
-
-      
-
-        
+        private void button4_Click(object sender, EventArgs e)
+        {
+            hideUnwantedForms();
+            supplier_details id = supplier_details.getSupplierDetails(splitContainer1, this);
+            id.Location = new Point((splitContainer1.Panel2.Width - id.Width) / 2, (splitContainer1.Panel2.Height - id.Height) / 2);
+            id.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            id.Show();
+        }
     }
 }
