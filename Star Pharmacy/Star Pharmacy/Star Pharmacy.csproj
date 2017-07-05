@@ -102,6 +102,12 @@
     <Compile Include="supplier_details.Designer.cs">
       <DependentUpon>supplier_details.cs</DependentUpon>
     </Compile>
+    <Compile Include="supplier_info_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="supplier_info_form.Designer.cs">
+      <DependentUpon>supplier_info_form.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="create_order.resx">
       <DependentUpon>create_order.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +140,9 @@
     </Compile>
     <EmbeddedResource Include="supplier_details.resx">
       <DependentUpon>supplier_details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="supplier_info_form.resx">
+      <DependentUpon>supplier_info_form.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="pharmacyDataSet.xsc">
       <DependentUpon>pharmacyDataSet.xsd</DependentUpon>
