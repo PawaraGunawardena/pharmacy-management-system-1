@@ -13,6 +13,7 @@ namespace Star_Pharmacy
 {
     public partial class supplier_details : Form
     {
+        
         public supplier_details()
         {
             InitializeComponent();
@@ -57,6 +58,21 @@ namespace Star_Pharmacy
 
         }
 
+        public DataGridView sendDatagrid
+        {
+            get{
+                return supplierDetailsDgv;
+            }
+        }
+
+        public supplier_details formReference
+        {
+            get
+            {
+                return this;
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             try
@@ -85,6 +101,41 @@ namespace Star_Pharmacy
                 MessageBox.Show("Select a supplier!");
             }
 
+        }
+
+        private void btnAddSuppliers_Click(object sender, EventArgs e)
+        {
+            addNewSuppliers addNewSuppliers_form = new addNewSuppliers();
+            addNewSuppliers_form.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            String query = "Select * from pharmacy.supplierdetails;";
+            SqlCon.updateDataGridView(query, supplierDetailsDgv);
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            con.Open();
+            string connString = "Server=localhost;Database=pharmacy;Uid=root;Pwd=;";
+            command = new MySqlCommand("DELETE FROM pharmacy.supplierdetails WHERE SupplierID=" + supplierDetailsDgv.SelectedRows[0].Cells[0].Value, con);
+            try
+            {
+                mdr = command.ExecuteReader();
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+            con.Close();
+
+            con.Open();
+
+            String query = "Select * from pharmacy.supplierdetails;";
+            SqlCon.updateDataGridView(query, supplierDetailsDgv);
+
+            con.Close();
         }
     }
 }

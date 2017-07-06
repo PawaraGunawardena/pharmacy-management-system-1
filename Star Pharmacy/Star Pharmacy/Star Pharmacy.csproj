@@ -32,7 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addNewSuppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addNewSuppliers.Designer.cs">
+      <DependentUpon>addNewSuppliers.cs</DependentUpon>
+    </Compile>
     <Compile Include="create_order.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +122,9 @@
     <Compile Include="supplier_info_form.Designer.cs">
       <DependentUpon>supplier_info_form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="addNewSuppliers.resx">
+      <DependentUpon>addNewSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="create_order.resx">
       <DependentUpon>create_order.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +161,7 @@
     <EmbeddedResource Include="supplier_info_form.resx">
       <DependentUpon>supplier_info_form.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="pharmacyDataSet.xsc">
       <DependentUpon>pharmacyDataSet.xsd</DependentUpon>
     </None>
