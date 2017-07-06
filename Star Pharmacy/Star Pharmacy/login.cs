@@ -49,6 +49,12 @@ namespace Star_Pharmacy
                     this.Hide();
                     of.Show();
                 }
+                else if (dt.Rows.Count == 1 && dt.Rows[0][2].ToString() == "Cashier")
+                {
+                    cashierForm cashier = new cashierForm();
+                    this.Hide();
+                    cashier.Show();
+                }
                 else
                 {
                     MessageBox.Show("Incorrect Password or Username!");
