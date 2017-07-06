@@ -104,23 +104,9 @@ namespace Star_Pharmacy
 
         //private void button4_Click(object sender, EventArgs e)
         //{
-        //    add_clicked = false;
-        //    remove_clicked = false;
-        //    edit_clicked = false;
-        //    update_clicked = true;
-        //    groupBox1.Enabled = true;
-        //    groupBox2.Enabled = false;
-        //    button1.Enabled = false;
-        //    button2.Enabled = false;
-        //    button3.Enabled = false;
-        //    numericUpDown2.ReadOnly=true;
-        //    numericUpDown3.ReadOnly = true;
-        //    numericUpDown5.ReadOnly= true;
-        //    textBox3.ReadOnly = true;
-        //    textBox4.ReadOnly = true;
-        //    comboBox2.Enabled = false;
-        //    dateTimePicker1.Enabled = false;
-        //    comboBox1.Enabled = false;
+        
+        
+       
         //    if (dataGridView1.SelectedRows.Count > 0)
         //    {
         //        numericUpDown2.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
@@ -190,11 +176,26 @@ namespace Star_Pharmacy
             }
             else if (edit_clicked)
             {
+                SqlCon.con.Open();
+                MySqlCommand cmd = new MySqlCommand("delete from pharmacy.inventory where ProductID='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
+                cmd.ExecuteNonQuery();
+                MySqlCommand cmd1 = new MySqlCommand(@"insert into pharmacy.inventory (ProductID,BrandName,MedicalName,Supplier
+                                        ,UnitPrice,ExpiryDate,InStock,Reorderlevel,Branch) values ('" + numericUpDown2.Value.ToString() + "','" + textBox3.Text + "','" + textBox4.Text + "','" + comboBox2.Text + "','" + numericUpDown3.Value.ToString() + "','" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "','" + numericUpDown4.Value.ToString() + "','" + numericUpDown5.Value.ToString() + "','" + comboBox1.Text + "');", SqlCon.con);
+                cmd1.ExecuteNonQuery();
+                SqlCon.con.Close();
+                String query = "Select * from pharmacy.inventory;";
+                SqlCon.updateDataGridView(query, dataGridView1);
+                button6_Click(sender, e);
 
             }
             else if (update_clicked)
             {
-
+                SqlCon.con.Open();
+                MySqlCommand cmd = new MySqlCommand("update pharmacy.inventory set InStock='" + numericUpDown4.Value.ToString() + "' where ProductID ='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
+                cmd.ExecuteNonQuery();
+                SqlCon.con.Close();
+                SqlCon.updateDataGridView("select * from pharmacy.inventory;", dataGridView1);
+                button6_Click(sender, e);
             }
             
             
@@ -228,7 +229,7 @@ namespace Star_Pharmacy
                 numericUpDown2.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                 textBox3.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
                 textBox4.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-                comboBox2.SelectedIndex = comboBox1.FindStringExact(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
+                comboBox2.SelectedIndex = comboBox2.FindStringExact(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
                 numericUpDown3.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
                 dateTimePicker1.Value = System.Convert.ToDateTime(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
                 numericUpDown4.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[6].Value.ToString());
@@ -238,7 +239,7 @@ namespace Star_Pharmacy
             }
             else
             {
-                MessageBox.Show("Select a product first!");
+                MessageBox.Show("Select a product first!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
         }
@@ -310,6 +311,44 @@ namespace Star_Pharmacy
             {
                 MessageBox.Show("Invalid Date");
                 dateTimePicker1.ResetText();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                add_clicked = false;
+                remove_clicked = false;
+                edit_clicked = false;
+                update_clicked = true;
+                groupBox1.Enabled = true;
+                groupBox2.Enabled = false;
+                button1.Enabled = false;
+                button2.Enabled = false;
+                button3.Enabled = false;
+                numericUpDown2.ReadOnly = true;
+                numericUpDown3.ReadOnly = true;
+                numericUpDown5.ReadOnly = true;
+                textBox3.ReadOnly = true;
+                textBox4.ReadOnly = true;
+                comboBox2.Enabled = false;
+                dateTimePicker1.Enabled = false;
+                comboBox1.Enabled = false;
+                numericUpDown2.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                textBox3.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                textBox4.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                comboBox2.SelectedIndex = comboBox2.FindStringExact(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
+                numericUpDown3.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
+                dateTimePicker1.Value = System.Convert.ToDateTime(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
+                numericUpDown4.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[6].Value.ToString());
+                numericUpDown5.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[7].Value.ToString());
+                comboBox1.SelectedIndex = comboBox1.FindStringExact(dataGridView1.SelectedRows[0].Cells[8].Value.ToString());
+                
+            }
+            else
+            {
+                MessageBox.Show("Select a product first!");
             }
         }
 
