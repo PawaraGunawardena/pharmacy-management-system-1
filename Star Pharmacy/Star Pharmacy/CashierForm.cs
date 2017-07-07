@@ -42,5 +42,10 @@ namespace Star_Pharmacy
         {
 
         }
+
+        private void cashierForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

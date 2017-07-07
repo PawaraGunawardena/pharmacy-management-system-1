@@ -20,7 +20,11 @@ namespace Star_Pharmacy
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             expiryNotification.expnoti();
-            Application.Run(new login());
+            if (!expiryNotification.noMySQlHost)
+            {
+
+                Application.Run(new login());
+            }
             
         }
     }

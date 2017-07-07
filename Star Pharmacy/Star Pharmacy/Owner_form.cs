@@ -23,6 +23,7 @@ namespace Star_Pharmacy
             inventory_details_mulleriyawa id = inventory_details_mulleriyawa.getInventoryDetails(splitContainer1,this);
             id.Location = new Point((splitContainer1.Panel2.Width - id.Width) / 2, (splitContainer1.Panel2.Height - id.Height) / 2);
             id.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            id.inventory_details_Load(sender,e);
             id.Show();
             
             
@@ -32,11 +33,7 @@ namespace Star_Pharmacy
         private void cashier_form_Load(object sender, EventArgs e)
         {
             
-            if (Program.isExpire)
-            {
-                Expiry_Products exProd = new Expiry_Products();
-                exProd.Show();
-            }
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -92,6 +89,11 @@ namespace Star_Pharmacy
             id.Location = new Point((splitContainer1.Panel2.Width - id.Width) / 2, (splitContainer1.Panel2.Height - id.Height) / 2);
             id.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             id.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

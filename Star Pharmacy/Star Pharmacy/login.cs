@@ -13,9 +13,11 @@ namespace Star_Pharmacy
 {
     public partial class login : Form
     {
+        
         public login()
         {
             InitializeComponent();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,6 +50,11 @@ namespace Star_Pharmacy
                     owner_form of = new owner_form();
                     this.Hide();
                     of.Show();
+                    if (Program.isExpire)
+                    {
+                        Expiry_Products exProd = new Expiry_Products();
+                        exProd.Show();
+                    }
                 }
                 else if (dt.Rows.Count == 1 && dt.Rows[0][2].ToString() == "Cashier")
                 {
@@ -58,18 +65,20 @@ namespace Star_Pharmacy
                 else
                 {
                     MessageBox.Show("Incorrect Password or Username!");
+                    
                 }
             }
             catch (Exception ex)
-            {
-
+           {
+          
                 MessageBox.Show(ex.Message);
+                
             }
         }
 
         private void login_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

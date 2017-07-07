@@ -13,7 +13,7 @@ namespace Star_Pharmacy
     {
         public static DateTime today;
         public static DateTime sevenDaysOnwards;
-
+        public static bool noMySQlHost = false;
         public static void expnoti()
         {
             try
@@ -32,8 +32,8 @@ namespace Star_Pharmacy
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message+" Program is Exiting! Ask devlopers for help!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                noMySQlHost = true;
             }
 
 

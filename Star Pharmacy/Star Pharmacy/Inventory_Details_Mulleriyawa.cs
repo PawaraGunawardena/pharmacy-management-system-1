@@ -38,7 +38,7 @@ namespace Star_Pharmacy
             }
         }
 
-        private void inventory_details_Load(object sender, EventArgs e)
+        public void inventory_details_Load(object sender, EventArgs e)
         {
             String query = "Select * from pharmacy.inventory where Branch = '"+branch+"';";
             SqlCon.updateDataGridView(query, dataGridView1);
@@ -74,5 +74,6 @@ namespace Star_Pharmacy
             dataGridView1.Update();
             dataGridView1.Refresh();
         }
+
     }
 }

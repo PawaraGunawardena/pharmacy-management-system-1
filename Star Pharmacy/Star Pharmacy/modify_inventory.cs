@@ -101,36 +101,6 @@ namespace Star_Pharmacy
 
 
         }
-
-        //private void button4_Click(object sender, EventArgs e)
-        //{
-        
-        
-       
-        //    if (dataGridView1.SelectedRows.Count > 0)
-        //    {
-        //        numericUpDown2.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-        //        textBox3.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-        //        textBox4.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-        //        comboBox2.SelectedIndex = comboBox1.FindStringExact(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
-        //        numericUpDown3.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
-        //        dateTimePicker1.Value = System.Convert.ToDateTime(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
-        //        numericUpDown4.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[6].Value.ToString());
-        //        numericUpDown5.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[7].Value.ToString());
-        //        comboBox1.SelectedIndex = comboBox1.FindStringExact(dataGridView1.SelectedRows[0].Cells[8].Value.ToString());
-        //        SqlCon.con.Open();
-        //        MySqlCommand cmd = new MySqlCommand("update pharmacy.inventory set InStock='"+numericUpDown4.Value.ToString()+"' where ProductID ='"+dataGridView1.SelectedRows[0].Cells[0].Value.ToString()+"';",SqlCon.con);
-        //        cmd.ExecuteNonQuery();
-        //        SqlCon.con.Close();
-        //        SqlCon.updateDataGridView("select * from pharmacy.inventory;",dataGridView1);
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Select a product first!");
-        //    }
-
-        //}
-
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             if (add_clicked)
@@ -146,6 +116,28 @@ namespace Star_Pharmacy
                     label13.Text = "available";
                     label13.ForeColor = System.Drawing.Color.Green;
                 }
+            }else if(edit_clicked)
+            {
+                if (numericUpDown2.Value == System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[0].Value.ToString()))
+                {
+                    label13.Text = "Current Value";
+                }
+                else
+                {
+                    MySqlDataAdapter sda = new MySqlDataAdapter("Select * from pharmacy.inventory where ProductID = '" + numericUpDown2.Value.ToString() + "'", SqlCon.con);
+                    DataTable dta = new DataTable();
+                    sda.Fill(dta);
+                    if (dta.Rows.Count > 0)
+                    {
+                        label13.Text = "Unavailable";
+                        label13.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+                        label13.Text = "available";
+                        label13.ForeColor = System.Drawing.Color.Green;
+                    }
+                }
             }
         }
 
@@ -160,6 +152,7 @@ namespace Star_Pharmacy
             {
                 if (label13.Text == "available")
                 {
+                    
                     SqlCon.con.Open();
                     MySqlCommand cmd = new MySqlCommand(@"insert into pharmacy.inventory (ProductID,BrandName,MedicalName,Supplier
                                         ,UnitPrice,ExpiryDate,InStock,Reorderlevel,Branch) values ('" + numericUpDown2.Value.ToString() + "','" + textBox3.Text + "','" + textBox4.Text + "','" + comboBox2.Text + "','" + numericUpDown3.Value.ToString() + "','" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "','" + numericUpDown4.Value.ToString() + "','" + numericUpDown5.Value.ToString() + "','" + comboBox1.Text + "');", SqlCon.con);
@@ -177,11 +170,17 @@ namespace Star_Pharmacy
             else if (edit_clicked)
             {
                 SqlCon.con.Open();
+                MySqlCommand locktable = new MySqlCommand("lock tables pharmacy.inventory write;",SqlCon.con);
+                locktable.ExecuteNonQuery();
                 MySqlCommand cmd = new MySqlCommand("delete from pharmacy.inventory where ProductID='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
                 cmd.ExecuteNonQuery();
                 MySqlCommand cmd1 = new MySqlCommand(@"insert into pharmacy.inventory (ProductID,BrandName,MedicalName,Supplier
                                         ,UnitPrice,ExpiryDate,InStock,Reorderlevel,Branch) values ('" + numericUpDown2.Value.ToString() + "','" + textBox3.Text + "','" + textBox4.Text + "','" + comboBox2.Text + "','" + numericUpDown3.Value.ToString() + "','" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "','" + numericUpDown4.Value.ToString() + "','" + numericUpDown5.Value.ToString() + "','" + comboBox1.Text + "');", SqlCon.con);
+               
+
                 cmd1.ExecuteNonQuery();
+                MySqlCommand unlock = new MySqlCommand("unlock tables;", SqlCon.con);
+                unlock.ExecuteNonQuery();
                 SqlCon.con.Close();
                 String query = "Select * from pharmacy.inventory;";
                 SqlCon.updateDataGridView(query, dataGridView1);
