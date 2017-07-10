@@ -39,6 +39,7 @@ namespace Star_Pharmacy
         private void create_order_Load(object sender, EventArgs e)
         {
             load_dgv1();
+            
         }
         private void load_dgv1()
         {
@@ -142,7 +143,7 @@ namespace Star_Pharmacy
                 Amount = (System.Convert.ToDecimal(unitPrice) * numericUpDown2.Value).ToString();
                 dataGridView2.Rows.Add(new String [] {productId,ProductName,unitPrice,Quantity,Amount});
                 total = total + System.Convert.ToDecimal(Amount);
-                label6.Text = total.ToString();
+                total_lbl.Text = total.ToString();
 
                 SqlCon.con.Open();
                 MySqlCommand com = new MySqlCommand("update pharmacy.inventory  set InStock = '" + newInstock.ToString() + "' where ProductID = '" + productId + "' ;", SqlCon.con);
@@ -161,34 +162,43 @@ namespace Star_Pharmacy
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int selIndex = dataGridView2.CurrentCell.RowIndex;
-            int newStock,oldStock;
-            MySqlDataAdapter sda = new MySqlDataAdapter("select InStock from pharmacy.inventory where ProductID='" + dataGridView2.Rows[selIndex].Cells[0].Value.ToString() + "'; ", SqlCon.con);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            if (dt.Rows.Count != 1)
+            try
             {
-                MessageBox.Show("Error! Check inventory for duplicate entries!");
-            }else{
-                oldStock= System.Convert.ToInt32(dt.Rows[0][0].ToString());
-                newStock = oldStock + System.Convert.ToInt32(dataGridView2.Rows[selIndex].Cells[3].Value.ToString());
-                SqlCon.con.Open();
-                MySqlCommand com = new MySqlCommand("update pharmacy.inventory  set InStock = '" + newStock.ToString() + "' where ProductID = '" + dataGridView2.Rows[selIndex].Cells[0].Value.ToString() + "' ;", SqlCon.con);
-                com.ExecuteNonQuery();
-                SqlCon.con.Close();
-                MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory;", SqlCon.con);
-                DataTable dt5 = new DataTable();
-                sAdapter5.Fill(dt5);
-                dataGridView1.DataSource = dt5;
-                dataGridView1.Refresh();
-                total = total - System.Convert.ToDecimal(dataGridView2.Rows[selIndex].Cells[4].Value.ToString());
-                label6.Text = total.ToString();
-                dataGridView2.Rows.RemoveAt(selIndex);
+                int selIndex = dataGridView2.CurrentCell.RowIndex;
+                int newStock, oldStock;
+                MySqlDataAdapter sda = new MySqlDataAdapter("select InStock from pharmacy.inventory where ProductID='" + dataGridView2.Rows[selIndex].Cells[0].Value.ToString() + "'; ", SqlCon.con);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count != 1)
+                {
+                    MessageBox.Show("Error! Check inventory for duplicate entries!");
+                }
+                else
+                {
+                    oldStock = System.Convert.ToInt32(dt.Rows[0][0].ToString());
+                    newStock = oldStock + System.Convert.ToInt32(dataGridView2.Rows[selIndex].Cells[3].Value.ToString());
+                    SqlCon.con.Open();
+                    MySqlCommand com = new MySqlCommand("update pharmacy.inventory  set InStock = '" + newStock.ToString() + "' where ProductID = '" + dataGridView2.Rows[selIndex].Cells[0].Value.ToString() + "' ;", SqlCon.con);
+                    com.ExecuteNonQuery();
+                    SqlCon.con.Close();
+                    MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory;", SqlCon.con);
+                    DataTable dt5 = new DataTable();
+                    sAdapter5.Fill(dt5);
+                    dataGridView1.DataSource = dt5;
+                    dataGridView1.Refresh();
+                    total = total - System.Convert.ToDecimal(dataGridView2.Rows[selIndex].Cells[4].Value.ToString());
+                    total_lbl.Text = total.ToString();
+                    dataGridView2.Rows.RemoveAt(selIndex);
 
+                }
+            }
+            catch (System.NullReferenceException)
+            {
+                MessageBox.Show("No Items to remove", "No Items", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        public void button3_Click(object sender, EventArgs e)
         {
             while (dataGridView2.Rows.Count > 0)
             {
@@ -196,6 +206,23 @@ namespace Star_Pharmacy
             }
             
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown3_ValueChanged(object sender, EventArgs e)
+        {
+            change_lbl.Text = (numericUpDown3.Value - Convert.ToDecimal(total_lbl.Text)).ToString();
+        }
+
+       
 
         
 

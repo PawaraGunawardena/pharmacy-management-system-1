@@ -50,6 +50,8 @@ namespace Star_Pharmacy
         private void cashier_form_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+            create_order co = create_order.getCreateOrder(splitContainer1, this);
+            co.button3_Click(sender, e);
         }
 
         public void hideUnwantedForms()

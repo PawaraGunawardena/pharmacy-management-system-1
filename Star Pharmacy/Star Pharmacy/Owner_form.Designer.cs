@@ -143,6 +143,7 @@
             this.ClientSize = new System.Drawing.Size(821, 598);
             this.Controls.Add(this.splitContainer1);
             this.IsMdiContainer = true;
+            this.MaximizeBox = false;
             this.Name = "owner_form";
             this.Text = "Control Panel";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
