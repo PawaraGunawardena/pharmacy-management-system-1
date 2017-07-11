@@ -44,12 +44,16 @@
             this.pharmacyDataSet = new Star_Pharmacy.pharmacyDataSet();
             this.inventoryTableAdapter = new Star_Pharmacy.pharmacyDataSetTableAdapters.inventoryTableAdapter();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.change_lbl = new System.Windows.Forms.Label();
+            this.cash_nud = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.issuebill_btn = new System.Windows.Forms.Button();
+            this.total_lbl = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.bill_dgv = new System.Windows.Forms.DataGridView();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,7 +66,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cash_nud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bill_dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -103,9 +108,19 @@
             0,
             0,
             0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(51, 20);
             this.numericUpDown2.TabIndex = 8;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label4
             // 
@@ -205,22 +220,68 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.change_lbl);
+            this.groupBox2.Controls.Add(this.cash_nud);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.issuebill_btn);
+            this.groupBox2.Controls.Add(this.total_lbl);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.dataGridView2);
+            this.groupBox2.Controls.Add(this.bill_dgv);
             this.groupBox2.Location = new System.Drawing.Point(27, 295);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(718, 297);
+            this.groupBox2.Size = new System.Drawing.Size(718, 327);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bill";
             // 
+            // change_lbl
+            // 
+            this.change_lbl.AutoSize = true;
+            this.change_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.change_lbl.Location = new System.Drawing.Point(580, 259);
+            this.change_lbl.Name = "change_lbl";
+            this.change_lbl.Size = new System.Drawing.Size(65, 20);
+            this.change_lbl.TabIndex = 9;
+            this.change_lbl.Text = "Change";
+            // 
+            // cash_nud
+            // 
+            this.cash_nud.DecimalPlaces = 2;
+            this.cash_nud.Location = new System.Drawing.Point(581, 225);
+            this.cash_nud.Maximum = new decimal(new int[] {
+            1874919424,
+            2328306,
+            0,
+            0});
+            this.cash_nud.Name = "cash_nud";
+            this.cash_nud.Size = new System.Drawing.Size(90, 20);
+            this.cash_nud.TabIndex = 8;
+            this.cash_nud.ValueChanged += new System.EventHandler(this.cash_nud_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(446, 259);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Change";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(446, 225);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Cash";
+            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(326, 238);
+            this.button4.Location = new System.Drawing.Point(337, 288);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(97, 32);
             this.button4.TabIndex = 5;
@@ -230,7 +291,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(449, 238);
+            this.button3.Location = new System.Drawing.Point(460, 288);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(91, 32);
             this.button3.TabIndex = 4;
@@ -238,24 +299,25 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // issuebill_btn
             // 
-            this.button2.Location = new System.Drawing.Point(570, 238);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 32);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Issue Bill";
-            this.button2.UseVisualStyleBackColor = true;
+            this.issuebill_btn.Location = new System.Drawing.Point(581, 288);
+            this.issuebill_btn.Name = "issuebill_btn";
+            this.issuebill_btn.Size = new System.Drawing.Size(92, 32);
+            this.issuebill_btn.TabIndex = 3;
+            this.issuebill_btn.Text = "Issue Bill";
+            this.issuebill_btn.UseVisualStyleBackColor = true;
+            this.issuebill_btn.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label6
+            // total_lbl
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(579, 199);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 20);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Total";
+            this.total_lbl.AutoSize = true;
+            this.total_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.total_lbl.Location = new System.Drawing.Point(579, 199);
+            this.total_lbl.Name = "total_lbl";
+            this.total_lbl.Size = new System.Drawing.Size(44, 20);
+            this.total_lbl.TabIndex = 2;
+            this.total_lbl.Text = "Total";
             // 
             // label5
             // 
@@ -266,25 +328,25 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Total Amount";
             // 
-            // dataGridView2
+            // bill_dgv
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.bill_dgv.AllowUserToAddRows = false;
+            this.bill_dgv.AllowUserToDeleteRows = false;
+            this.bill_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.bill_dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column5,
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView2.Location = new System.Drawing.Point(18, 21);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(659, 160);
-            this.dataGridView2.TabIndex = 0;
+            this.bill_dgv.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.bill_dgv.Location = new System.Drawing.Point(18, 21);
+            this.bill_dgv.MultiSelect = false;
+            this.bill_dgv.Name = "bill_dgv";
+            this.bill_dgv.ReadOnly = true;
+            this.bill_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.bill_dgv.Size = new System.Drawing.Size(659, 160);
+            this.bill_dgv.TabIndex = 0;
             // 
             // Column5
             // 
@@ -321,7 +383,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 604);
+            this.ClientSize = new System.Drawing.Size(785, 627);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "create_order";
@@ -337,7 +399,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cash_nud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bill_dgv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -360,15 +423,19 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button issuebill_btn;
+        private System.Windows.Forms.Label total_lbl;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView bill_dgv;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.NumericUpDown cash_nud;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label change_lbl;
     }
 }

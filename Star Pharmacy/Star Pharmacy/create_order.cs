@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Drawing.Printing;
 
 namespace Star_Pharmacy
 {
@@ -15,6 +16,9 @@ namespace Star_Pharmacy
     {
         public DataTable dt = new DataTable();
         private static create_order inst4;
+        private decimal total;
+        private decimal cash;
+        private decimal change;
 
         public static create_order getCreateOrder(SplitContainer s, Form f)
         {
@@ -116,7 +120,6 @@ namespace Star_Pharmacy
         {
             selectedRowIndex = dataGridView1.CurrentCell.RowIndex;
         }
-        private decimal total;
         private void button1_Click(object sender, EventArgs e)
         {
             int newInstock;
@@ -140,9 +143,9 @@ namespace Star_Pharmacy
                 unitPrice = dataGridView1.Rows[selectedRowIndex].Cells[3].Value.ToString();
                 Quantity = numericUpDown2.Value.ToString();
                 Amount = (System.Convert.ToDecimal(unitPrice) * numericUpDown2.Value).ToString();
-                dataGridView2.Rows.Add(new String [] {productId,ProductName,unitPrice,Quantity,Amount});
+                bill_dgv.Rows.Add(new String [] {productId,ProductName,unitPrice,Quantity,Amount});
                 total = total + System.Convert.ToDecimal(Amount);
-                label6.Text = total.ToString();
+                total_lbl.Text = total.ToString();
 
                 SqlCon.con.Open();
                 MySqlCommand com = new MySqlCommand("update pharmacy.inventory  set InStock = '" + newInstock.ToString() + "' where ProductID = '" + productId + "' ;", SqlCon.con);
@@ -158,12 +161,64 @@ namespace Star_Pharmacy
             }
 
         }
+        private void PrintReceipt()
+        {
+            PrintDialog printDialog = new PrintDialog();
+            PrintDocument printDocument = new PrintDocument();
+            printDialog.Document = printDocument;
+            printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
+            DialogResult result = printDialog.ShowDialog();
+            if(result == DialogResult.OK){
+            printDocument.Print();}
+            
+
+        }
+
+        private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Graphics graphic = e.Graphics;
+            Font font = new Font("Courier New", 12);
+            float fontHeight = font.GetHeight();
+            int startX = 10;
+            int startY = 10;
+            int offset = 55;
+            graphic.DrawString("Welcome to StarX Pharmacy", new Font("Courier New", 18), new SolidBrush(Color.Black), startX, startY);
+
+            graphic.DrawString("Date :"+DateTime.Today.ToString("yyyy-MM-dd")+"   "+"Invoice NO:", new Font("Courier New", 12), new SolidBrush(Color.Black), startX, startY+23);
+            graphic.DrawString("ID"+"\t"+"Name"+"\t"+"UPrz"+"\t"+"Qty"+"\t"+"total", new Font("Courier New", 12), new SolidBrush(Color.Black), startX, startY + 40);
+
+            foreach (DataGridViewRow row in bill_dgv.Rows)
+            {
+                String productID = row.Cells[0].Value.ToString();
+                String pName = row.Cells[1].Value.ToString();
+                String productName;
+                if (pName.Length > 5)
+                {
+                    productName = row.Cells[1].Value.ToString().Substring(0,5);
+                }
+                else
+                {
+                    productName = row.Cells[1].Value.ToString();
+                }
+                String quantity = row.Cells[3].Value.ToString();
+                String unitPrice = row.Cells[2].Value.ToString();
+                String total = row.Cells[4].Value.ToString();
+                String productLine = productID + "\t" + productName + "\t" + unitPrice + "\t" + quantity +"\t" + total;
+                graphic.DrawString(productLine, font, new SolidBrush(Color.Black), startX, startY + offset);
+                offset = offset + (int)fontHeight + 5;
+
+            }
+            offset = offset + 20;
+            graphic.DrawString("Net Total"+"\t"+total_lbl.Text, font, new SolidBrush(Color.Black), startX, startY + offset);
+            graphic.DrawString("Cash" + "\t" + "\t" + cash.ToString()+" Rs", font, new SolidBrush(Color.Black), startX, startY + offset + 15);
+            graphic.DrawString("Change" + "\t" + "\t" + change_lbl.Text, font, new SolidBrush(Color.Black), startX, startY + offset + 30); 
+        }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int selIndex = dataGridView2.CurrentCell.RowIndex;
+            int selIndex = bill_dgv.CurrentCell.RowIndex;
             int newStock,oldStock;
-            MySqlDataAdapter sda = new MySqlDataAdapter("select InStock from pharmacy.inventory where ProductID='" + dataGridView2.Rows[selIndex].Cells[0].Value.ToString() + "'; ", SqlCon.con);
+            MySqlDataAdapter sda = new MySqlDataAdapter("select InStock from pharmacy.inventory where ProductID='" + bill_dgv.Rows[selIndex].Cells[0].Value.ToString() + "'; ", SqlCon.con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows.Count != 1)
@@ -171,9 +226,9 @@ namespace Star_Pharmacy
                 MessageBox.Show("Error! Check inventory for duplicate entries!");
             }else{
                 oldStock= System.Convert.ToInt32(dt.Rows[0][0].ToString());
-                newStock = oldStock + System.Convert.ToInt32(dataGridView2.Rows[selIndex].Cells[3].Value.ToString());
+                newStock = oldStock + System.Convert.ToInt32(bill_dgv.Rows[selIndex].Cells[3].Value.ToString());
                 SqlCon.con.Open();
-                MySqlCommand com = new MySqlCommand("update pharmacy.inventory  set InStock = '" + newStock.ToString() + "' where ProductID = '" + dataGridView2.Rows[selIndex].Cells[0].Value.ToString() + "' ;", SqlCon.con);
+                MySqlCommand com = new MySqlCommand("update pharmacy.inventory  set InStock = '" + newStock.ToString() + "' where ProductID = '" + bill_dgv.Rows[selIndex].Cells[0].Value.ToString() + "' ;", SqlCon.con);
                 com.ExecuteNonQuery();
                 SqlCon.con.Close();
                 MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory;", SqlCon.con);
@@ -181,22 +236,38 @@ namespace Star_Pharmacy
                 sAdapter5.Fill(dt5);
                 dataGridView1.DataSource = dt5;
                 dataGridView1.Refresh();
-                total = total - System.Convert.ToDecimal(dataGridView2.Rows[selIndex].Cells[4].Value.ToString());
-                label6.Text = total.ToString();
-                dataGridView2.Rows.RemoveAt(selIndex);
+                total = total - System.Convert.ToDecimal(bill_dgv.Rows[selIndex].Cells[4].Value.ToString());
+                total_lbl.Text = total.ToString()+" Rs";
+                bill_dgv.Rows.RemoveAt(selIndex);
 
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            while (dataGridView2.Rows.Count > 0)
+            while (bill_dgv.Rows.Count > 0)
             {
                 button4_Click(sender, e);
             }
             
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PrintReceipt();
+        }
+
+        private void cash_nud_ValueChanged(object sender, EventArgs e)
+        {
+            cash = cash_nud.Value;
+            change = cash - total;
+            total_lbl.Text = total.ToString()+" Rs";
+            change_lbl.Text = change.ToString()+" Rs";
+        }
+
+        
+
+        
         
 
     }
