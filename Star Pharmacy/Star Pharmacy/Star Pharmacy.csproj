@@ -217,6 +217,7 @@
       <DependentUpon>pharmacyDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\DataSources\create_order.datasource" />
+    <None Include="Properties\DataSources\PrintBill.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

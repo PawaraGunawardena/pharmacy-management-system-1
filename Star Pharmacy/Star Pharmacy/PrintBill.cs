@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Star_Pharmacy
 {
-    class PrintBill
+    public class PrintBill
     {
         public int productID { get; set; }
         public String name { get; set; }

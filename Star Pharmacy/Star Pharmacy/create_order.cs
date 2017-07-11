@@ -13,7 +13,7 @@ namespace Star_Pharmacy
 {
     public partial class create_order : Form
     {
-        public DataTable dt = new DataTable();
+        public DataTable dtForPrint = new DataTable();
         private static create_order inst4;
 
         public static create_order getCreateOrder(SplitContainer s, Form f)
@@ -153,6 +153,7 @@ namespace Star_Pharmacy
                 MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory;", SqlCon.con);
                 DataTable dt5 = new DataTable();
                 sAdapter5.Fill(dt5);
+                dtForPrint = dt5;
                 dataGridView1.DataSource = dt5;
                 dataGridView1.Refresh();
 
