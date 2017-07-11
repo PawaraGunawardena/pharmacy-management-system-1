@@ -43,19 +43,21 @@ namespace Star_Pharmacy
         private void create_order_Load(object sender, EventArgs e)
         {
             load_dgv1();
+            invoiceno_lbl.Text = invoice_number_generator().ToString();
+
         }
         private void load_dgv1()
         {
-            String query = "Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory;";
+            String query = "Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where InStock >0;";
             SqlCon.updateDataGridView(query, dataGridView1);
             
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDown1.Value != 0)
+            if (productID_nud.Value != 0)
             {
-                MySqlDataAdapter sAdapter2 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where ProductID like '" + numericUpDown1.Value.ToString() + "%" + "';", SqlCon.con);
+                MySqlDataAdapter sAdapter2 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where ProductID like '" + productID_nud.Value.ToString() + "%" + "' and InStock > 0;", SqlCon.con);
                 DataTable dt2 = new DataTable();
                 sAdapter2.Fill(dt2);
                 dataGridView1.DataSource = dt2;
@@ -64,14 +66,14 @@ namespace Star_Pharmacy
             }
             else
             {
-                String query = "Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory;";
+                String query = "Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where InStock > 0;";
                 SqlCon.updateDataGridView(query, dataGridView1);
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            MySqlDataAdapter sAdapter3 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where BrandName like '" + "%" + textBox1.Text + "%" + "';", SqlCon.con);
+            MySqlDataAdapter sAdapter3 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where BrandName like '" + "%" + textBox1.Text + "%" + "'and InStock > 0;", SqlCon.con);
             DataTable dt3 = new DataTable();
             sAdapter3.Fill(dt3);
             dataGridView1.DataSource = dt3;
@@ -86,7 +88,7 @@ namespace Star_Pharmacy
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            MySqlDataAdapter sAdapter4 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where MedicalName like '" + "%" + textBox2.Text + "%" + "';", SqlCon.con);
+            MySqlDataAdapter sAdapter4 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where MedicalName like '" + "%" + textBox2.Text + "%" + "'and InStock > 0;", SqlCon.con);
             DataTable dt4 = new DataTable();
             sAdapter4.Fill(dt4);
             dataGridView1.DataSource = dt4;
@@ -102,12 +104,12 @@ namespace Star_Pharmacy
 
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            numericUpDown1.ResetText();
+            productID_nud.ResetText();
             textBox2.Text = null;
         }
         private void textBox2_MouseClick(object sender, MouseEventArgs e)
         {
-            numericUpDown1.ResetText();
+            productID_nud.ResetText();
             textBox1.Text = null;
         }
 
@@ -152,7 +154,7 @@ namespace Star_Pharmacy
                 com.ExecuteNonQuery();
                 SqlCon.con.Close();
                 load_dgv1();
-                MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory;", SqlCon.con);
+                MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where InStock > 0;", SqlCon.con);
                 DataTable dt5 = new DataTable();
                 sAdapter5.Fill(dt5);
                 dataGridView1.DataSource = dt5;
@@ -184,7 +186,7 @@ namespace Star_Pharmacy
             int offset = 55;
             graphic.DrawString("Welcome to StarX Pharmacy", new Font("Courier New", 18), new SolidBrush(Color.Black), startX, startY);
 
-            graphic.DrawString("Date :"+DateTime.Today.ToString("yyyy-MM-dd")+"   "+"Invoice NO:", new Font("Courier New", 12), new SolidBrush(Color.Black), startX, startY+23);
+            graphic.DrawString("Date :"+DateTime.Today.ToString("yyyy-MM-dd")+"   "+"Invoice NO:"+invoiceno_lbl.Text, new Font("Courier New", 12), new SolidBrush(Color.Black), startX, startY+23);
             graphic.DrawString("ID"+"\t"+"Name"+"\t"+"UPrz"+"\t"+"Qty"+"\t"+"total", new Font("Courier New", 12), new SolidBrush(Color.Black), startX, startY + 40);
 
             foreach (DataGridViewRow row in bill_dgv.Rows)
@@ -254,15 +256,48 @@ namespace Star_Pharmacy
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PrintReceipt();
+            if (bill_dgv.RowCount > 0 && cash_nud.Value >= Convert.ToDecimal(total))
+            {
+               // foreach (DataGridViewRow row in bill_dgv.Rows)
+               // {
+                 //   SqlCon.con.Open();
+                  //  MySqlCommand cmd = new MySqlCommand("insert into order_transactions");
+               // }
+                PrintReceipt();
+            }
+            else if (cash_nud.Value < Convert.ToDecimal(total))
+            {
+                cash_nud.ResetText();
+                MessageBox.Show("Insufficient Money", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                MessageBox.Show("Select Atleast One Product!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void cash_nud_ValueChanged(object sender, EventArgs e)
         {
-            cash = cash_nud.Value;
-            change = cash - total;
-            total_lbl.Text = total.ToString()+" Rs";
-            change_lbl.Text = change.ToString()+" Rs";
+               cash = cash_nud.Value;
+                change = cash - total;
+                total_lbl.Text = total.ToString() + " Rs";
+                change_lbl.Text = change.ToString() + " Rs";
+            
+            
+        }
+        public int invoice_number_generator()
+        {
+            MySqlDataAdapter sda1 = new MySqlDataAdapter("select * from order_transactions;", SqlCon.con);
+            DataTable dt1 = new DataTable();
+            sda1.Fill(dt1);
+            if (dt1.Rows.Count == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
         }
 
         

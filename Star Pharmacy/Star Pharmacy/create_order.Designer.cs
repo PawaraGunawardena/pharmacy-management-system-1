@@ -38,7 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.productID_nud = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.inventoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pharmacyDataSet = new Star_Pharmacy.pharmacyDataSet();
@@ -59,10 +59,12 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.invoiceno_lbl = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productID_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -80,7 +82,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.productID_nud);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(19, 14);
             this.groupBox1.Name = "groupBox1";
@@ -181,19 +183,19 @@
             this.label2.Text = "Brand Name";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // numericUpDown1
+            // productID_nud
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(82, 26);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.productID_nud.Location = new System.Drawing.Point(82, 26);
+            this.productID_nud.Maximum = new decimal(new int[] {
             1316134912,
             2328,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(77, 20);
-            this.numericUpDown1.TabIndex = 1;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            this.numericUpDown1.Click += new System.EventHandler(this.numericUpDown1_Click);
+            this.productID_nud.Name = "productID_nud";
+            this.productID_nud.Size = new System.Drawing.Size(77, 20);
+            this.productID_nud.TabIndex = 1;
+            this.productID_nud.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.productID_nud.Click += new System.EventHandler(this.numericUpDown1_Click);
             // 
             // label1
             // 
@@ -220,6 +222,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.invoiceno_lbl);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.change_lbl);
             this.groupBox2.Controls.Add(this.cash_nud);
             this.groupBox2.Controls.Add(this.label8);
@@ -230,9 +234,9 @@
             this.groupBox2.Controls.Add(this.total_lbl);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.bill_dgv);
-            this.groupBox2.Location = new System.Drawing.Point(27, 295);
+            this.groupBox2.Location = new System.Drawing.Point(19, 295);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(718, 327);
+            this.groupBox2.Size = new System.Drawing.Size(726, 327);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bill";
@@ -315,9 +319,9 @@
             this.total_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total_lbl.Location = new System.Drawing.Point(579, 199);
             this.total_lbl.Name = "total_lbl";
-            this.total_lbl.Size = new System.Drawing.Size(44, 20);
+            this.total_lbl.Size = new System.Drawing.Size(18, 20);
             this.total_lbl.TabIndex = 2;
-            this.total_lbl.Text = "Total";
+            this.total_lbl.Text = "0";
             // 
             // label5
             // 
@@ -379,6 +383,24 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(36, 204);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Invoice No";
+            // 
+            // invoiceno_lbl
+            // 
+            this.invoiceno_lbl.AutoSize = true;
+            this.invoiceno_lbl.Location = new System.Drawing.Point(116, 204);
+            this.invoiceno_lbl.Name = "invoiceno_lbl";
+            this.invoiceno_lbl.Size = new System.Drawing.Size(13, 13);
+            this.invoiceno_lbl.TabIndex = 11;
+            this.invoiceno_lbl.Text = "0";
+            // 
             // create_order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,7 +416,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productID_nud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventoryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet)).EndInit();
             this.groupBox2.ResumeLayout(false);
@@ -413,7 +435,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown productID_nud;
         private System.Windows.Forms.Label label1;
         private pharmacyDataSet pharmacyDataSet;
         private System.Windows.Forms.BindingSource inventoryBindingSource;
@@ -437,5 +459,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label change_lbl;
+        private System.Windows.Forms.Label invoiceno_lbl;
+        private System.Windows.Forms.Label label6;
     }
 }

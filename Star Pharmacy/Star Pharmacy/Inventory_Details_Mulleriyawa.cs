@@ -40,14 +40,14 @@ namespace Star_Pharmacy
 
         public void inventory_details_Load(object sender, EventArgs e)
         {
-            String query = "Select * from pharmacy.inventory where Branch = '"+branch+"';";
+            String query = "Select * from inventory where Branch = '"+branch+"';";
             SqlCon.updateDataGridView(query, dataGridView1);
             
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            MySqlDataAdapter sAdapter2 = new MySqlDataAdapter("Select * from pharmacy.inventory where ProductID like '" + numericUpDown1.Value.ToString() + "%" + "' and Branch = '"+branch+"';", SqlCon.con);
+            MySqlDataAdapter sAdapter2 = new MySqlDataAdapter("Select * from inventory where ProductID like '" + numericUpDown1.Value.ToString() + "%" + "' and Branch = '"+branch+"';", SqlCon.con);
             DataTable dt2 = new DataTable();
             sAdapter2.Fill(dt2);
             dataGridView1.DataSource = dt2;
@@ -57,7 +57,7 @@ namespace Star_Pharmacy
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            MySqlDataAdapter sAdapter3 = new MySqlDataAdapter("Select * from pharmacy.inventory where BrandName like '" + "%" + textBox1.Text + "%" + "' and Branch = '" + branch + "';", SqlCon.con);
+            MySqlDataAdapter sAdapter3 = new MySqlDataAdapter("Select * from inventory where BrandName like '" + "%" + textBox1.Text + "%" + "' and Branch = '" + branch + "';", SqlCon.con);
             DataTable dt3 = new DataTable();
             sAdapter3.Fill(dt3);
             dataGridView1.DataSource = dt3;
@@ -67,7 +67,7 @@ namespace Star_Pharmacy
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            MySqlDataAdapter sAdapter4 = new MySqlDataAdapter("Select * from pharmacy.inventory where MedicalName like '" + "%" + textBox2.Text + "%" + "' and Branch = '" + branch + "';", SqlCon.con);
+            MySqlDataAdapter sAdapter4 = new MySqlDataAdapter("Select * from inventory where MedicalName like '" + "%" + textBox2.Text + "%" + "' and Branch = '" + branch + "';", SqlCon.con);
             DataTable dt4 = new DataTable();
             sAdapter4.Fill(dt4);
             dataGridView1.DataSource = dt4;

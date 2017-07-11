@@ -13,6 +13,7 @@ namespace Star_Pharmacy
         /// The main entry point for the application.
         /// </summary>
         public static bool isExpire = false;
+        public static int logged_id;
         
         [STAThread]
         static void Main()

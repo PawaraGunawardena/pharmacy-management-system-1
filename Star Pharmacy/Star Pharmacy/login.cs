@@ -55,12 +55,14 @@ namespace Star_Pharmacy
                         Expiry_Products exProd = new Expiry_Products();
                         exProd.Show();
                     }
+                    Program.logged_id = Convert.ToInt32(dt.Rows[0][0].ToString());
                 }
                 else if (dt.Rows.Count == 1 && dt.Rows[0][2].ToString() == "Cashier")
                 {
                     cashierForm cashier = new cashierForm();
                     this.Hide();
                     cashier.Show();
+                    Program.logged_id = Convert.ToInt32(dt.Rows[0][0].ToString());
                 }
                 else
                 {
