@@ -258,11 +258,6 @@ namespace Star_Pharmacy
         {
             if (bill_dgv.RowCount > 0 && cash_nud.Value >= Convert.ToDecimal(total))
             {
-               // foreach (DataGridViewRow row in bill_dgv.Rows)
-               // {
-                 //   SqlCon.con.Open();
-                  //  MySqlCommand cmd = new MySqlCommand("insert into order_transactions");
-               // }
                 PrintReceipt();
             }
             else if (cash_nud.Value < Convert.ToDecimal(total))

@@ -45,7 +45,7 @@ namespace Star_Pharmacy
                 sAdapter.Fill(dt);
                 SqlCon.con.Close();
 
-                if (dt.Rows.Count == 1 && dt.Rows[0][2].ToString() == "Owner")
+                if (dt.Rows.Count == 1 && dt.Rows[0][3].ToString() == "Owner")
                 {
                     owner_form of = new owner_form();
                     this.Hide();
@@ -57,7 +57,7 @@ namespace Star_Pharmacy
                     }
                     Program.logged_id = Convert.ToInt32(dt.Rows[0][0].ToString());
                 }
-                else if (dt.Rows.Count == 1 && dt.Rows[0][2].ToString() == "Cashier")
+                else if (dt.Rows.Count == 1 && dt.Rows[0][3].ToString() == "Cashier")
                 {
                     cashierForm cashier = new cashierForm();
                     this.Hide();
