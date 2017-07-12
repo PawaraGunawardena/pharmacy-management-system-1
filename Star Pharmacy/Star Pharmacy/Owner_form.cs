@@ -95,5 +95,14 @@ namespace Star_Pharmacy
         {
 
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            hideUnwantedForms();
+            Sales_History sh = Sales_History.getSalesHistory(splitContainer1, this);
+            sh.Location = new Point((splitContainer1.Panel2.Width - sh.Width) / 2, (splitContainer1.Panel2.Height - sh.Height) / 2);
+            sh.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            sh.Show();
+        }
     }
 }

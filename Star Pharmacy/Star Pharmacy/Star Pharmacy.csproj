@@ -121,6 +121,12 @@
     <Compile Include="returnOrder.Designer.cs">
       <DependentUpon>returnOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sales_History.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sales_History.Designer.cs">
+      <DependentUpon>Sales_History.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlCon.cs" />
     <Compile Include="supplier_details.cs">
       <SubType>Form</SubType>
@@ -134,6 +140,7 @@
     <Compile Include="supplier_info_form.Designer.cs">
       <DependentUpon>supplier_info_form.cs</DependentUpon>
     </Compile>
+    <Compile Include="TransactionControl.cs" />
     <EmbeddedResource Include="addNewSuppliers.resx">
       <DependentUpon>addNewSuppliers.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +179,9 @@
     </Compile>
     <EmbeddedResource Include="returnOrder.resx">
       <DependentUpon>returnOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sales_History.resx">
+      <DependentUpon>Sales_History.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="supplier_details.resx">
       <DependentUpon>supplier_details.cs</DependentUpon>

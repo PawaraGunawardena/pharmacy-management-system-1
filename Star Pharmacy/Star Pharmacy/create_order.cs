@@ -43,7 +43,7 @@ namespace Star_Pharmacy
         private void create_order_Load(object sender, EventArgs e)
         {
             load_dgv1();
-            invoiceno_lbl.Text = invoice_number_generator().ToString();
+            invoiceno_lbl.Text = TransactionControl.genrateInvoiceNo().ToString();
 
         }
         private void load_dgv1()
@@ -258,7 +258,12 @@ namespace Star_Pharmacy
         {
             if (bill_dgv.RowCount > 0 && cash_nud.Value >= Convert.ToDecimal(total))
             {
+                TransactionControl.updateDatabase(bill_dgv, invoiceno_lbl.Text, Program.logged_id.ToString());
                 PrintReceipt();
+                invoiceno_lbl.Text = TransactionControl.genrateInvoiceNo().ToString();
+                bill_dgv.Rows.Clear();
+                total_lbl.ResetText();
+                change_lbl.ResetText();
             }
             else if (cash_nud.Value < Convert.ToDecimal(total))
             {
@@ -280,20 +285,7 @@ namespace Star_Pharmacy
             
             
         }
-        public int invoice_number_generator()
-        {
-            MySqlDataAdapter sda1 = new MySqlDataAdapter("select * from order_transactions;", SqlCon.con);
-            DataTable dt1 = new DataTable();
-            sda1.Fill(dt1);
-            if (dt1.Rows.Count == 0)
-            {
-                return 0;
-            }
-            else
-            {
-                return 1;
-            }
-        }
+        
 
         
 
