@@ -46,7 +46,7 @@ namespace Star_Pharmacy
             SqlCon.updateDataGridView(query, dataGridView1);
             groupBox1.Enabled = false;
         }
-
+        
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             String query;
@@ -351,5 +351,9 @@ namespace Star_Pharmacy
             }
         }
 
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
