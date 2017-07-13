@@ -77,7 +77,7 @@ namespace Star_Pharmacy
         }
 
 
-        private static string findBranch(String cashierID)
+        public static string findBranch(String cashierID)
         {
             MySqlDataAdapter sda = new MySqlDataAdapter("select * from people where ID = '" + cashierID + "'; ", SqlCon.con);
             DataTable dt = new DataTable();

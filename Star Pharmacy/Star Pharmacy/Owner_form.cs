@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,6 +13,15 @@ namespace Star_Pharmacy
 {
     public partial class owner_form : Form
     {
+
+        System.Timers.Timer timer;
+
+        delegate void UpdateMessageBox(String messageBoxString);
+        void UpdateTheMessageBox(String str)
+        {
+            MessageBox.Show("Reports are generated for the day!");
+        }
+
         public owner_form()
         {
             InitializeComponent();
@@ -32,9 +42,37 @@ namespace Star_Pharmacy
 
         private void cashier_form_Load(object sender, EventArgs e)
         {
-            
-            
+            //Initiating the timer.
+            timer = new System.Timers.Timer();
+            timer.Interval = 1000;
+            timer.Elapsed += Timer_Elapsed;
+
+            timer.Start();
+
         }
+
+
+        public void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            DateTime current = DateTime.Now;
+            //Setting the time to 7PM
+            if(current.Hour == 22 &&  current.Minute ==15 && current.Second == 00)
+            {
+                MessageBox.Show("Reports have been generated.", "Check Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try
+                {
+                    UpdateMessageBox upd = UpdateTheMessageBox;
+                    Invoke(upd);
+                }
+                catch(Exception ex)
+                {
+                    
+                }
+            }
+             
+        }
+
+       
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -103,6 +141,16 @@ namespace Star_Pharmacy
             sh.Location = new Point((splitContainer1.Panel2.Width - sh.Width) / 2, (splitContainer1.Panel2.Height - sh.Height) / 2);
             sh.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             sh.Show();
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

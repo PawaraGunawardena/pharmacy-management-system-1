@@ -40,7 +40,14 @@ namespace Star_Pharmacy
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            LookupItemAvailability availabilityForm = new LookupItemAvailability();
+            availabilityForm.MdiParent = this;
+            splitContainer1.Panel2.Controls.Add(availabilityForm);
+            availabilityForm.Location = new Point((splitContainer1.Panel2.Width - availabilityForm.Width) / 2, (splitContainer1.Panel2.Height - availabilityForm.Height) / 2);
+            availabilityForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            availabilityForm.Show();
+            availabilityForm.buttonDeactivate();
+            
         }
 
         private void cashierForm_Load(object sender, EventArgs e)

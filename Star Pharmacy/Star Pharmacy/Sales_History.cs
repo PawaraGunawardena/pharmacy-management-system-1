@@ -127,5 +127,10 @@ namespace Star_Pharmacy
                 SqlCon.updateDataGridView(query, dataGridView1);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://localhost/DisplayRecords/DailyReport.php");
+        }
     }
 }
