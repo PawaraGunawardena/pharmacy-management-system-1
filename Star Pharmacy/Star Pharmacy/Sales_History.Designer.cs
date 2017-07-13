@@ -30,6 +30,12 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.invoice_chkbox = new System.Windows.Forms.CheckBox();
+            this.branch_chkbox = new System.Windows.Forms.CheckBox();
+            this.date_chkbox = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,12 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.from_dtp = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.button1 = new System.Windows.Forms.Button();
-            this.date_chkbox = new System.Windows.Forms.CheckBox();
-            this.branch_chkbox = new System.Windows.Forms.CheckBox();
-            this.invoice_chkbox = new System.Windows.Forms.CheckBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -61,6 +62,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.invoice_chkbox);
             this.groupBox1.Controls.Add(this.branch_chkbox);
             this.groupBox1.Controls.Add(this.date_chkbox);
@@ -80,6 +82,68 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Show by";
+            // 
+            // invoice_chkbox
+            // 
+            this.invoice_chkbox.AutoSize = true;
+            this.invoice_chkbox.Location = new System.Drawing.Point(111, 92);
+            this.invoice_chkbox.Name = "invoice_chkbox";
+            this.invoice_chkbox.Size = new System.Drawing.Size(15, 14);
+            this.invoice_chkbox.TabIndex = 12;
+            this.invoice_chkbox.UseVisualStyleBackColor = true;
+            this.invoice_chkbox.CheckedChanged += new System.EventHandler(this.invoice_chkbox_CheckedChanged);
+            // 
+            // branch_chkbox
+            // 
+            this.branch_chkbox.AutoSize = true;
+            this.branch_chkbox.Location = new System.Drawing.Point(111, 59);
+            this.branch_chkbox.Name = "branch_chkbox";
+            this.branch_chkbox.Size = new System.Drawing.Size(15, 14);
+            this.branch_chkbox.TabIndex = 11;
+            this.branch_chkbox.UseVisualStyleBackColor = true;
+            this.branch_chkbox.CheckedChanged += new System.EventHandler(this.branch_chkbox_CheckedChanged);
+            // 
+            // date_chkbox
+            // 
+            this.date_chkbox.AutoSize = true;
+            this.date_chkbox.Location = new System.Drawing.Point(111, 25);
+            this.date_chkbox.Name = "date_chkbox";
+            this.date_chkbox.Size = new System.Drawing.Size(15, 14);
+            this.date_chkbox.TabIndex = 10;
+            this.date_chkbox.UseVisualStyleBackColor = true;
+            this.date_chkbox.CheckedChanged += new System.EventHandler(this.date_chkbox_CheckedChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(410, 76);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 36);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Show";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Enabled = false;
+            this.numericUpDown1.Location = new System.Drawing.Point(148, 92);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1569325056,
+            23283064,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(40, 94);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Invoice No";
             // 
             // comboBox1
             // 
@@ -155,67 +219,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "From";
             // 
-            // label5
+            // button2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(40, 94);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Invoice No";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Enabled = false;
-            this.numericUpDown1.Location = new System.Drawing.Point(148, 92);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1569325056,
-            23283064,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 8;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(516, 76);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 36);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Show";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // date_chkbox
-            // 
-            this.date_chkbox.AutoSize = true;
-            this.date_chkbox.Location = new System.Drawing.Point(111, 25);
-            this.date_chkbox.Name = "date_chkbox";
-            this.date_chkbox.Size = new System.Drawing.Size(15, 14);
-            this.date_chkbox.TabIndex = 10;
-            this.date_chkbox.UseVisualStyleBackColor = true;
-            this.date_chkbox.CheckedChanged += new System.EventHandler(this.date_chkbox_CheckedChanged);
-            // 
-            // branch_chkbox
-            // 
-            this.branch_chkbox.AutoSize = true;
-            this.branch_chkbox.Location = new System.Drawing.Point(111, 59);
-            this.branch_chkbox.Name = "branch_chkbox";
-            this.branch_chkbox.Size = new System.Drawing.Size(15, 14);
-            this.branch_chkbox.TabIndex = 11;
-            this.branch_chkbox.UseVisualStyleBackColor = true;
-            this.branch_chkbox.CheckedChanged += new System.EventHandler(this.branch_chkbox_CheckedChanged);
-            // 
-            // invoice_chkbox
-            // 
-            this.invoice_chkbox.AutoSize = true;
-            this.invoice_chkbox.Location = new System.Drawing.Point(111, 92);
-            this.invoice_chkbox.Name = "invoice_chkbox";
-            this.invoice_chkbox.Size = new System.Drawing.Size(15, 14);
-            this.invoice_chkbox.TabIndex = 12;
-            this.invoice_chkbox.UseVisualStyleBackColor = true;
-            this.invoice_chkbox.CheckedChanged += new System.EventHandler(this.invoice_chkbox_CheckedChanged);
+            this.button2.Location = new System.Drawing.Point(533, 76);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(117, 36);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Generate A Report";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Sales_History
             // 
@@ -255,5 +267,6 @@
         private System.Windows.Forms.CheckBox invoice_chkbox;
         private System.Windows.Forms.CheckBox branch_chkbox;
         private System.Windows.Forms.CheckBox date_chkbox;
+        private System.Windows.Forms.Button button2;
     }
 }
