@@ -44,6 +44,8 @@
             this.pharmacyDataSet = new Star_Pharmacy.pharmacyDataSet();
             this.inventoryTableAdapter = new Star_Pharmacy.pharmacyDataSetTableAdapters.inventoryTableAdapter();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.invoiceno_lbl = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.change_lbl = new System.Windows.Forms.Label();
             this.cash_nud = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
@@ -59,8 +61,6 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.invoiceno_lbl = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -153,6 +153,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(158, 20);
             this.textBox2.TabIndex = 5;
+            this.textBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseClick);
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
@@ -195,7 +196,7 @@
             this.productID_nud.Size = new System.Drawing.Size(77, 20);
             this.productID_nud.TabIndex = 1;
             this.productID_nud.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            this.productID_nud.Click += new System.EventHandler(this.numericUpDown1_Click);
+            this.productID_nud.MouseClick += new System.Windows.Forms.MouseEventHandler(this.productID_nud_MouseClick);
             // 
             // label1
             // 
@@ -240,6 +241,24 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bill";
+            // 
+            // invoiceno_lbl
+            // 
+            this.invoiceno_lbl.AutoSize = true;
+            this.invoiceno_lbl.Location = new System.Drawing.Point(116, 204);
+            this.invoiceno_lbl.Name = "invoiceno_lbl";
+            this.invoiceno_lbl.Size = new System.Drawing.Size(13, 13);
+            this.invoiceno_lbl.TabIndex = 11;
+            this.invoiceno_lbl.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(36, 204);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Invoice No";
             // 
             // change_lbl
             // 
@@ -382,24 +401,6 @@
             this.Column4.HeaderText = "Amount";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(36, 204);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Invoice No";
-            // 
-            // invoiceno_lbl
-            // 
-            this.invoiceno_lbl.AutoSize = true;
-            this.invoiceno_lbl.Location = new System.Drawing.Point(116, 204);
-            this.invoiceno_lbl.Name = "invoiceno_lbl";
-            this.invoiceno_lbl.Size = new System.Drawing.Size(13, 13);
-            this.invoiceno_lbl.TabIndex = 11;
-            this.invoiceno_lbl.Text = "0";
             // 
             // create_order
             // 

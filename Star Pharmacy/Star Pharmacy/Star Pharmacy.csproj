@@ -91,6 +91,12 @@
     <Compile Include="Inventory_details_welivita.Designer.cs">
       <DependentUpon>Inventory_details_welivita.cs</DependentUpon>
     </Compile>
+    <Compile Include="LookupItemAvailability.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LookupItemAvailability.Designer.cs">
+      <DependentUpon>LookupItemAvailability.cs</DependentUpon>
+    </Compile>
     <Compile Include="modify_inventory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory_details_welivita.resx">
       <DependentUpon>Inventory_details_welivita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LookupItemAvailability.resx">
+      <DependentUpon>LookupItemAvailability.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modify_inventory.resx">
       <DependentUpon>modify_inventory.cs</DependentUpon>

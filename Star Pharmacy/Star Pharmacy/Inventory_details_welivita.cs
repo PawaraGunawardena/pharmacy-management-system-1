@@ -58,6 +58,21 @@ namespace Star_Pharmacy
             String query = "Select * from pharmacy.inventory where MedicalName like '" + "%" + textBox2.Text + "%" + "' and Branch = '" + branch + "';";
             SqlCon.updateDataGridView(query, dataGridView1);
         }
+        private void numericUpDown1_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox1.ResetText();
+            textBox2.ResetText();
+        }
+        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            numericUpDown1.ResetText();
+            textBox2.Text = null;
+        }
+        private void textBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            numericUpDown1.ResetText();
+            textBox1.Text = null;
+        }
 
     }
 }
