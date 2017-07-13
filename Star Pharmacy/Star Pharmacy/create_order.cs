@@ -19,6 +19,7 @@ namespace Star_Pharmacy
         private decimal total;
         private decimal cash;
         private decimal change;
+        private String branch = TransactionControl.findBranch(Program.logged_id.ToString());
 
         public static create_order getCreateOrder(SplitContainer s, Form f)
         {
@@ -48,7 +49,7 @@ namespace Star_Pharmacy
         }
         private void load_dgv1()
         {
-            String query = "Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where InStock >0;";
+            String query = "Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where InStock >0 and Branch = '"+branch+"';";
             SqlCon.updateDataGridView(query, dataGridView1);
             
         }
@@ -57,7 +58,7 @@ namespace Star_Pharmacy
         {
             if (productID_nud.Value != 0)
             {
-                MySqlDataAdapter sAdapter2 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where ProductID like '" + productID_nud.Value.ToString() + "%" + "' and InStock > 0;", SqlCon.con);
+                MySqlDataAdapter sAdapter2 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where ProductID like '" + productID_nud.Value.ToString() + "%" + "' and InStock > 0 and Branch = '" + branch + "';", SqlCon.con);
                 DataTable dt2 = new DataTable();
                 sAdapter2.Fill(dt2);
                 dataGridView1.DataSource = dt2;
@@ -66,14 +67,14 @@ namespace Star_Pharmacy
             }
             else
             {
-                String query = "Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where InStock > 0;";
+                String query = "Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where InStock > 0 and Branch = '" + branch + "';";
                 SqlCon.updateDataGridView(query, dataGridView1);
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            MySqlDataAdapter sAdapter3 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where BrandName like '" + "%" + textBox1.Text + "%" + "'and InStock > 0;", SqlCon.con);
+            MySqlDataAdapter sAdapter3 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where BrandName like '" + "%" + textBox1.Text + "%" + "'and InStock > 0 and Branch = '" + branch + "';", SqlCon.con);
             DataTable dt3 = new DataTable();
             sAdapter3.Fill(dt3);
             dataGridView1.DataSource = dt3;
@@ -88,7 +89,7 @@ namespace Star_Pharmacy
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            MySqlDataAdapter sAdapter4 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where MedicalName like '" + "%" + textBox2.Text + "%" + "'and InStock > 0;", SqlCon.con);
+            MySqlDataAdapter sAdapter4 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where MedicalName like '" + "%" + textBox2.Text + "%" + "'and InStock > 0 and Branch = '" + branch + "';", SqlCon.con);
             DataTable dt4 = new DataTable();
             sAdapter4.Fill(dt4);
             dataGridView1.DataSource = dt4;
@@ -96,11 +97,7 @@ namespace Star_Pharmacy
             dataGridView1.Refresh();
         }
 
-        private void numericUpDown1_Click(object sender, EventArgs e)
-        {
-            textBox1.Text = null;
-            textBox2.Text = null;
-        }
+        
 
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -154,7 +151,7 @@ namespace Star_Pharmacy
                 com.ExecuteNonQuery();
                 SqlCon.con.Close();
                 load_dgv1();
-                MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where InStock > 0;", SqlCon.con);
+                MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where InStock > 0 and Branch = '" + branch + "';", SqlCon.con);
                 DataTable dt5 = new DataTable();
                 sAdapter5.Fill(dt5);
                 dataGridView1.DataSource = dt5;
@@ -184,7 +181,7 @@ namespace Star_Pharmacy
             int startX = 10;
             int startY = 10;
             int offset = 55;
-            graphic.DrawString("Welcome to StarX Pharmacy", new Font("Courier New", 18), new SolidBrush(Color.Black), startX, startY);
+            graphic.DrawString("StarX Pharmacy-"+branch, new Font("Courier New", 14), new SolidBrush(Color.Black), startX, startY);
 
             graphic.DrawString("Date :"+DateTime.Today.ToString("yyyy-MM-dd")+"   "+"Invoice NO:"+invoiceno_lbl.Text, new Font("Courier New", 12), new SolidBrush(Color.Black), startX, startY+23);
             graphic.DrawString("ID"+"\t"+"Name"+"\t"+"UPrz"+"\t"+"Qty"+"\t"+"total", new Font("Courier New", 12), new SolidBrush(Color.Black), startX, startY + 40);
@@ -233,7 +230,7 @@ namespace Star_Pharmacy
                 MySqlCommand com = new MySqlCommand("update pharmacy.inventory  set InStock = '" + newStock.ToString() + "' where ProductID = '" + bill_dgv.Rows[selIndex].Cells[0].Value.ToString() + "' ;", SqlCon.con);
                 com.ExecuteNonQuery();
                 SqlCon.con.Close();
-                MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory;", SqlCon.con);
+                MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where Branch = '" + branch + "';", SqlCon.con);
                 DataTable dt5 = new DataTable();
                 sAdapter5.Fill(dt5);
                 dataGridView1.DataSource = dt5;
@@ -284,6 +281,12 @@ namespace Star_Pharmacy
                 change_lbl.Text = change.ToString() + " Rs";
             
             
+        }
+
+        private void productID_nud_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox1.Text = null;
+            textBox2.Text = null;
         }
         
 

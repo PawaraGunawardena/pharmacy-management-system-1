@@ -75,5 +75,21 @@ namespace Star_Pharmacy
             dataGridView1.Refresh();
         }
 
+        private void numericUpDown1_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox1.ResetText();
+            textBox2.ResetText();
+        }
+        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            numericUpDown1.ResetText();
+            textBox2.Text = null;
+        }
+        private void textBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            numericUpDown1.ResetText();
+            textBox1.Text = null;
+        }
+
     }
 }

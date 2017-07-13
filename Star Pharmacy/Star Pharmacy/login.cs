@@ -47,6 +47,8 @@ namespace Star_Pharmacy
 
                 if (dt.Rows.Count == 1 && dt.Rows[0][3].ToString() == "Owner")
                 {
+
+                    Program.logged_id = Convert.ToInt32(dt.Rows[0][0].ToString());
                     owner_form of = new owner_form();
                     this.Hide();
                     of.Show();
@@ -55,7 +57,6 @@ namespace Star_Pharmacy
                         Expiry_Products exProd = new Expiry_Products();
                         exProd.Show();
                     }
-                    Program.logged_id = Convert.ToInt32(dt.Rows[0][0].ToString());
                 }
                 else if (dt.Rows.Count == 1 && dt.Rows[0][3].ToString() == "Cashier")
                 {
