@@ -56,7 +56,7 @@ namespace Star_Pharmacy
         {
             DateTime current = DateTime.Now;
             //Setting the time to 7PM
-            if(current.Hour == 22 &&  current.Minute ==15 && current.Second == 00)
+            if(current.Hour == 17 &&  current.Minute == 47 && current.Second == 00)
             {
                 MessageBox.Show("Reports have been generated.", "Check Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 try
