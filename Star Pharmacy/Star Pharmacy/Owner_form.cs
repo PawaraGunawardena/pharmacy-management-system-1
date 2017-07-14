@@ -152,5 +152,14 @@ namespace Star_Pharmacy
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            hideUnwantedForms();
+            emp_management emp = emp_management.getEmpManagement(splitContainer1, this);
+            emp.Location = new Point((splitContainer1.Panel2.Width - emp.Width) / 2, (splitContainer1.Panel2.Height - emp.Height) / 2);
+            emp.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            emp.Show();
+        }
     }
 }

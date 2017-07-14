@@ -23,7 +23,6 @@ namespace Star_Pharmacy
             expiryNotification.expnoti();
             if (!expiryNotification.noMySQlHost)
             {
-
                 Application.Run(new login());
             }
             
