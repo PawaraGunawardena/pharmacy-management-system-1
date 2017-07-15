@@ -15,11 +15,16 @@ namespace Star_Pharmacy
     {
 
         System.Timers.Timer timer;
+        String file;
 
         delegate void UpdateMessageBox(String messageBoxString);
+
         void UpdateTheMessageBox(String str)
         {
             MessageBox.Show("Reports are generated for the day!");
+            MessageBox.Show("Reports are generated for the day22222!");
+            file = Sales_History.generatePDF();
+            Sales_History.sendEmail(file);
         }
 
         public owner_form()
@@ -56,9 +61,13 @@ namespace Star_Pharmacy
         {
             DateTime current = DateTime.Now;
             //Setting the time to 7PM
-            if(current.Hour == 17 &&  current.Minute == 47 && current.Second == 00)
+            if((current.Hour == 19 &&  current.Minute == 00 && current.Second == 00) || ((current.Hour < 00 && current.Minute < 00 && current.Second < 00) && (current.Hour > 19 && current.Minute > 0 && current.Second > 00)))
             {
-                MessageBox.Show("Reports have been generated.", "Check Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                //MessageBox.Show("Reports have been generated.", "Check Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                file = Sales_History.generatePDF();
+                Sales_History.sendEmail(file);
                 try
                 {
                     UpdateMessageBox upd = UpdateTheMessageBox;
@@ -66,7 +75,7 @@ namespace Star_Pharmacy
                 }
                 catch(Exception ex)
                 {
-                    
+                    //MessageBox.Show(ex.ToString());
                 }
             }
              
