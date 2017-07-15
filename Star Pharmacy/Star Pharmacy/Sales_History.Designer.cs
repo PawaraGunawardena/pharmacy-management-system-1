@@ -88,11 +88,11 @@
             // 
             // btnGenerateAndSend
             // 
-            this.btnGenerateAndSend.Location = new System.Drawing.Point(310, 76);
+            this.btnGenerateAndSend.Location = new System.Drawing.Point(397, 76);
             this.btnGenerateAndSend.Name = "btnGenerateAndSend";
-            this.btnGenerateAndSend.Size = new System.Drawing.Size(94, 36);
+            this.btnGenerateAndSend.Size = new System.Drawing.Size(130, 36);
             this.btnGenerateAndSend.TabIndex = 14;
-            this.btnGenerateAndSend.Text = "Generate A Report and Mail";
+            this.btnGenerateAndSend.Text = "Generate A Report and Mai to Range ";
             this.btnGenerateAndSend.UseVisualStyleBackColor = true;
             this.btnGenerateAndSend.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -102,7 +102,7 @@
             this.btnHTMLReport.Name = "btnHTMLReport";
             this.btnHTMLReport.Size = new System.Drawing.Size(117, 36);
             this.btnHTMLReport.TabIndex = 13;
-            this.btnHTMLReport.Text = "Generate A Report HTML";
+            this.btnHTMLReport.Text = "Generate A Report HTML for Today";
             this.btnHTMLReport.UseVisualStyleBackColor = true;
             this.btnHTMLReport.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -138,9 +138,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(410, 76);
+            this.button1.Location = new System.Drawing.Point(324, 76);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 36);
+            this.button1.Size = new System.Drawing.Size(66, 36);
             this.button1.TabIndex = 9;
             this.button1.Text = "Show";
             this.button1.UseVisualStyleBackColor = true;
@@ -269,7 +269,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker to_dtp;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker from_dtp;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
@@ -282,5 +281,6 @@
         private System.Windows.Forms.CheckBox date_chkbox;
         private System.Windows.Forms.Button btnHTMLReport;
         private System.Windows.Forms.Button btnGenerateAndSend;
+        public System.Windows.Forms.DateTimePicker from_dtp;
     }
 }
