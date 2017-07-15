@@ -184,7 +184,9 @@ namespace Star_Pharmacy
         private void showNotification()
         {
             PopupNotifier popup = new PopupNotifier();
-            popup.Image = Properties.Resources.if_icon_28_information_314283;
+            popup.Image = Properties.Resources.if_icon_28_information_314283;   
+            //You may have to change this Image property. 
+            // Add a reference to your image by going to Properties -> 
             popup.TitleText = "Notification.";
             popup.ContentText = "Remember to check your email for reports.";
             popup.Popup();
