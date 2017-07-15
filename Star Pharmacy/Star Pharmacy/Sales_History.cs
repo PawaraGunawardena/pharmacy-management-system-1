@@ -159,7 +159,7 @@ namespace Star_Pharmacy
                  */
 
 
-                mail.To.Add("dasun.15@cse.mrt.ac.lk");  //Give an address to recieve the email.
+                mail.To.Add("khsudarshana@gmail.com");  //Give an address to recieve the email.
                 mail.Subject = "Report";
                 mail.Body = "mail with attachment";
 
@@ -307,7 +307,7 @@ namespace Star_Pharmacy
                     yPoint = yPoint + 40;
                 }
 
-                pdfFilename = "C:/Users/Geethani/Desktop/Report.pdf";
+                pdfFilename = "E:/Report.pdf";
                 pdf.Save(pdfFilename);
                 //Process.Start(pdfFilename);
                 //sendEmail(pdfFilename);
@@ -463,7 +463,7 @@ namespace Star_Pharmacy
                         yPoint = yPoint + 40;
                     }
 
-                    pdfFilename = "C:/Users/Geethani/Desktop/Report.pdf";
+                    pdfFilename = "E:/Report.pdf";
                     pdf.Save(pdfFilename);
                     //Process.Start(pdfFilename);
                     sendEmail(pdfFilename);

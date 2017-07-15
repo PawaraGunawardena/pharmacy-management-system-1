@@ -34,6 +34,7 @@
             this.peopleTableAdapter = new Star_Pharmacy.pharmacyDataSet2TableAdapters.peopleTableAdapter();
             this.emp_details = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.availability_indicator = new System.Windows.Forms.Label();
             this.salary_updown = new System.Windows.Forms.NumericUpDown();
             this.bdayPicker = new System.Windows.Forms.DateTimePicker();
             this.cancelBtn = new System.Windows.Forms.Button();
@@ -66,7 +67,8 @@
             this.change_emp = new System.Windows.Forms.Button();
             this.fire_emp = new System.Windows.Forms.Button();
             this.add_emp = new System.Windows.Forms.Button();
-            this.availability_indicator = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.branchSelect = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emp_details)).BeginInit();
@@ -93,15 +95,22 @@
             // 
             // emp_details
             // 
+            this.emp_details.AllowUserToAddRows = false;
+            this.emp_details.AllowUserToDeleteRows = false;
             this.emp_details.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.emp_details.Location = new System.Drawing.Point(29, 110);
+            this.emp_details.MultiSelect = false;
             this.emp_details.Name = "emp_details";
+            this.emp_details.ReadOnly = true;
+            this.emp_details.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.emp_details.Size = new System.Drawing.Size(742, 200);
             this.emp_details.TabIndex = 6;
             this.emp_details.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.emp_details_CellContentClick);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.branchSelect);
+            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.availability_indicator);
             this.groupBox1.Controls.Add(this.salary_updown);
             this.groupBox1.Controls.Add(this.bdayPicker);
@@ -131,6 +140,14 @@
             this.groupBox1.Text = "Employee Details";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // availability_indicator
+            // 
+            this.availability_indicator.AutoSize = true;
+            this.availability_indicator.Location = new System.Drawing.Point(127, 16);
+            this.availability_indicator.Name = "availability_indicator";
+            this.availability_indicator.Size = new System.Drawing.Size(0, 13);
+            this.availability_indicator.TabIndex = 25;
+            // 
             // salary_updown
             // 
             this.salary_updown.DecimalPlaces = 2;
@@ -147,7 +164,7 @@
             // bdayPicker
             // 
             this.bdayPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.bdayPicker.Location = new System.Drawing.Point(360, 27);
+            this.bdayPicker.Location = new System.Drawing.Point(98, 189);
             this.bdayPicker.Name = "bdayPicker";
             this.bdayPicker.Size = new System.Drawing.Size(147, 20);
             this.bdayPicker.TabIndex = 23;
@@ -155,21 +172,23 @@
             // 
             // cancelBtn
             // 
-            this.cancelBtn.Location = new System.Drawing.Point(284, 215);
+            this.cancelBtn.Location = new System.Drawing.Point(289, 225);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(119, 28);
             this.cancelBtn.TabIndex = 22;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(141, 215);
+            this.saveBtn.Location = new System.Drawing.Point(148, 225);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(119, 28);
             this.saveBtn.TabIndex = 21;
             this.saveBtn.Text = "Save Changes";
             this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // roleSelect_cmboBox
             // 
@@ -278,7 +297,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(286, 30);
+            this.label7.Location = new System.Drawing.Point(27, 195);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 13);
             this.label7.TabIndex = 3;
@@ -436,13 +455,26 @@
             this.add_emp.UseVisualStyleBackColor = true;
             this.add_emp.Click += new System.EventHandler(this.add_emp_Click);
             // 
-            // availability_indicator
+            // label14
             // 
-            this.availability_indicator.AutoSize = true;
-            this.availability_indicator.Location = new System.Drawing.Point(127, 16);
-            this.availability_indicator.Name = "availability_indicator";
-            this.availability_indicator.Size = new System.Drawing.Size(0, 13);
-            this.availability_indicator.TabIndex = 25;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(286, 34);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "Branch";
+            // 
+            // branchSelect
+            // 
+            this.branchSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.branchSelect.FormattingEnabled = true;
+            this.branchSelect.Items.AddRange(new object[] {
+            "Mulleriyawa",
+            "Welivita"});
+            this.branchSelect.Location = new System.Drawing.Point(360, 31);
+            this.branchSelect.Name = "branchSelect";
+            this.branchSelect.Size = new System.Drawing.Size(147, 21);
+            this.branchSelect.TabIndex = 27;
             // 
             // emp_management
             // 
@@ -511,5 +543,7 @@
         private System.Windows.Forms.DateTimePicker bdayPicker;
         private System.Windows.Forms.NumericUpDown salary_updown;
         private System.Windows.Forms.Label availability_indicator;
+        private System.Windows.Forms.ComboBox branchSelect;
+        private System.Windows.Forms.Label label14;
     }
 }
