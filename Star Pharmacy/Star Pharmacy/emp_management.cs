@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +13,52 @@ namespace Star_Pharmacy
 {
     public partial class emp_management : Form
     {
+
+        bool addBtn_Clicked = false;
+        bool changeBtn_Clicked = false;
+        bool fireBtn_Clicked = false;
+
         public emp_management()
         {
             InitializeComponent();
+            //fillCombos();
+        }
+
+        /*public void fillCombos()
+        {
+            roleSelect_cmboBox.Items.Add("Owner");
+            roleSelect_cmboBox.Items.Add("Cashier");
+            roleSelect_cmboBox.Items.Add("StockManager");
+            role_CmbBox.Items.Add("Owner");
+            role_CmbBox.Items.Add("Cashier");
+            role_CmbBox.Items.Add("StockManager");
+        }*/
+
+        MySqlConnection con = new MySqlConnection("server=localhost;user id=root;database=pharmacy");
+        MySqlCommand command;
+        MySqlDataReader mdr;
+
+        private static emp_management instance;
+
+        public static emp_management getEmpManagement(SplitContainer scon, Form form)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new emp_management();
+                instance.MdiParent = form;
+                scon.Panel2.Controls.Add(instance);
+                return instance;
+            }
+            else
+            {
+                return instance;
+            }
         }
 
         private void emp_management_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'pharmacyDataSet2.people' table. You can move, or remove it, as needed.
-            this.peopleTableAdapter.Fill(this.pharmacyDataSet2.people);
+            //this.peopleTableAdapter.Fill(this.pharmacyDataSet2.people);
             String query = "Select * from pharmacy.people";
             SqlCon.updateDataGridView(query, emp_details);
             groupBox1.Enabled = false;
@@ -74,6 +112,161 @@ namespace Star_Pharmacy
                 query = "Select * from pharmacy.people where ID like '"+empID_search.Value.ToString()+"%"+"';";
             }
             SqlCon.updateDataGridView(query, emp_details);
+        }
+
+        private void empfirstName_txtBox_TextChanged(object sender, EventArgs e)
+        {
+            String query = "Select * from pharmacy.people where FirstName like'" + "%" + empfirstName_txtBox.Text + "%" + "';";
+            SqlCon.updateDataGridView(query, emp_details);
+        }
+
+        private void emplastName_txtBox_TextChanged(object sender, EventArgs e)
+        {
+            String query = "Select * from pharmacy.people where LastName like'" + "%" + emplastName_txtBox.Text + "%" + "';";
+            SqlCon.updateDataGridView(query, emp_details);
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void role_CmbBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String query = "Select * from pharmacy.people where Type like'" + role_CmbBox.Text + "';";
+            SqlCon.updateDataGridView(query, emp_details);
+        }
+
+        private void add_emp_Click(object sender, EventArgs e)
+        {
+            addBtn_Clicked = true;
+            changeBtn_Clicked = false;
+            fireBtn_Clicked = false;
+            groupBox1.Enabled = true;
+            groupBox2.Enabled = false;
+            add_emp.Enabled = true;
+            change_emp.Enabled = false;
+            fire_emp.Enabled = false;
+            emp_ID.ReadOnly = false;
+            fName_txtBox.ReadOnly = false;
+            lName_txtBox.ReadOnly = false;
+            address_txtBox.ReadOnly = false;
+            bdayPicker.Enabled = true;
+            salary_updown.Enabled = true;
+            roleSelect_cmboBox.Enabled = true;
+            username_txtBox.ReadOnly = false;
+            pwd_txtBox.ReadOnly = false;
+            saveBtn.Enabled = true;
+            cancelBtn.Enabled = true;
+
+            if (emp_ID.Value==0)
+            {
+                availability_indicator.Text = "ID not available";
+                availability_indicator.ForeColor = System.Drawing.Color.Red;
+            }
+
+        }
+
+        private void emp_ID_ValueChanged(object sender, EventArgs e)
+        {
+            if (addBtn_Clicked)
+            {
+                MySqlDataAdapter sda = new MySqlDataAdapter("Select * from pharmacy.people where ID = '"+ emp_ID.Value.ToString() + "'", SqlCon.con);
+                DataTable dta = new DataTable();
+                sda.Fill(dta);
+                if (dta.Rows.Count > 0)
+                {
+                    availability_indicator.Text = "ID not available";
+                    availability_indicator.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    availability_indicator.Text = "ID available";
+                    availability_indicator.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+
+            else if (changeBtn_Clicked)
+            {
+                if (emp_ID.Value == System.Convert.ToDecimal(emp_details.SelectedRows[0].Cells[0].Value.ToString()))
+                {
+                    availability_indicator.Text = "No Change!";
+                    availability_indicator.ForeColor = System.Drawing.Color.Indigo;
+                }
+                else
+                {
+                    MySqlDataAdapter sda = new MySqlDataAdapter("Select * from pharmacy.people where ID = '" + emp_ID.Value.ToString() + "'", SqlCon.con);
+                    DataTable dta = new DataTable();
+                    sda.Fill(dta);
+                    if (dta.Rows.Count > 0)
+                    {
+                        availability_indicator.Text = "ID not available";
+                        availability_indicator.ForeColor = System.Drawing.Color.Red;
+                    }
+                    else
+                    {
+                        availability_indicator.Text = "ID available";
+                        availability_indicator.ForeColor = System.Drawing.Color.Green;
+                    }
+                }
+            }
+        }
+
+        private void change_emp_Click(object sender, EventArgs e)
+        {
+            addBtn_Clicked = false;
+            changeBtn_Clicked = true;
+            fireBtn_Clicked = false;
+
+            if (emp_details.SelectedRows.Count == 1)
+            {
+                groupBox1.Enabled = true;
+                groupBox2.Enabled = false;
+                add_emp.Enabled = false;
+                change_emp.Enabled = true;
+                fire_emp.Enabled = false;
+                emp_ID.ReadOnly = false;
+                fName_txtBox.ReadOnly = false;
+                lName_txtBox.ReadOnly = false;
+                address_txtBox.ReadOnly = false;
+                bdayPicker.Enabled = true;
+                salary_updown.Enabled = true;
+                roleSelect_cmboBox.Enabled = true;
+                username_txtBox.ReadOnly = false;
+                pwd_txtBox.ReadOnly = false;
+                saveBtn.Enabled = true;
+                cancelBtn.Enabled = true;
+
+                emp_ID.Value = System.Convert.ToDecimal(emp_details.SelectedRows[0].Cells[0].Value.ToString());
+                fName_txtBox.Text = emp_details.SelectedRows[0].Cells[1].Value.ToString();
+                lName_txtBox.Text = emp_details.SelectedRows[0].Cells[2].Value.ToString();
+                address_txtBox.Text = emp_details.SelectedRows[0].Cells[4].Value.ToString();
+                bdayPicker.Value = System.Convert.ToDateTime(emp_details.SelectedRows[0].Cells[5].Value.ToString());
+                salary_updown.Value = System.Convert.ToDecimal(emp_details.SelectedRows[0].Cells[6].Value.ToString());
+                roleSelect_cmboBox.SelectedIndex = roleSelect_cmboBox.FindStringExact(emp_details.SelectedRows[0].Cells[3].Value.ToString());
+                username_txtBox.Text = emp_details.SelectedRows[0].Cells[7].Value.ToString();
+                pwd_txtBox.Text = emp_details.SelectedRows[0].Cells[8].Value.ToString();
+
+            }
+
+            else
+            {
+                MessageBox.Show("Select a product first!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        public void resetStates()
+        {
+            add_emp.Enabled = true;
+            change_emp.Enabled = true;
+            fire_emp.Enabled = true;
+            groupBox1.Enabled = false;
+            groupBox2.Enabled = true;
+        }
+
+        private void fire_emp_Click(object sender, EventArgs e)
+        {
+            //thawa thiyenawa save cancel fire buttons 3
         }
     }
 }
