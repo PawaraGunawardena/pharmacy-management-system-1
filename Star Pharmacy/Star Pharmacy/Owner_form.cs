@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tulpep.NotificationWindow;
 
 namespace Star_Pharmacy
 {
@@ -25,6 +26,7 @@ namespace Star_Pharmacy
             MessageBox.Show("Reports are generated for the day22222!");
             file = Sales_History.generatePDF();
             Sales_History.sendEmail(file);
+            showNotification();
         }
 
         public owner_form()
@@ -47,12 +49,16 @@ namespace Star_Pharmacy
 
         private void cashier_form_Load(object sender, EventArgs e)
         {
+
+            showNotification();
             //Initiating the timer.
             timer = new System.Timers.Timer();
             timer.Interval = 1000;
             timer.Elapsed += Timer_Elapsed;
 
             timer.Start();
+
+            
 
         }
 
@@ -61,13 +67,13 @@ namespace Star_Pharmacy
         {
             DateTime current = DateTime.Now;
             //Setting the time to 7PM
-            if((current.Hour == 19 &&  current.Minute == 00 && current.Second == 00) || ((current.Hour < 00 && current.Minute < 00 && current.Second < 00) && (current.Hour > 19 && current.Minute > 0 && current.Second > 00)))
+            if(current.Hour == 7 &&  current.Minute == 22 && current.Second == 20)
             {
-
-
+                
                 //MessageBox.Show("Reports have been generated.", "Check Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 file = Sales_History.generatePDF();
                 Sales_History.sendEmail(file);
+                
                 try
                 {
                     UpdateMessageBox upd = UpdateTheMessageBox;
@@ -169,6 +175,16 @@ namespace Star_Pharmacy
             emp.Location = new Point((splitContainer1.Panel2.Width - emp.Width) / 2, (splitContainer1.Panel2.Height - emp.Height) / 2);
             emp.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             emp.Show();
+        }
+
+        private void showNotification()
+        {
+            PopupNotifier popup = new PopupNotifier();
+            popup.Image = Properties.Resources.if_icon_28_information_314283;
+            popup.TitleText = "Notification.";
+            popup.ContentText = "Remember to check your email for reports.";
+            popup.Popup();
+
         }
     }
 }

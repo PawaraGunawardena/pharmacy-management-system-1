@@ -160,7 +160,7 @@ namespace Star_Pharmacy
                 SmtpServer.Port = 587;
 
                 SmtpServer.UseDefaultCredentials = false;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("dasunpubudumal@gmail.com", "iloveddinithi1");  //Username password gahapan.
+                SmtpServer.Credentials = new System.Net.NetworkCredential("username@gmail.com", "password");  //Username password gahapan.
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);
@@ -311,7 +311,9 @@ namespace Star_Pharmacy
    
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
-        
+        }
     }
 }

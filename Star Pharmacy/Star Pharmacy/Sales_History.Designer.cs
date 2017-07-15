@@ -30,6 +30,7 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.invoice_chkbox = new System.Windows.Forms.CheckBox();
             this.branch_chkbox = new System.Windows.Forms.CheckBox();
@@ -44,7 +45,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.from_dtp = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -84,6 +84,17 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Show by";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(310, 76);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(94, 36);
+            this.button3.TabIndex = 14;
+            this.button3.Text = "Generate A Report and Mail";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -230,16 +241,6 @@
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "From";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(310, 76);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 36);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Generate A Report and Mail";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Sales_History
             // 
