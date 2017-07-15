@@ -30,8 +30,8 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGenerateAndSend = new System.Windows.Forms.Button();
+            this.btnHTMLReport = new System.Windows.Forms.Button();
             this.invoice_chkbox = new System.Windows.Forms.CheckBox();
             this.branch_chkbox = new System.Windows.Forms.CheckBox();
             this.date_chkbox = new System.Windows.Forms.CheckBox();
@@ -63,8 +63,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnGenerateAndSend);
+            this.groupBox1.Controls.Add(this.btnHTMLReport);
             this.groupBox1.Controls.Add(this.invoice_chkbox);
             this.groupBox1.Controls.Add(this.branch_chkbox);
             this.groupBox1.Controls.Add(this.date_chkbox);
@@ -86,25 +86,25 @@
             this.groupBox1.Text = "Show by";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // button3
+            // btnGenerateAndSend
             // 
-            this.button3.Location = new System.Drawing.Point(310, 76);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 36);
-            this.button3.TabIndex = 14;
-            this.button3.Text = "Generate A Report and Mail";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnGenerateAndSend.Location = new System.Drawing.Point(310, 76);
+            this.btnGenerateAndSend.Name = "btnGenerateAndSend";
+            this.btnGenerateAndSend.Size = new System.Drawing.Size(94, 36);
+            this.btnGenerateAndSend.TabIndex = 14;
+            this.btnGenerateAndSend.Text = "Generate A Report and Mail";
+            this.btnGenerateAndSend.UseVisualStyleBackColor = true;
+            this.btnGenerateAndSend.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // btnHTMLReport
             // 
-            this.button2.Location = new System.Drawing.Point(533, 76);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 36);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Generate A Report HTML";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnHTMLReport.Location = new System.Drawing.Point(533, 76);
+            this.btnHTMLReport.Name = "btnHTMLReport";
+            this.btnHTMLReport.Size = new System.Drawing.Size(117, 36);
+            this.btnHTMLReport.TabIndex = 13;
+            this.btnHTMLReport.Text = "Generate A Report HTML";
+            this.btnHTMLReport.UseVisualStyleBackColor = true;
+            this.btnHTMLReport.Click += new System.EventHandler(this.button2_Click);
             // 
             // invoice_chkbox
             // 
@@ -280,7 +280,7 @@
         private System.Windows.Forms.CheckBox invoice_chkbox;
         private System.Windows.Forms.CheckBox branch_chkbox;
         private System.Windows.Forms.CheckBox date_chkbox;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnHTMLReport;
+        private System.Windows.Forms.Button btnGenerateAndSend;
     }
 }

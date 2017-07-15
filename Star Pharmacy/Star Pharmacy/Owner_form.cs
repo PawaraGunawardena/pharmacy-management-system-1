@@ -71,11 +71,15 @@ namespace Star_Pharmacy
             {
                 
                 //MessageBox.Show("Reports have been generated.", "Check Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                file = Sales_History.generatePDF();
-                Sales_History.sendEmail(file);
+                file = Sales_History.generatePDF(); //Generates the pdf at 7PM (Or between 7PM and 12Midnight) and saves it in local computer.
+                Sales_History.sendEmail(file);  //Sends the file to a given location (Location is specified at sendEmail() method.
+
+                //file is a String where it comprises of the location (Address) where the generated PDF is located. You can change it in generatePDF() method.
+                //check out sendEmail(String file) for more information. 
                 
                 try
                 {
+                    //Thread managements. Have doubts on this.
                     UpdateMessageBox upd = UpdateTheMessageBox;
                     Invoke(upd);
                 }

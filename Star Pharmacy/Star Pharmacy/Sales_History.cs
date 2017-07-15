@@ -148,8 +148,19 @@ namespace Star_Pharmacy
             {
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
-                mail.From = new MailAddress("dasunpubudumal@gmail.com");
-                mail.To.Add("dasun.15@cse.mrt.ac.lk");
+                mail.From = new MailAddress("recievingAddress@gmail.com");  //give an address to send the email.
+
+                /* 
+                 * Note - You have to adjust the privacy settings in the email account.
+                 * First try to give the proper credentials (Username and password) and try to run it.
+                 * Then you'll recieve an email (in your sending mail account) from google saying that an external party tries to access it.
+                 * Change settings to allow this access.
+                 * Now you can send the messages freely.
+                 * You have to do this only for the account which you provice the passwor, i.e. the account which  you're trying to send the mail from.
+                 */
+
+
+                mail.To.Add("dasun.15@cse.mrt.ac.lk");  //Give an address to recieve the email.
                 mail.Subject = "Report";
                 mail.Body = "mail with attachment";
 
@@ -177,7 +188,7 @@ namespace Star_Pharmacy
         {
             try
             {
-                int yPoint = 0;
+                int yPoint = 0; //A pointer for the y coordinate.
                 int i = 0;
                 MySqlConnection con = new MySqlConnection("server=localhost;user id=root;database=pharmacy");
                 MySqlCommand command;
@@ -212,7 +223,7 @@ namespace Star_Pharmacy
                 XFont font2 = new XFont("Verdana", 16, XFontStyle.BoldItalic);
 
                 yPoint = yPoint + 20;
-
+                //XReacts' first parameter is the X cordinate.
                 graph.DrawString("Daily Report", font2, XBrushes.Black, new XRect(30, yPoint, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
                 yPoint = yPoint + 20;
@@ -258,7 +269,8 @@ namespace Star_Pharmacy
                     invoice_no = ds.Tables[0].Rows[i].ItemArray[3].ToString();
                     cashier_id = ds.Tables[0].Rows[i].ItemArray[4].ToString();
                     createdDate = ds.Tables[0].Rows[i].ItemArray[5].ToString();
-                    createdDate = createdDate.Replace("12:00:00AM", " ");
+                    createdDate = createdDate.Replace("12:00:00AM", " ");   //Tried to remove 12:00:00AM from the created date but didn't work.
+                    //It has something to do with ToString() method applied to a date type in MySQL.
 
                     Quantity = ds.Tables[0].Rows[i].ItemArray[7].ToString();
                     Amount = ds.Tables[0].Rows[i].ItemArray[8].ToString();
@@ -307,7 +319,9 @@ namespace Star_Pharmacy
 
         private void button3_Click(object sender, EventArgs e)
         {
-            generatePDF();
+            //When the user presses this, he'd generate a PDF, saves it in his local computer and sends it to a designated email address.
+            String fileName = generatePDF();
+            sendEmail(fileName);
    
         }
 
