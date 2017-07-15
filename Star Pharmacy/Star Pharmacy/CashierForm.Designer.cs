@@ -93,6 +93,7 @@
             this.Name = "cashierForm";
             this.Text = "Cashier LogIn";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.cashierForm_FormClosing);
             this.Load += new System.EventHandler(this.cashierForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
