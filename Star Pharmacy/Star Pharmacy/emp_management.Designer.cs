@@ -69,6 +69,7 @@
             this.add_emp = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.branchSelect = new System.Windows.Forms.ComboBox();
+            this.recruit_emp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emp_details)).BeginInit();
@@ -427,7 +428,7 @@
             // 
             // change_emp
             // 
-            this.change_emp.Location = new System.Drawing.Point(29, 414);
+            this.change_emp.Location = new System.Drawing.Point(29, 401);
             this.change_emp.Name = "change_emp";
             this.change_emp.Size = new System.Drawing.Size(127, 40);
             this.change_emp.TabIndex = 11;
@@ -437,7 +438,7 @@
             // 
             // fire_emp
             // 
-            this.fire_emp.Location = new System.Drawing.Point(29, 486);
+            this.fire_emp.Location = new System.Drawing.Point(29, 466);
             this.fire_emp.Name = "fire_emp";
             this.fire_emp.Size = new System.Drawing.Size(127, 40);
             this.fire_emp.TabIndex = 10;
@@ -476,11 +477,22 @@
             this.branchSelect.Size = new System.Drawing.Size(147, 21);
             this.branchSelect.TabIndex = 27;
             // 
+            // recruit_emp
+            // 
+            this.recruit_emp.Location = new System.Drawing.Point(29, 534);
+            this.recruit_emp.Name = "recruit_emp";
+            this.recruit_emp.Size = new System.Drawing.Size(127, 40);
+            this.recruit_emp.TabIndex = 12;
+            this.recruit_emp.Text = "Recruit Employee";
+            this.recruit_emp.UseVisualStyleBackColor = true;
+            this.recruit_emp.Click += new System.EventHandler(this.recruit_emp_Click);
+            // 
             // emp_management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 601);
+            this.Controls.Add(this.recruit_emp);
             this.Controls.Add(this.change_emp);
             this.Controls.Add(this.fire_emp);
             this.Controls.Add(this.add_emp);
@@ -545,5 +557,6 @@
         private System.Windows.Forms.Label availability_indicator;
         private System.Windows.Forms.ComboBox branchSelect;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Button recruit_emp;
     }
 }

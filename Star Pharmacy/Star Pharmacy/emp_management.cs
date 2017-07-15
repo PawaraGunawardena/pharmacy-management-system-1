@@ -17,6 +17,7 @@ namespace Star_Pharmacy
         bool addBtn_Clicked = false;
         bool changeBtn_Clicked = false;
         bool fireBtn_Clicked = false;
+        bool recruitBtn_Clicked = false;
 
         public emp_management()
         {
@@ -142,11 +143,13 @@ namespace Star_Pharmacy
             addBtn_Clicked = true;
             changeBtn_Clicked = false;
             fireBtn_Clicked = false;
+            recruitBtn_Clicked = false;
             groupBox1.Enabled = true;
             groupBox2.Enabled = false;
             add_emp.Enabled = true;
             change_emp.Enabled = false;
             fire_emp.Enabled = false;
+            recruit_emp.Enabled = false;
             emp_ID.ReadOnly = false;
             fName_txtBox.ReadOnly = false;
             lName_txtBox.ReadOnly = false;
@@ -225,6 +228,7 @@ namespace Star_Pharmacy
                 add_emp.Enabled = false;
                 change_emp.Enabled = true;
                 fire_emp.Enabled = false;
+                recruit_emp.Enabled = false;
                 emp_ID.ReadOnly = false;
                 fName_txtBox.ReadOnly = false;
                 lName_txtBox.ReadOnly = false;
@@ -261,6 +265,7 @@ namespace Star_Pharmacy
             add_emp.Enabled = true;
             change_emp.Enabled = true;
             fire_emp.Enabled = true;
+            recruit_emp.Enabled = true;
             groupBox1.Enabled = false;
             groupBox2.Enabled = true;
         }
@@ -270,15 +275,25 @@ namespace Star_Pharmacy
             addBtn_Clicked = false;
             changeBtn_Clicked = false;
             fireBtn_Clicked = true;
+            recruitBtn_Clicked = false;
 
             if (emp_details.SelectedRows.Count == 1)
             {
-                SqlCon.con.Open();
-                MySqlCommand cmd = new MySqlCommand("update pharmacy.people set Working='" + 0 + "' where ProductID ='" + emp_details.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
-                cmd.ExecuteNonQuery();
-                SqlCon.con.Close();
-                SqlCon.updateDataGridView("select * from pharmacy.people;", emp_details);
-                cancelBtn_Click(sender, e);
+                if (emp_details.SelectedRows[0].Cells[10].Value.ToString() == "True")
+                {
+                    SqlCon.con.Open();
+                    MySqlCommand cmd = new MySqlCommand("update pharmacy.people set Working = 0 where ID ='" + emp_details.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
+                    cmd.ExecuteNonQuery();
+                    SqlCon.con.Close();
+                    SqlCon.updateDataGridView("select * from pharmacy.people;", emp_details);
+                    cancelBtn_Click(sender, e);
+                    MessageBox.Show("Successfully fired!");
+                }
+                else
+                {
+                    MessageBox.Show("Employee already fired!");
+                }
+                
             }
             else
             {
@@ -315,7 +330,7 @@ namespace Star_Pharmacy
                     {
                         SqlCon.con.Open();
                         MySqlCommand cmd = new MySqlCommand(@"insert into pharmacy.people (ID,FirstName,LastName,Type,Address,DateOfBirth,Salary,
-                                                        Username,Password,Branch,Working) values ('" + emp_ID.Value.ToString() + "','" + fName_txtBox.Text + "','" + lName_txtBox.Text + "','" + roleSelect_cmboBox.Text + "','" + address_txtBox.Text + "','" + bdayPicker.Value.ToString("yyyy-MM-dd") + "','" + salary_updown.Value.ToString() + "','" + username_txtBox.Text + "','" + pwd_txtBox.Text + "';'" + branchSelect.Text + "';'" + 1 + "';'" + "');", SqlCon.con);
+                                                        Username,Password,Branch,Working) values ('" + emp_ID.Value.ToString() + "','" + fName_txtBox.Text + "','" + lName_txtBox.Text + "','" + roleSelect_cmboBox.Text + "','" + address_txtBox.Text + "','" + bdayPicker.Value.ToString("yyyy-MM-dd") + "','" + salary_updown.Value.ToString() + "','" + username_txtBox.Text + "','" + pwd_txtBox.Text + "','" + branchSelect.Text + "','" + 1 + "');", SqlCon.con);
                         cmd.ExecuteNonQuery();
                         SqlCon.con.Close();
                         String query = "Select * from pharmacy.people;";
@@ -345,7 +360,7 @@ namespace Star_Pharmacy
                     cmd.ExecuteNonQuery();
 
                     MySqlCommand cmd1 = new MySqlCommand(@"insert into pharmacy.people (ID,FirstName,LastName,Type,Address,DateOfBirth,Salary,
-                                                        Username,Password,Branch,Working) values ('" + emp_ID.Value.ToString() + "','" + fName_txtBox.Text + "','" + lName_txtBox.Text + "','" + roleSelect_cmboBox.Text + "','" + address_txtBox.Text + "','" + bdayPicker.Value.ToString("yyyy-MM-dd") + "','" + salary_updown.Value.ToString() + "','" + username_txtBox.Text + "','" + pwd_txtBox.Text + "';'" + branchSelect.Text + "';'" + 1 + "';'" + "');", SqlCon.con);
+                                                        Username,Password,Branch,Working) values ('" + emp_ID.Value.ToString() + "','" + fName_txtBox.Text + "','" + lName_txtBox.Text + "','" + roleSelect_cmboBox.Text + "','" + address_txtBox.Text + "','" + bdayPicker.Value.ToString("yyyy-MM-dd") + "','" + salary_updown.Value.ToString() + "','" + username_txtBox.Text + "','" + pwd_txtBox.Text + "','" + branchSelect.Text + "','" + 1 + "');", SqlCon.con);
                     cmd1.ExecuteNonQuery();
 
 
@@ -366,6 +381,37 @@ namespace Star_Pharmacy
             else
             {
                 MessageBox.Show("Error! Recheck the entry!");
+            }
+        }
+
+        private void recruit_emp_Click(object sender, EventArgs e)
+        {
+            addBtn_Clicked = false;
+            changeBtn_Clicked = false;
+            fireBtn_Clicked = false;
+            recruitBtn_Clicked = true;
+
+            if (emp_details.SelectedRows.Count == 1)
+            {
+                if (emp_details.SelectedRows[0].Cells[10].Value.ToString() == "False")
+                {
+                    SqlCon.con.Open();
+                    MySqlCommand cmd = new MySqlCommand("update pharmacy.people set Working = 1 where ID ='" + emp_details.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
+                    cmd.ExecuteNonQuery();
+                    SqlCon.con.Close();
+                    SqlCon.updateDataGridView("select * from pharmacy.people;", emp_details);
+                    cancelBtn_Click(sender, e);
+                    MessageBox.Show("Successfully recruited!");
+                }
+                else
+                {
+                    MessageBox.Show("Employee is already working. No need to recruit!");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please select an Employee!");
             }
         }
     }
