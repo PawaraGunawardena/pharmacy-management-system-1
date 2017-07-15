@@ -475,7 +475,7 @@ namespace Star_Pharmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+               // MessageBox.Show(ex.Message);
             }
             return CreditNote+1;
         }//DONE

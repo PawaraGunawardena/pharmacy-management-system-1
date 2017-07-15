@@ -41,35 +41,35 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel">
-      <HintPath>..\..\..\..\..\Desktop\Project material\PDFSharp assemblies\GDI+\MigraDoc.DocumentObjectModel.dll</HintPath>
+      <HintPath>..\..\..\..\Project Assembly\GDI+\MigraDoc.DocumentObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel.resources">
-      <HintPath>..\..\..\..\..\Desktop\Project material\PDFSharp assemblies\GDI+\de\MigraDoc.DocumentObjectModel.resources.dll</HintPath>
+      <HintPath>..\..\..\..\Project Assembly\GDI+\de\MigraDoc.DocumentObjectModel.resources.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.Rendering">
-      <HintPath>..\..\..\..\..\Desktop\Project material\PDFSharp assemblies\GDI+\MigraDoc.Rendering.dll</HintPath>
+      <HintPath>..\..\..\..\Project Assembly\GDI+\MigraDoc.Rendering.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.Rendering.resources">
-      <HintPath>..\..\..\..\..\Desktop\Project material\PDFSharp assemblies\GDI+\de\MigraDoc.Rendering.resources.dll</HintPath>
+      <HintPath>..\..\..\..\Project Assembly\GDI+\de\MigraDoc.Rendering.resources.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.RtfRendering">
-      <HintPath>..\..\..\..\..\Desktop\Project material\PDFSharp assemblies\GDI+\MigraDoc.RtfRendering.dll</HintPath>
+      <HintPath>..\..\..\..\Project Assembly\GDI+\MigraDoc.RtfRendering.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.RtfRendering.resources">
-      <HintPath>..\..\..\..\..\Desktop\Project material\PDFSharp assemblies\GDI+\de\MigraDoc.RtfRendering.resources.dll</HintPath>
+      <HintPath>..\..\..\..\Project Assembly\GDI+\de\MigraDoc.RtfRendering.resources.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PdfSharp">
-      <HintPath>..\..\..\..\..\Desktop\Project material\PDFSharp assemblies\GDI+\PdfSharp.dll</HintPath>
+      <HintPath>..\..\..\..\Project Assembly\GDI+\PdfSharp.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp.Charting">
-      <HintPath>..\..\..\..\..\Desktop\Project material\PDFSharp assemblies\GDI+\PdfSharp.Charting.dll</HintPath>
+      <HintPath>..\..\..\..\Project Assembly\GDI+\PdfSharp.Charting.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp.resources">
-      <HintPath>..\..\..\..\..\Desktop\Project material\PDFSharp assemblies\GDI+\de\PdfSharp.resources.dll</HintPath>
+      <HintPath>..\..\..\..\Project Assembly\GDI+\de\PdfSharp.resources.dll</HintPath>
     </Reference>
     <Reference Include="Quartz, Version=2.5.0.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
       <HintPath>..\packages\Quartz.2.5.0\lib\net40\Quartz.dll</HintPath>
