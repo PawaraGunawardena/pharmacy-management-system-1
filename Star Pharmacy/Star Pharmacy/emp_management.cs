@@ -346,7 +346,7 @@ namespace Star_Pharmacy
                 {
                     MessageBox.Show("Invalid ID!");
                 }
-                cancelBtn_Click(sender, e);
+                //cancelBtn_Click(sender, e);
             }
             else if (changeBtn_Clicked)
             {
@@ -369,7 +369,7 @@ namespace Star_Pharmacy
                     SqlCon.con.Close();
                     String query = "Select * from pharmacy.people;";
                     SqlCon.updateDataGridView(query, emp_details);
-                    cancelBtn_Click(sender, e);
+                    //cancelBtn_Click(sender, e);
                 }
 
                 else
