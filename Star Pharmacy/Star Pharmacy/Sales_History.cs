@@ -319,7 +319,7 @@ namespace Star_Pharmacy
                     yPoint = yPoint + 40;
                 }
 
-                pdfFilename = "C:/Users/Geethani/Desktop/Report.pdf";
+                pdfFilename = "C:/New folder/Report.pdf";
                 pdf.Save(pdfFilename);
                 //Process.Start(pdfFilename);
                 sendEmail(pdfFilename);
@@ -475,7 +475,7 @@ namespace Star_Pharmacy
                         yPoint = yPoint + 40;
                     }
 
-                    pdfFilename = "C:/Users/Geethani/Desktop/Report.pdf";
+                    pdfFilename = "C:/New folder/Report.pdf";
                     pdf.Save(pdfFilename);
                     //Process.Start(pdfFilename);
                     //sendEmail(pdfFilename);

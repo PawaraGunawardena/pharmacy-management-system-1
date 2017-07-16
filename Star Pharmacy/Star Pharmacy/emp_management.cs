@@ -247,6 +247,7 @@ namespace Star_Pharmacy
                 lName_txtBox.Text = emp_details.SelectedRows[0].Cells[2].Value.ToString();
                 address_txtBox.Text = emp_details.SelectedRows[0].Cells[4].Value.ToString();
                 bdayPicker.Value = System.Convert.ToDateTime(emp_details.SelectedRows[0].Cells[5].Value.ToString());
+                branchSelect.SelectedIndex = branchSelect.FindStringExact(emp_details.SelectedRows[0].Cells[9].Value.ToString());
                 salary_updown.Value = System.Convert.ToDecimal(emp_details.SelectedRows[0].Cells[6].Value.ToString());
                 roleSelect_cmboBox.SelectedIndex = roleSelect_cmboBox.FindStringExact(emp_details.SelectedRows[0].Cells[3].Value.ToString());
                 username_txtBox.Text = emp_details.SelectedRows[0].Cells[7].Value.ToString();
@@ -369,7 +370,7 @@ namespace Star_Pharmacy
                     SqlCon.con.Close();
                     String query = "Select * from pharmacy.people;";
                     SqlCon.updateDataGridView(query, emp_details);
-                    //cancelBtn_Click(sender, e);
+                    cancelBtn_Click(sender, e);
                 }
 
                 else
