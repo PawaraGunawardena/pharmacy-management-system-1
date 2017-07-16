@@ -109,6 +109,12 @@
     <Compile Include="create_order.Designer.cs">
       <DependentUpon>create_order.cs</DependentUpon>
     </Compile>
+    <Compile Include="debitDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="debitDetails.Designer.cs">
+      <DependentUpon>debitDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="NotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="create_order.resx">
       <DependentUpon>create_order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="debitDetails.resx">
+      <DependentUpon>debitDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NotificationForm.resx">
       <DependentUpon>NotificationForm.cs</DependentUpon>
