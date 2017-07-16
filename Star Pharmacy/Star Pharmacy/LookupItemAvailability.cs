@@ -13,6 +13,8 @@ namespace Star_Pharmacy
 {
     public partial class LookupItemAvailability : Form
     {
+        private cashierForm parentCashierForm;
+
         public LookupItemAvailability()
         {
             
@@ -242,6 +244,7 @@ namespace Star_Pharmacy
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+            parentCashierForm.parentButtonActivation(true);
         }
 
         private void cmbBoxProductID_SelectedIndexChanged(object sender, EventArgs e)
@@ -342,6 +345,11 @@ namespace Star_Pharmacy
             availabilityButton.Enabled = false;
 
             fillDataGridViewAvailability();
+        }
+
+        public void setParentForm(cashierForm parentCashierForm)
+        {
+            this.parentCashierForm = parentCashierForm;
         }
     }
 }
