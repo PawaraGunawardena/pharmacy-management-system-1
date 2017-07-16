@@ -90,11 +90,51 @@ namespace Star_Pharmacy
             SqlCon.updateDataGridView(query, creditDetails);
         }
 
+        private void resetAll()
+        {
+            groupBox1.Enabled = false;
+            groupBox2.Enabled = true;
+            groupBox3.Enabled = true;
+            payDebit.Enabled = true;
+            viewDebit.Enabled = true;
+            supplier_transactionsDetails.Enabled = true;
+            creditDetails.Enabled = true;
+            supplier_transactionsDetails.ClearSelection();
+            creditDetails.ClearSelection();
+            supplier_transactionsDetails.Refresh();
+            creditDetails.Refresh();
+        }
+
         private void payDebit_Click(object sender, EventArgs e)
         {
             groupBox1.Enabled = true;
             groupBox2.Enabled = false;
             groupBox3.Enabled = false;
+            viewDebit.Enabled = false;
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            resetAll();
+            payAmount.ResetText();
+            supName_select.ResetText();
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            if (payAmount.Value != 0 && supName_select.Text != "")
+            {
+                SqlCon.con.Open();
+                MySqlCommand cmd = new MySqlCommand(@"insert into pharmacy.debit_balances (DebitID,SupplierName,PaidAmount,Date,Time) values ('" + null + "','" + supName_select.Text + "','" + payAmount.Value.ToString() + "','" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToShortTimeString() + "');", SqlCon.con);
+                cmd.ExecuteNonQuery();
+                SqlCon.con.Close();
+
+            }
+            else
+            {
+                MessageBox.Show("Invalid Enrty. Check the inputs!");
+            }
+            
         }
     }
 }

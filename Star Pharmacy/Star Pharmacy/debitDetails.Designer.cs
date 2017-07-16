@@ -50,9 +50,9 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 21);
+            this.groupBox2.Location = new System.Drawing.Point(25, 23);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(794, 57);
+            this.groupBox2.Size = new System.Drawing.Size(780, 57);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search Debit Details";
@@ -70,14 +70,14 @@
             // 
             // Amount_search
             // 
-            this.Amount_search.Location = new System.Drawing.Point(352, 22);
+            this.Amount_search.Location = new System.Drawing.Point(343, 22);
             this.Amount_search.Name = "Amount_search";
             this.Amount_search.Size = new System.Drawing.Size(121, 20);
             this.Amount_search.TabIndex = 11;
             // 
             // debitID_search
             // 
-            this.debitID_search.Location = new System.Drawing.Point(91, 22);
+            this.debitID_search.Location = new System.Drawing.Point(80, 22);
             this.debitID_search.Name = "debitID_search";
             this.debitID_search.Size = new System.Drawing.Size(121, 20);
             this.debitID_search.TabIndex = 10;
@@ -85,7 +85,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(276, 24);
+            this.label3.Location = new System.Drawing.Point(263, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 9;
@@ -103,7 +103,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 24);
+            this.label1.Location = new System.Drawing.Point(28, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 7;
@@ -112,16 +112,16 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 101);
+            this.dataGridView1.Location = new System.Drawing.Point(25, 97);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(794, 302);
+            this.dataGridView1.Size = new System.Drawing.Size(781, 302);
             this.dataGridView1.TabIndex = 17;
             // 
             // debitDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 426);
+            this.ClientSize = new System.Drawing.Size(829, 435);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
             this.Name = "debitDetails";

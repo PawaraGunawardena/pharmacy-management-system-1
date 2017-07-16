@@ -45,7 +45,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.payingAmount = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.payAmount = new System.Windows.Forms.NumericUpDown();
             this.saveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.viewDebit = new System.Windows.Forms.Button();
@@ -69,7 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.creditDetails)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payAmount)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemID_search)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionID_search1)).BeginInit();
@@ -176,7 +176,7 @@
             // 
             this.groupBox1.Controls.Add(this.cancelBtn);
             this.groupBox1.Controls.Add(this.saveBtn);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.payAmount);
             this.groupBox1.Controls.Add(this.payingAmount);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.supName_select);
@@ -205,18 +205,18 @@
             this.payingAmount.TabIndex = 13;
             this.payingAmount.Text = "Paying Amount";
             // 
-            // numericUpDown1
+            // payAmount
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Location = new System.Drawing.Point(102, 31);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.payAmount.DecimalPlaces = 2;
+            this.payAmount.Location = new System.Drawing.Point(102, 31);
+            this.payAmount.Maximum = new decimal(new int[] {
             -727379969,
             232,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(163, 20);
-            this.numericUpDown1.TabIndex = 14;
+            this.payAmount.Name = "payAmount";
+            this.payAmount.Size = new System.Drawing.Size(163, 20);
+            this.payAmount.TabIndex = 14;
             // 
             // saveBtn
             // 
@@ -226,6 +226,7 @@
             this.saveBtn.TabIndex = 15;
             this.saveBtn.Text = "Save Changes";
             this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // cancelBtn
             // 
@@ -235,6 +236,7 @@
             this.cancelBtn.TabIndex = 16;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // viewDebit
             // 
@@ -409,7 +411,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.creditDetails)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payAmount)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemID_search)).EndInit();
@@ -440,7 +442,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown payAmount;
         private System.Windows.Forms.Label payingAmount;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button viewDebit;
