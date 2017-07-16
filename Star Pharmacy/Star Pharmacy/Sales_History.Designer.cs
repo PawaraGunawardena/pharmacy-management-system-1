@@ -45,6 +45,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.from_dtp = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -63,6 +64,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.btnGenerateAndSend);
             this.groupBox1.Controls.Add(this.btnHTMLReport);
             this.groupBox1.Controls.Add(this.invoice_chkbox);
@@ -242,6 +244,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "From";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(656, 76);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(66, 36);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "Monthly";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // Sales_History
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,5 +294,6 @@
         private System.Windows.Forms.Button btnHTMLReport;
         private System.Windows.Forms.Button btnGenerateAndSend;
         public System.Windows.Forms.DateTimePicker from_dtp;
+        private System.Windows.Forms.Button button2;
     }
 }

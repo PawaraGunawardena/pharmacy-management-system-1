@@ -17,6 +17,7 @@ namespace Star_Pharmacy
 
         System.Timers.Timer timer;
         String file;
+        String file2;
 
         delegate void UpdateMessageBox(String messageBoxString);
 
@@ -27,6 +28,7 @@ namespace Star_Pharmacy
             file = Sales_History.generatePDF();
             Sales_History.sendEmail(file);
             showNotification();
+            
         }
 
         public owner_form()
@@ -51,14 +53,20 @@ namespace Star_Pharmacy
         {
 
             showNotification();
-            //Initiating the timer.
+            //Initiating the timer
+            if (DateTime.Now.Day == 29) //Ever29th of the month, a monthly report will get emailed.
+            {
+                file2 = Sales_History.generateMothlyReportS();
+                Sales_History.sendEmail(file2);
+
+            }
+
+
             timer = new System.Timers.Timer();
             timer.Interval = 1000;
             timer.Elapsed += Timer_Elapsed;
 
             timer.Start();
-
-            
 
         }
 
@@ -67,7 +75,7 @@ namespace Star_Pharmacy
         {
             DateTime current = DateTime.Now;
             //Setting the time to 7PM
-            if(current.Hour == 19 &&  current.Minute == 00 && current.Second == 00 || ((current.Hour < 00 && current.Minute < 00 && current.Second < 00) && (current.Hour > 19 && current.Minute > 0 && current.Second > 00)))
+            if(current.Hour == 19 &&  current.Minute == 00 && current.Second == 00)
             {
                 
                 //MessageBox.Show("Reports have been generated.", "Check Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);

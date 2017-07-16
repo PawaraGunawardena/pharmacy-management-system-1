@@ -49,6 +49,9 @@ namespace Star_Pharmacy
             MySqlCommand cmd = new MySqlCommand(@"insert into pharmacy.supplierdetails (SupplierID,CompanyName,ContactPerson,ContactPersonTelephone,CompanyTelephone) values ('" + txtSupplierId.Text + "','" + txtCompanyName.Text + "','" +
                 mrOrMrs + "','" + txtContactPersonTelephone.Text + "','" + txtCompanyTelphone.Text + "');", SqlCon.con);
 
+            MySqlCommand cmd1 = new MySqlCommand(@"insert into pharmacy.supplier_transactions (PayingAmount,SupplierName,Date) values ('" + amnt.Text + "','" + txtCompanyName.Text + "','" +
+               dtp.Value.ToString("yyyy-MM-dd") + "');", SqlCon.con);
+
             try
             {
                 if (cmd.ExecuteNonQuery() == 1)
@@ -85,6 +88,11 @@ namespace Star_Pharmacy
         private void addNewSuppliers_Load(object sender, EventArgs e)
         {
             //Better if the txtSupplierID gets autofilled when the form loads. (Like auto incremented).
+
+        }
+
+        private void txtCompanyTelphone_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
