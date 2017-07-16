@@ -34,6 +34,8 @@
             this.peopleTableAdapter = new Star_Pharmacy.pharmacyDataSet2TableAdapters.peopleTableAdapter();
             this.emp_details = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.branchSelect = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.availability_indicator = new System.Windows.Forms.Label();
             this.salary_updown = new System.Windows.Forms.NumericUpDown();
             this.bdayPicker = new System.Windows.Forms.DateTimePicker();
@@ -67,8 +69,6 @@
             this.change_emp = new System.Windows.Forms.Button();
             this.fire_emp = new System.Windows.Forms.Button();
             this.add_emp = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.branchSelect = new System.Windows.Forms.ComboBox();
             this.recruit_emp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.peopleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet2)).BeginInit();
@@ -141,6 +141,27 @@
             this.groupBox1.Text = "Employee Details";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // branchSelect
+            // 
+            this.branchSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.branchSelect.FormattingEnabled = true;
+            this.branchSelect.Items.AddRange(new object[] {
+            "Mulleriyawa",
+            "Welivita"});
+            this.branchSelect.Location = new System.Drawing.Point(360, 31);
+            this.branchSelect.Name = "branchSelect";
+            this.branchSelect.Size = new System.Drawing.Size(147, 21);
+            this.branchSelect.TabIndex = 27;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(286, 34);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "Branch";
+            // 
             // availability_indicator
             // 
             this.availability_indicator.AutoSize = true;
@@ -207,6 +228,11 @@
             // emp_ID
             // 
             this.emp_ID.Location = new System.Drawing.Point(98, 32);
+            this.emp_ID.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.emp_ID.Name = "emp_ID";
             this.emp_ID.Size = new System.Drawing.Size(147, 20);
             this.emp_ID.TabIndex = 20;
@@ -372,6 +398,11 @@
             // empID_search
             // 
             this.empID_search.Location = new System.Drawing.Point(32, 30);
+            this.empID_search.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.empID_search.Name = "empID_search";
             this.empID_search.Size = new System.Drawing.Size(80, 20);
             this.empID_search.TabIndex = 14;
@@ -455,27 +486,6 @@
             this.add_emp.Text = "Add Employee";
             this.add_emp.UseVisualStyleBackColor = true;
             this.add_emp.Click += new System.EventHandler(this.add_emp_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(286, 34);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
-            this.label14.TabIndex = 26;
-            this.label14.Text = "Branch";
-            // 
-            // branchSelect
-            // 
-            this.branchSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.branchSelect.FormattingEnabled = true;
-            this.branchSelect.Items.AddRange(new object[] {
-            "Mulleriyawa",
-            "Welivita"});
-            this.branchSelect.Location = new System.Drawing.Point(360, 31);
-            this.branchSelect.Name = "branchSelect";
-            this.branchSelect.Size = new System.Drawing.Size(147, 21);
-            this.branchSelect.TabIndex = 27;
             // 
             // recruit_emp
             // 

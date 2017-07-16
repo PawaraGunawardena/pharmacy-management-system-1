@@ -45,9 +45,56 @@ namespace Star_Pharmacy
             }
             else
             {
-                query = "Select * from pharmacy.supplier_transactions where ID like '" + transactionID_search1.Value.ToString() + "%" + "';";
+                query = "Select * from pharmacy.supplier_transactions where TransactionID like '" + transactionID_search1.Value.ToString() + "%" + "';";
             }
             SqlCon.updateDataGridView(query, supplier_transactionsDetails);
+        }
+
+        private void itemID_search_ValueChanged(object sender, EventArgs e)
+        {
+            String query;
+            if (itemID_search.Value == 0)
+            {
+                query = "Select * from pharmacy.supplier_transactions";
+            }
+            else
+            {
+                query = "Select * from pharmacy.supplier_transactions where ItemID like '" + itemID_search.Value.ToString() + "%" + "';";
+            }
+            SqlCon.updateDataGridView(query, supplier_transactionsDetails);
+        }
+
+        private void supDetails_search1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String query = "Select * from pharmacy.supplier_transactions where SupplierName like'" + supDetails_search1.Text + "';";
+            SqlCon.updateDataGridView(query, supplier_transactionsDetails);
+        }
+
+        private void supplierID_search2_ValueChanged(object sender, EventArgs e)
+        {
+            String query;
+            if (supplierID_search2.Value == 0)
+            {
+                query = "Select * from pharmacy.credit_details";
+            }
+            else
+            {
+                query = "Select * from pharmacy.credit_details where SupplierID like '" + supplierID_search2.Value.ToString() + "%" + "';";
+            }
+            SqlCon.updateDataGridView(query, creditDetails);
+        }
+
+        private void supplierName_search2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String query = "Select * from pharmacy.credit_details where SupplierName like'" + supplierName_search2.Text + "';";
+            SqlCon.updateDataGridView(query, creditDetails);
+        }
+
+        private void payDebit_Click(object sender, EventArgs e)
+        {
+            groupBox1.Enabled = true;
+            groupBox2.Enabled = false;
+            groupBox3.Enabled = false;
         }
     }
 }

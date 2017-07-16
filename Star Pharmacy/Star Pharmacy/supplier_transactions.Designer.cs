@@ -158,6 +158,7 @@
             this.payDebit.TabIndex = 10;
             this.payDebit.Text = "Pay Debit";
             this.payDebit.UseVisualStyleBackColor = true;
+            this.payDebit.Click += new System.EventHandler(this.payDebit_Click);
             // 
             // supName_select
             // 
@@ -206,7 +207,13 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.DecimalPlaces = 2;
             this.numericUpDown1.Location = new System.Drawing.Point(102, 31);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(163, 20);
             this.numericUpDown1.TabIndex = 14;
@@ -264,17 +271,29 @@
             this.supDetails_search1.Size = new System.Drawing.Size(175, 21);
             this.supDetails_search1.TabIndex = 12;
             this.supDetails_search1.ValueMember = "CompanyName";
+            this.supDetails_search1.SelectedIndexChanged += new System.EventHandler(this.supDetails_search1_SelectedIndexChanged);
             // 
             // itemID_search
             // 
             this.itemID_search.Location = new System.Drawing.Point(323, 22);
+            this.itemID_search.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.itemID_search.Name = "itemID_search";
             this.itemID_search.Size = new System.Drawing.Size(121, 20);
             this.itemID_search.TabIndex = 11;
+            this.itemID_search.ValueChanged += new System.EventHandler(this.itemID_search_ValueChanged);
             // 
             // transactionID_search1
             // 
             this.transactionID_search1.Location = new System.Drawing.Point(91, 22);
+            this.transactionID_search1.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.transactionID_search1.Name = "transactionID_search1";
             this.transactionID_search1.Size = new System.Drawing.Size(121, 20);
             this.transactionID_search1.TabIndex = 10;
@@ -331,13 +350,20 @@
             this.supplierName_search2.Size = new System.Drawing.Size(175, 21);
             this.supplierName_search2.TabIndex = 12;
             this.supplierName_search2.ValueMember = "CompanyName";
+            this.supplierName_search2.SelectedIndexChanged += new System.EventHandler(this.supplierName_search2_SelectedIndexChanged);
             // 
             // supplierID_search2
             // 
             this.supplierID_search2.Location = new System.Drawing.Point(189, 22);
+            this.supplierID_search2.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.supplierID_search2.Name = "supplierID_search2";
             this.supplierID_search2.Size = new System.Drawing.Size(121, 20);
             this.supplierID_search2.TabIndex = 10;
+            this.supplierID_search2.ValueChanged += new System.EventHandler(this.supplierID_search2_ValueChanged);
             // 
             // label8
             // 
