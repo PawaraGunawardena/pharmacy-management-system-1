@@ -282,11 +282,15 @@ namespace Star_Pharmacy
             update_clicked = false;
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                SqlCon.con.Open();
-                MySqlCommand cmd = new MySqlCommand("delete from pharmacy.inventory where ProductID='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
-                cmd.ExecuteNonQuery();
-                SqlCon.updateDataGridView("select * from pharmacy.inventory;", dataGridView1);
-                SqlCon.con.Close();
+                DialogResult result = MessageBox.Show("Are you sure you want to delete?","Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    SqlCon.con.Open();
+                    MySqlCommand cmd = new MySqlCommand("delete from pharmacy.inventory where ProductID='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
+                    cmd.ExecuteNonQuery();
+                    SqlCon.updateDataGridView("select * from pharmacy.inventory;", dataGridView1);
+                    SqlCon.con.Close();
+                }
             }
             else
             {
