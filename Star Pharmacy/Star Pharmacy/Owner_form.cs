@@ -200,5 +200,14 @@ namespace Star_Pharmacy
             popup.Popup();
 
         }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            hideUnwantedForms();
+            NotificationForm nf = NotificationForm.getNotificationForm(splitContainer1, this);
+            nf.Location = new Point((splitContainer1.Panel2.Width - nf.Width) / 2, (splitContainer1.Panel2.Height - nf.Height) / 2);
+            nf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            nf.Show();
+        }
     }
 }

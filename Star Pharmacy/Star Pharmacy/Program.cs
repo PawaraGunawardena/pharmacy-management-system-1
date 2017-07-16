@@ -12,7 +12,7 @@ namespace Star_Pharmacy
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        public static bool isExpire = false;
+        public static bool isNotification = false;
         public static int logged_id;
         
         [STAThread]
@@ -20,8 +20,8 @@ namespace Star_Pharmacy
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            expiryNotification.expnoti();
-            if (!expiryNotification.noMySQlHost)
+            Notification.expnoti();
+            if (!Notification.noMySQlHost)
             {
                 Application.Run(new login());
             }

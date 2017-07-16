@@ -11,19 +11,35 @@ using System.Windows.Forms;
 
 namespace Star_Pharmacy
 {
-    public partial class Expiry_Products : Form
+    public partial class NotificationForm : Form
     {
-        public Expiry_Products()
+        public NotificationForm()
         {
             
             InitializeComponent();
+        }
+        private static NotificationForm inst_notify;
+
+        public static NotificationForm getNotificationForm(SplitContainer s, Form f)
+        {
+            if (inst_notify == null || inst_notify.IsDisposed)
+            {
+                inst_notify = new NotificationForm();
+                inst_notify.MdiParent = f;
+                s.Panel2.Controls.Add(inst_notify);
+                return inst_notify;
+            }
+            else
+            {
+                return inst_notify;
+            }
         }
 
         private void Expiry_Products_Load(object sender, EventArgs e)
         {
             
 
-            MySqlDataAdapter sAdapter = new MySqlDataAdapter("select * from pharmacy.inventory where ExpiryDate between '" +expiryNotification.today.ToString("yyyy-MM-dd") + "' and '" +expiryNotification.sevenDaysOnwards.ToString("yyyy-MM-dd") + "';", SqlCon.con);
+            MySqlDataAdapter sAdapter = new MySqlDataAdapter("select * from pharmacy.inventory where ExpiryDate between '" +Notification.today.ToString("yyyy-MM-dd") + "' and '" +Notification.sevenDaysOnwards.ToString("yyyy-MM-dd") + "';", SqlCon.con);
             DataTable dt = new DataTable();
             sAdapter.Fill(dt);
             dataGridView1.DataSource = dt;
@@ -31,7 +47,7 @@ namespace Star_Pharmacy
 
             MySqlDataAdapter sAdapter2 = new MySqlDataAdapter("SELECT * from inventory where `InStock`<`Reorderlevel`;", SqlCon.con);
             DataTable dt2 = new DataTable();
-            sAdapter.Fill(dt2);
+            sAdapter2.Fill(dt2);
             dataGridView2.DataSource = dt2;
             dataGridView2.Refresh();
         }

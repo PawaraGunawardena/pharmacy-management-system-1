@@ -1,6 +1,6 @@
 ﻿namespace Star_Pharmacy
 {
-    partial class Expiry_Products
+    partial class NotificationForm
     {
         /// <summary>
         /// Required designer variable.

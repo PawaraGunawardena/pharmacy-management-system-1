@@ -109,13 +109,13 @@
     <Compile Include="create_order.Designer.cs">
       <DependentUpon>create_order.cs</DependentUpon>
     </Compile>
-    <Compile Include="Expiry Products.cs">
+    <Compile Include="NotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Expiry Products.Designer.cs">
-      <DependentUpon>Expiry Products.cs</DependentUpon>
+    <Compile Include="NotificationForm.Designer.cs">
+      <DependentUpon>NotificationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="expiryNotification.cs" />
+    <Compile Include="Notification.cs" />
     <Compile Include="emp_management.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,8 +214,8 @@
     <EmbeddedResource Include="create_order.resx">
       <DependentUpon>create_order.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Expiry Products.resx">
-      <DependentUpon>Expiry Products.cs</DependentUpon>
+    <EmbeddedResource Include="NotificationForm.resx">
+      <DependentUpon>NotificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="emp_management.resx">
       <DependentUpon>emp_management.cs</DependentUpon>
