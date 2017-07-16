@@ -107,10 +107,18 @@ namespace Star_Pharmacy
 
         private void payDebit_Click(object sender, EventArgs e)
         {
-            groupBox1.Enabled = true;
-            groupBox2.Enabled = false;
-            groupBox3.Enabled = false;
-            viewDebit.Enabled = false;
+            if (creditDetails.SelectedRows.Count == 1)
+            {
+                groupBox1.Enabled = true;
+                groupBox2.Enabled = false;
+                groupBox3.Enabled = false;
+                viewDebit.Enabled = false;
+                supName_select.Text = creditDetails.SelectedRows[0].Cells[1].Value.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Please select a supplier from above credit details!");
+            }
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -125,8 +133,12 @@ namespace Star_Pharmacy
             if (payAmount.Value != 0 && supName_select.Text != "")
             {
                 SqlCon.con.Open();
-                MySqlCommand cmd = new MySqlCommand(@"insert into pharmacy.debit_balances (DebitID,SupplierName,PaidAmount,Date,Time) values ('" + null + "','" + supName_select.Text + "','" + payAmount.Value.ToString() + "','" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToShortTimeString() + "');", SqlCon.con);
-                cmd.ExecuteNonQuery();
+                MySqlCommand cmd1 = new MySqlCommand(@"insert into pharmacy.debit_balances (DebitID,SupplierName,PaidAmount,Date,Time) values ('" + null + "','" + supName_select.Text + "','" + payAmount.Value.ToString() + "','" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToShortTimeString() + "');", SqlCon.con);
+                cmd1.ExecuteNonQuery();
+
+                MySqlCommand cmd2 = new MySqlCommand(@"insert into pharmacy.debit_balances (DebitID,SupplierName,PaidAmount,Date,Time) values ('" + null + "','" + supName_select.Text + "','" + payAmount.Value.ToString() + "','" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToShortTimeString() + "');", SqlCon.con);
+                cmd2.ExecuteNonQuery();
+
                 SqlCon.con.Close();
 
             }
@@ -135,6 +147,20 @@ namespace Star_Pharmacy
                 MessageBox.Show("Invalid Enrty. Check the inputs!");
             }
             
+        }
+
+        private void clrBtn_Click(object sender, EventArgs e)
+        {
+            transactionID_search1.ResetText();
+            itemID_search.ResetText();
+            supDetails_search1.ResetText();
+        
+        }
+
+        private void ClrBtn2_Click(object sender, EventArgs e)
+        {
+            supplierID_search2.ResetText();
+            supplierName_search2.ResetText();
         }
     }
 }
