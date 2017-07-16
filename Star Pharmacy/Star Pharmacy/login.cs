@@ -52,9 +52,9 @@ namespace Star_Pharmacy
                     owner_form of = new owner_form();
                     this.Hide();
                     of.Show();
-                    if (Program.isExpire)
+                    if (Program.isNotification)
                     {
-                        Expiry_Products exProd = new Expiry_Products();
+                        NotificationForm exProd = new NotificationForm();
                         exProd.Show();
                     }
                 }

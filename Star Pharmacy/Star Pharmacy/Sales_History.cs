@@ -29,6 +29,7 @@ namespace Star_Pharmacy
         private void Sales_History_Load(object sender, EventArgs e)
         {
             to_dtp.MaxDate = DateTime.Today;
+            from_dtp.MaxDate = DateTime.Today;
             String query = "select ProductID,ProductName,InvoiceNo,CashierID,CreatedDate,CreatedTime,Quantity,Amount,Branch from order_transactions;";
             SqlCon.updateDataGridView(query,dataGridView1);
         }

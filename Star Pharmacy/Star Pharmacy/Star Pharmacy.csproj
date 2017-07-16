@@ -41,19 +41,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel">
-      <HintPath>..\..\..\..\Project Assembly\GDI+\MigraDoc.DocumentObjectModel.dll</HintPath>
+      <HintPath>D:\Semester 3 Project\references\GDI+\MigraDoc.DocumentObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel.resources">
       <HintPath>..\..\..\..\Project Assembly\GDI+\de\MigraDoc.DocumentObjectModel.resources.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.Rendering">
-      <HintPath>..\..\..\..\Project Assembly\GDI+\MigraDoc.Rendering.dll</HintPath>
+      <HintPath>D:\Semester 3 Project\references\GDI+\MigraDoc.Rendering.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.Rendering.resources">
       <HintPath>..\..\..\..\Project Assembly\GDI+\de\MigraDoc.Rendering.resources.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.RtfRendering">
-      <HintPath>..\..\..\..\Project Assembly\GDI+\MigraDoc.RtfRendering.dll</HintPath>
+      <HintPath>D:\Semester 3 Project\references\GDI+\MigraDoc.RtfRendering.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.RtfRendering.resources">
       <HintPath>..\..\..\..\Project Assembly\GDI+\de\MigraDoc.RtfRendering.resources.dll</HintPath>
@@ -63,10 +63,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="PdfSharp">
-      <HintPath>..\..\..\..\Project Assembly\GDI+\PdfSharp.dll</HintPath>
+      <HintPath>D:\Semester 3 Project\references\GDI+\PdfSharp.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp.Charting">
-      <HintPath>..\..\..\..\Project Assembly\GDI+\PdfSharp.Charting.dll</HintPath>
+      <HintPath>D:\Semester 3 Project\references\GDI+\PdfSharp.Charting.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp.resources">
       <HintPath>..\..\..\..\Project Assembly\GDI+\de\PdfSharp.resources.dll</HintPath>
@@ -109,13 +109,13 @@
     <Compile Include="create_order.Designer.cs">
       <DependentUpon>create_order.cs</DependentUpon>
     </Compile>
-    <Compile Include="Expiry Products.cs">
+    <Compile Include="NotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Expiry Products.Designer.cs">
-      <DependentUpon>Expiry Products.cs</DependentUpon>
+    <Compile Include="NotificationForm.Designer.cs">
+      <DependentUpon>NotificationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="expiryNotification.cs" />
+    <Compile Include="Notification.cs" />
     <Compile Include="emp_management.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +181,7 @@
     </Compile>
     <Compile Include="pharmacyDataSet2.cs">
       <DependentUpon>pharmacyDataSet2.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="pharmacyDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -224,8 +225,8 @@
     <EmbeddedResource Include="create_order.resx">
       <DependentUpon>create_order.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Expiry Products.resx">
-      <DependentUpon>Expiry Products.cs</DependentUpon>
+    <EmbeddedResource Include="NotificationForm.resx">
+      <DependentUpon>NotificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="emp_management.resx">
       <DependentUpon>emp_management.cs</DependentUpon>

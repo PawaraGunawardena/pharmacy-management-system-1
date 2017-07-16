@@ -86,13 +86,13 @@ namespace Star_Pharmacy
             button2.Enabled = false;
             button4.Enabled = false;
             numericUpDown2.ReadOnly = false;
-            numericUpDown3.ReadOnly = false;
+            unitprice_nud.ReadOnly = false;
             numericUpDown5.ReadOnly = false;
-            textBox3.ReadOnly = false;
-            textBox4.ReadOnly = false;
-            comboBox2.Enabled = true;
+            brandName_txtbox.ReadOnly = false;
+            medicalname_txtbox.ReadOnly = false;
+            supplier_combobox.Enabled = true;
             dateTimePicker1.Enabled = true;
-            comboBox1.Enabled = true;
+            branch_combobox.Enabled = true;
             if (numericUpDown2.Value == 0)
             {
                 label13.Text = "unavailable";
@@ -155,15 +155,19 @@ namespace Star_Pharmacy
                     
                     SqlCon.con.Open();
                     MySqlCommand cmd = new MySqlCommand(@"insert into pharmacy.inventory (ProductID,BrandName,MedicalName,Supplier
-                                        ,UnitPrice,ExpiryDate,InStock,Reorderlevel,Branch) values ('" + numericUpDown2.Value.ToString() + "','" + textBox3.Text + "','" + textBox4.Text + "','" + comboBox2.Text + "','" + numericUpDown3.Value.ToString() + "','" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "','" + numericUpDown4.Value.ToString() + "','" + numericUpDown5.Value.ToString() + "','" + comboBox1.Text + "');", SqlCon.con);
+                                        ,UnitPrice,ExpiryDate,InStock,Reorderlevel,Branch) values ('" + numericUpDown2.Value.ToString() + "','" + brandName_txtbox.Text + "','" + medicalname_txtbox.Text + "','" + supplier_combobox.Text + "','" + unitprice_nud.Value.ToString() + "','" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "','" + noofitems_nud.Value.ToString() + "','" + numericUpDown5.Value.ToString() + "','" + branch_combobox.Text + "');", SqlCon.con);
                     cmd.ExecuteNonQuery();
                     SqlCon.con.Close();
                     String query = "Select * from pharmacy.inventory;";
                     SqlCon.updateDataGridView(query, dataGridView1);
                 }
+                else if(brandName_txtbox.Text==null && medicalname_txtbox.Text==null && supplier_combobox.SelectedIndex==null && noofitems_nud.Value == 0 && branch_combobox.SelectedIndex==null )
+                {
+                    MessageBox.Show("Check productID again!");
+                }
                 else
                 {
-                    MessageBox.Show("Check Product ID again!");
+                    MessageBox.Show("Check details again!");
                 }
                 button6_Click(sender,e);
             }
@@ -175,7 +179,7 @@ namespace Star_Pharmacy
                 MySqlCommand cmd = new MySqlCommand("delete from pharmacy.inventory where ProductID='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
                 cmd.ExecuteNonQuery();
                 MySqlCommand cmd1 = new MySqlCommand(@"insert into pharmacy.inventory (ProductID,BrandName,MedicalName,Supplier
-                                        ,UnitPrice,ExpiryDate,InStock,Reorderlevel,Branch) values ('" + numericUpDown2.Value.ToString() + "','" + textBox3.Text + "','" + textBox4.Text + "','" + comboBox2.Text + "','" + numericUpDown3.Value.ToString() + "','" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "','" + numericUpDown4.Value.ToString() + "','" + numericUpDown5.Value.ToString() + "','" + comboBox1.Text + "');", SqlCon.con);
+                                        ,UnitPrice,ExpiryDate,InStock,Reorderlevel,Branch) values ('" + numericUpDown2.Value.ToString() + "','" + brandName_txtbox.Text + "','" + medicalname_txtbox.Text + "','" + supplier_combobox.Text + "','" + unitprice_nud.Value.ToString() + "','" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "','" + noofitems_nud.Value.ToString() + "','" + numericUpDown5.Value.ToString() + "','" + branch_combobox.Text + "');", SqlCon.con);
                
 
                 cmd1.ExecuteNonQuery();
@@ -190,7 +194,7 @@ namespace Star_Pharmacy
             else if (update_clicked)
             {
                 SqlCon.con.Open();
-                MySqlCommand cmd = new MySqlCommand("update pharmacy.inventory set InStock='" + numericUpDown4.Value.ToString() + "' where ProductID ='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
+                MySqlCommand cmd = new MySqlCommand("update pharmacy.inventory set InStock='" + noofitems_nud.Value.ToString() + "' where ProductID ='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
                 cmd.ExecuteNonQuery();
                 SqlCon.con.Close();
                 SqlCon.updateDataGridView("select * from pharmacy.inventory;", dataGridView1);
@@ -217,23 +221,23 @@ namespace Star_Pharmacy
                 button3.Enabled = false;
                 button4.Enabled = false;
                 numericUpDown2.ReadOnly = false;
-                numericUpDown3.ReadOnly = false;
+                unitprice_nud.ReadOnly = false;
                 numericUpDown5.ReadOnly = false;
-                textBox3.ReadOnly = false;
-                textBox4.ReadOnly = false;
-                comboBox2.Enabled = true;
+                brandName_txtbox.ReadOnly = false;
+                medicalname_txtbox.ReadOnly = false;
+                supplier_combobox.Enabled = true;
                 dateTimePicker1.Enabled = true;
-                comboBox1.Enabled = true;
+                branch_combobox.Enabled = true;
                 groupBox1.Enabled = true;
                 numericUpDown2.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-                textBox3.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-                textBox4.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-                comboBox2.SelectedIndex = comboBox2.FindStringExact(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
-                numericUpDown3.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
+                brandName_txtbox.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                medicalname_txtbox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                supplier_combobox.SelectedIndex = supplier_combobox.FindStringExact(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
+                unitprice_nud.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
                 dateTimePicker1.Value = System.Convert.ToDateTime(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
-                numericUpDown4.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[6].Value.ToString());
+                noofitems_nud.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[6].Value.ToString());
                 numericUpDown5.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[7].Value.ToString());
-                comboBox1.SelectedIndex = comboBox1.FindStringExact(dataGridView1.SelectedRows[0].Cells[8].Value.ToString());
+                branch_combobox.SelectedIndex = branch_combobox.FindStringExact(dataGridView1.SelectedRows[0].Cells[8].Value.ToString());
                 groupBox2.Enabled = false;
             }
             else
@@ -256,14 +260,14 @@ namespace Star_Pharmacy
         {
             label13.Text = "";
             numericUpDown2.ResetText();
-            numericUpDown3.ResetText();
-            numericUpDown4.ResetText();
+            unitprice_nud.ResetText();
+            noofitems_nud.ResetText();
             numericUpDown5.ResetText();
-            textBox3.ResetText();
-            textBox4.ResetText();
-            comboBox2.ResetText();
+            brandName_txtbox.ResetText();
+            medicalname_txtbox.ResetText();
+            supplier_combobox.ResetText();
             dateTimePicker1.ResetText();
-            comboBox1.ResetText();
+            branch_combobox.ResetText();
             resetState();
             dataGridView1.ClearSelection();
             dataGridView1.Refresh();
@@ -282,11 +286,15 @@ namespace Star_Pharmacy
             update_clicked = false;
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                SqlCon.con.Open();
-                MySqlCommand cmd = new MySqlCommand("delete from pharmacy.inventory where ProductID='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
-                cmd.ExecuteNonQuery();
-                SqlCon.updateDataGridView("select * from pharmacy.inventory;", dataGridView1);
-                SqlCon.con.Close();
+                DialogResult result = MessageBox.Show("Are you sure you want to delete?","Are You Sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    SqlCon.con.Open();
+                    MySqlCommand cmd = new MySqlCommand("delete from pharmacy.inventory where ProductID='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
+                    cmd.ExecuteNonQuery();
+                    SqlCon.updateDataGridView("select * from pharmacy.inventory;", dataGridView1);
+                    SqlCon.con.Close();
+                }
             }
             else
             {
@@ -301,7 +309,7 @@ namespace Star_Pharmacy
 
         private void numericUpDown5_MouseClick(object sender, MouseEventArgs e)
         {
-            numericUpDown5.Maximum = numericUpDown4.Value;
+            numericUpDown5.Maximum = noofitems_nud.Value;
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -327,22 +335,22 @@ namespace Star_Pharmacy
                 button2.Enabled = false;
                 button3.Enabled = false;
                 numericUpDown2.ReadOnly = true;
-                numericUpDown3.ReadOnly = true;
+                unitprice_nud.ReadOnly = true;
                 numericUpDown5.ReadOnly = true;
-                textBox3.ReadOnly = true;
-                textBox4.ReadOnly = true;
-                comboBox2.Enabled = false;
+                brandName_txtbox.ReadOnly = true;
+                medicalname_txtbox.ReadOnly = true;
+                supplier_combobox.Enabled = false;
                 dateTimePicker1.Enabled = false;
-                comboBox1.Enabled = false;
+                branch_combobox.Enabled = false;
                 numericUpDown2.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-                textBox3.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-                textBox4.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-                comboBox2.SelectedIndex = comboBox2.FindStringExact(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
-                numericUpDown3.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
+                brandName_txtbox.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                medicalname_txtbox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                supplier_combobox.SelectedIndex = supplier_combobox.FindStringExact(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
+                unitprice_nud.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
                 dateTimePicker1.Value = System.Convert.ToDateTime(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
-                numericUpDown4.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[6].Value.ToString());
+                noofitems_nud.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[6].Value.ToString());
                 numericUpDown5.Value = System.Convert.ToDecimal(dataGridView1.SelectedRows[0].Cells[7].Value.ToString());
-                comboBox1.SelectedIndex = comboBox1.FindStringExact(dataGridView1.SelectedRows[0].Cells[8].Value.ToString());
+                branch_combobox.SelectedIndex = branch_combobox.FindStringExact(dataGridView1.SelectedRows[0].Cells[8].Value.ToString());
                 
             }
             else
@@ -359,6 +367,21 @@ namespace Star_Pharmacy
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+        private void numericUpDown1_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox1.ResetText();
+            textBox2.ResetText();
+        }
+        private void textBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            numericUpDown1.ResetText();
+            textBox2.Text = null;
+        }
+        private void textBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            numericUpDown1.ResetText();
+            textBox1.Text = null;
         }
     }
 }

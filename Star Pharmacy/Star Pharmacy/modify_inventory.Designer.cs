@@ -41,26 +41,26 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.supplier_combobox = new System.Windows.Forms.ComboBox();
             this.supplierdetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pharmacyDataSet1 = new Star_Pharmacy.pharmacyDataSet1();
             this.label13 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.branch_combobox = new System.Windows.Forms.ComboBox();
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.noofitems_nud = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.unitprice_nud = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.medicalname_txtbox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.brandName_txtbox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
@@ -73,8 +73,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noofitems_nud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitprice_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +102,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(190, 20);
             this.textBox2.TabIndex = 12;
+            this.textBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseClick);
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
@@ -119,6 +120,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(164, 20);
             this.textBox1.TabIndex = 10;
+            this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
@@ -137,6 +139,7 @@
             this.numericUpDown1.Size = new System.Drawing.Size(104, 20);
             this.numericUpDown1.TabIndex = 8;
             this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            this.numericUpDown1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown1_MouseClick);
             // 
             // label1
             // 
@@ -185,24 +188,24 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.supplier_combobox);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.branch_combobox);
             this.groupBox1.Controls.Add(this.numericUpDown5);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.dateTimePicker1);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.numericUpDown4);
+            this.groupBox1.Controls.Add(this.noofitems_nud);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.numericUpDown3);
+            this.groupBox1.Controls.Add(this.unitprice_nud);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.medicalname_txtbox);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.brandName_txtbox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.numericUpDown2);
             this.groupBox1.Controls.Add(this.label4);
@@ -214,18 +217,18 @@
             this.groupBox1.Text = "Details";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // comboBox2
+            // supplier_combobox
             // 
-            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBox2.DataSource = this.supplierdetailsBindingSource;
-            this.comboBox2.DisplayMember = "CompanyName";
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(408, 23);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 21;
-            this.comboBox2.ValueMember = "CompanyName";
+            this.supplier_combobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.supplier_combobox.DataSource = this.supplierdetailsBindingSource;
+            this.supplier_combobox.DisplayMember = "CompanyName";
+            this.supplier_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.supplier_combobox.FormattingEnabled = true;
+            this.supplier_combobox.Location = new System.Drawing.Point(408, 23);
+            this.supplier_combobox.Name = "supplier_combobox";
+            this.supplier_combobox.Size = new System.Drawing.Size(121, 21);
+            this.supplier_combobox.TabIndex = 21;
+            this.supplier_combobox.ValueMember = "CompanyName";
             // 
             // supplierdetailsBindingSource
             // 
@@ -274,22 +277,22 @@
             this.label12.TabIndex = 17;
             this.label12.Text = "Branch";
             // 
-            // comboBox1
+            // branch_combobox
             // 
-            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            this.branch_combobox.AutoCompleteCustomSource.AddRange(new string[] {
             "Mulleriyawa",
             "Welivita"});
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.branch_combobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.branch_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.branch_combobox.FormattingEnabled = true;
+            this.branch_combobox.Items.AddRange(new object[] {
             "Mulleriyawa",
             "Welivita"});
-            this.comboBox1.Location = new System.Drawing.Point(640, 91);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(104, 21);
-            this.comboBox1.TabIndex = 16;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.branch_combobox.Location = new System.Drawing.Point(640, 91);
+            this.branch_combobox.Name = "branch_combobox";
+            this.branch_combobox.Size = new System.Drawing.Size(104, 21);
+            this.branch_combobox.TabIndex = 16;
+            this.branch_combobox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // numericUpDown5
             // 
@@ -331,17 +334,17 @@
             this.label10.TabIndex = 12;
             this.label10.Text = "Expiry Date";
             // 
-            // numericUpDown4
+            // noofitems_nud
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(408, 92);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.noofitems_nud.Location = new System.Drawing.Point(408, 92);
+            this.noofitems_nud.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(100, 20);
-            this.numericUpDown4.TabIndex = 11;
+            this.noofitems_nud.Name = "noofitems_nud";
+            this.noofitems_nud.Size = new System.Drawing.Size(100, 20);
+            this.noofitems_nud.TabIndex = 11;
             // 
             // label9
             // 
@@ -352,18 +355,18 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "No of Items";
             // 
-            // numericUpDown3
+            // unitprice_nud
             // 
-            this.numericUpDown3.DecimalPlaces = 2;
-            this.numericUpDown3.Location = new System.Drawing.Point(408, 53);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.unitprice_nud.DecimalPlaces = 2;
+            this.unitprice_nud.Location = new System.Drawing.Point(408, 53);
+            this.unitprice_nud.Maximum = new decimal(new int[] {
             1000000000,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(100, 20);
-            this.numericUpDown3.TabIndex = 9;
+            this.unitprice_nud.Name = "unitprice_nud";
+            this.unitprice_nud.Size = new System.Drawing.Size(100, 20);
+            this.unitprice_nud.TabIndex = 9;
             // 
             // label8
             // 
@@ -383,12 +386,12 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Supplier";
             // 
-            // textBox4
+            // medicalname_txtbox
             // 
-            this.textBox4.Location = new System.Drawing.Point(106, 94);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(134, 20);
-            this.textBox4.TabIndex = 5;
+            this.medicalname_txtbox.Location = new System.Drawing.Point(106, 94);
+            this.medicalname_txtbox.Name = "medicalname_txtbox";
+            this.medicalname_txtbox.Size = new System.Drawing.Size(134, 20);
+            this.medicalname_txtbox.TabIndex = 5;
             // 
             // label6
             // 
@@ -399,12 +402,12 @@
             this.label6.TabIndex = 4;
             this.label6.Text = "Medical Name";
             // 
-            // textBox3
+            // brandName_txtbox
             // 
-            this.textBox3.Location = new System.Drawing.Point(106, 56);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(134, 20);
-            this.textBox3.TabIndex = 3;
+            this.brandName_txtbox.Location = new System.Drawing.Point(106, 56);
+            this.brandName_txtbox.Name = "brandName_txtbox";
+            this.brandName_txtbox.Size = new System.Drawing.Size(134, 20);
+            this.brandName_txtbox.TabIndex = 3;
             // 
             // label5
             // 
@@ -490,8 +493,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.noofitems_nud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitprice_nud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -514,17 +517,17 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox medicalname_txtbox;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox brandName_txtbox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown noofitems_nud;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.NumericUpDown unitprice_nud;
+        private System.Windows.Forms.ComboBox branch_combobox;
         private System.Windows.Forms.NumericUpDown numericUpDown5;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -534,7 +537,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox supplier_combobox;
         private pharmacyDataSet1 pharmacyDataSet1;
         private System.Windows.Forms.BindingSource supplierdetailsBindingSource;
         private pharmacyDataSet1TableAdapters.supplierdetailsTableAdapter supplierdetailsTableAdapter;
