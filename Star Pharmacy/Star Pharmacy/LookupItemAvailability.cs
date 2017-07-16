@@ -351,5 +351,10 @@ namespace Star_Pharmacy
         {
             this.parentCashierForm = parentCashierForm;
         }
+
+        private void LookupItemAvailability_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

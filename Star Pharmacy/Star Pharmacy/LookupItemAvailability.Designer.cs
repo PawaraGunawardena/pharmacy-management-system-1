@@ -209,6 +209,7 @@
             this.Controls.Add(this.grpBoxItemDetails);
             this.Name = "LookupItemAvailability";
             this.Text = "LookupItemAvailability";
+            this.Load += new System.EventHandler(this.LookupItemAvailability_Load);
             this.grpBoxItemDetails.ResumeLayout(false);
             this.grpBoxItemDetails.PerformLayout();
             this.grpBoxAvailabilityDetails.ResumeLayout(false);
