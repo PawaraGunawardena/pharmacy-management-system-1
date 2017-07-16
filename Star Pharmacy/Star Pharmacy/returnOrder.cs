@@ -487,7 +487,7 @@ namespace Star_Pharmacy
             DataGridViewRow last_row = dataGridViewReturnDetails.Rows[row_count - 1];
 
 
-            if (dataGridViewReturnDetails.SelectedRows.Count > 0 && dataGridViewReturnDetails.SelectedRows[0] != last_row)
+            if (dataGridViewReturnDetails.SelectedRows.Count > 0 )
             {
 
 
@@ -732,7 +732,7 @@ namespace Star_Pharmacy
                 DataGridViewRow last_row = dataGridViewReturnDetails.Rows[row_count - 1];
 
 
-                if (dataGridViewReturnDetails.SelectedRows.Count > 0 && dataGridViewReturnDetails.SelectedRows[0] != last_row)
+                if (dataGridViewReturnDetails.SelectedRows.Count > 0 )
                 {
 
                     foreach (DataGridViewRow row in dataGridViewReturnDetails.SelectedRows)
