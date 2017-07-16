@@ -71,11 +71,6 @@ namespace Star_Pharmacy
                     StockManagerForm of = new StockManagerForm();
                     this.Hide();
                     of.Show();
-                    if (Program.isNotification)
-                    {
-                        NotificationForm exProd = new NotificationForm();
-                        exProd.Show();
-                    }
                 }
                 else
                 {

@@ -152,26 +152,32 @@ namespace Star_Pharmacy
         {
             if (add_clicked)
             {
-                if (label13.Text == "available")
+                if (brandName_txtbox.Text == "" || medicalname_txtbox.Text == "" || branch_combobox.SelectedItem == null)
                 {
-                    
-                    SqlCon.con.Open();
-                    MySqlCommand cmd = new MySqlCommand(@"insert into pharmacy.inventory (ProductID,BrandName,MedicalName,Supplier
-                                        ,UnitPrice,ExpiryDate,InStock,Reorderlevel,Branch) values ('" + numericUpDown2.Value.ToString() + "','" + brandName_txtbox.Text + "','" + medicalname_txtbox.Text + "','" + supplier_combobox.Text + "','" + unitprice_nud.Value.ToString() + "','" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "','" + noofitems_nud.Value.ToString() + "','" + numericUpDown5.Value.ToString() + "','" + branch_combobox.Text + "');", SqlCon.con);
-                    cmd.ExecuteNonQuery();
-                    SqlCon.con.Close();
-                    String query = "Select * from pharmacy.inventory;";
-                    SqlCon.updateDataGridView(query, dataGridView1);
+                    MessageBox.Show("Check details again!");
                 }
-                else if(brandName_txtbox.Text==null && medicalname_txtbox.Text==null && supplier_combobox.SelectedIndex==null && noofitems_nud.Value == 0 && branch_combobox.SelectedIndex==null )
+                else if(label13.Text == "Unavailable" )
                 {
                     MessageBox.Show("Check productID again!");
                 }
                 else
                 {
-                    MessageBox.Show("Check details again!");
+                    decimal value = buyingPrice_nud.Value * noofitems_nud.Value;
+                    SqlCon.con.Open();
+                    MySqlCommand cmd_invent = new MySqlCommand(@"insert into pharmacy.inventory (ProductID,BrandName,MedicalName,Supplier
+                                        ,UnitPrice,ExpiryDate,InStock,Reorderlevel,Branch) values ('" + numericUpDown2.Value.ToString() + "','" + brandName_txtbox.Text + "','" + medicalname_txtbox.Text + "','" + supplier_combobox.Text + "','" + unitprice_nud.Value.ToString() + "','" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "','" + noofitems_nud.Value.ToString() + "','" + numericUpDown5.Value.ToString() + "','" + branch_combobox.Text + "');", SqlCon.con);
+                    MySqlCommand cmd_suptransac = new MySqlCommand("INSERT INTO supplier_transactions (`TransactionID`, `InvoiceNo`, `ItemID`, `Quantity`, `BuyingPrice`, `SupplierName`, `Date`, `Time`, `Value`) VALUES(NULL,'" + buyingInvoiceNo_nud.Value.ToString() + "','" + numericUpDown2.Value.ToString() + "','" + noofitems_nud.Value.ToString() + "','" + buyingPrice_nud.Value.ToString() + "','" + supplier_combobox.Text + "','" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToShortTimeString() + "','" + value.ToString() + "');", SqlCon.con);
+                    MySqlCommand cmd_creditdetails = new MySqlCommand("update credit_details set creditamount = creditamount + '" + value.ToString() + "' where suppliername = '" + supplier_combobox.Text + "';", SqlCon.con);
+                    cmd_suptransac.ExecuteNonQuery();
+                    cmd_invent.ExecuteNonQuery();
+                    cmd_creditdetails.ExecuteNonQuery();
+                    SqlCon.con.Close();
+                    String query = "Select * from pharmacy.inventory;";
+                    SqlCon.updateDataGridView(query, dataGridView1);
+                    MessageBox.Show("Data inserted!");
+                    button6_Click(sender, e);
                 }
-                button6_Click(sender,e);
+                
             }
             else if (edit_clicked)
             {
@@ -201,7 +207,9 @@ namespace Star_Pharmacy
                 SqlCon.con.Close();
                 SqlCon.updateDataGridView("select * from pharmacy.inventory;", dataGridView1);
                 button6_Click(sender, e);
+                
             }
+           
             
             
             
@@ -395,6 +403,16 @@ namespace Star_Pharmacy
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void unitprice_nud_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void unitprice_nud_MouseClick(object sender, MouseEventArgs e)
+        {
+            unitprice_nud.Minimum = buyingPrice_nud.Value;
         }
     }
 }
