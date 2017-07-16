@@ -41,13 +41,17 @@
             // 
             // supplierDetailsDgv
             // 
+            this.supplierDetailsDgv.AllowUserToAddRows = false;
+            this.supplierDetailsDgv.AllowUserToDeleteRows = false;
             this.supplierDetailsDgv.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.supplierDetailsDgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.supplierDetailsDgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.supplierDetailsDgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.supplierDetailsDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.supplierDetailsDgv.Location = new System.Drawing.Point(72, 183);
+            this.supplierDetailsDgv.MultiSelect = false;
             this.supplierDetailsDgv.Name = "supplierDetailsDgv";
+            this.supplierDetailsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.supplierDetailsDgv.Size = new System.Drawing.Size(579, 340);
             this.supplierDetailsDgv.TabIndex = 0;
             // 
@@ -148,9 +152,9 @@
         private System.Windows.Forms.Button btnViewCredit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnViewSupplierDetails;
-        protected System.Windows.Forms.DataGridView supplierDetailsDgv;
         private System.Windows.Forms.Button btnAddSuppliers;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button button2;
+        protected System.Windows.Forms.DataGridView supplierDetailsDgv;
     }
 }
