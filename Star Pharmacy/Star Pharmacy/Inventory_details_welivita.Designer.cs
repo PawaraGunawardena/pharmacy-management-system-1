@@ -119,7 +119,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Inventory_details_welivita";
             this.Text = "Inventory_details_welivita";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Inventory_details_welivita_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

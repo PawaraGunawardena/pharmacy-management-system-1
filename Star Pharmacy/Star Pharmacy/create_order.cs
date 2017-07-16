@@ -121,6 +121,7 @@ namespace Star_Pharmacy
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            change_lbl.Text = " ";
             int newInstock;
             int oldStock;
             oldStock = System.Convert.ToInt32(dataGridView1.Rows[selectedRowIndex].Cells[5].Value);
@@ -215,30 +216,41 @@ namespace Star_Pharmacy
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int selIndex = bill_dgv.CurrentCell.RowIndex;
-            int newStock,oldStock;
-            MySqlDataAdapter sda = new MySqlDataAdapter("select InStock from pharmacy.inventory where ProductID='" + bill_dgv.Rows[selIndex].Cells[0].Value.ToString() + "'; ", SqlCon.con);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            if (dt.Rows.Count != 1)
+            if (bill_dgv.Rows.Count > 0)
             {
-                MessageBox.Show("Error! Check inventory for duplicate entries!");
-            }else{
-                oldStock= System.Convert.ToInt32(dt.Rows[0][0].ToString());
-                newStock = oldStock + System.Convert.ToInt32(bill_dgv.Rows[selIndex].Cells[3].Value.ToString());
-                SqlCon.con.Open();
-                MySqlCommand com = new MySqlCommand("update pharmacy.inventory  set InStock = '" + newStock.ToString() + "' where ProductID = '" + bill_dgv.Rows[selIndex].Cells[0].Value.ToString() + "' ;", SqlCon.con);
-                com.ExecuteNonQuery();
-                SqlCon.con.Close();
-                MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where Branch = '" + branch + "';", SqlCon.con);
-                DataTable dt5 = new DataTable();
-                sAdapter5.Fill(dt5);
-                dataGridView1.DataSource = dt5;
-                dataGridView1.Refresh();
-                total = total - System.Convert.ToDecimal(bill_dgv.Rows[selIndex].Cells[4].Value.ToString());
-                total_lbl.Text = total.ToString()+" Rs";
-                bill_dgv.Rows.RemoveAt(selIndex);
+                cash_nud.Value = 0;
+                change_lbl.Text = " ";
+                int selIndex = bill_dgv.CurrentCell.RowIndex;
+                int newStock, oldStock;
+                MySqlDataAdapter sda = new MySqlDataAdapter("select InStock from pharmacy.inventory where ProductID='" + bill_dgv.Rows[selIndex].Cells[0].Value.ToString() + "'; ", SqlCon.con);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count != 1)
+                {
+                    MessageBox.Show("Error! Check inventory for duplicate entries!");
+                }
+                else
+                {
+                    oldStock = System.Convert.ToInt32(dt.Rows[0][0].ToString());
+                    newStock = oldStock + System.Convert.ToInt32(bill_dgv.Rows[selIndex].Cells[3].Value.ToString());
+                    SqlCon.con.Open();
+                    MySqlCommand com = new MySqlCommand("update pharmacy.inventory  set InStock = '" + newStock.ToString() + "' where ProductID = '" + bill_dgv.Rows[selIndex].Cells[0].Value.ToString() + "' ;", SqlCon.con);
+                    com.ExecuteNonQuery();
+                    SqlCon.con.Close();
+                    MySqlDataAdapter sAdapter5 = new MySqlDataAdapter("Select ProductID,BrandName,MedicalName,UnitPrice,ExpiryDate,InStock from pharmacy.inventory where Branch = '" + branch + "';", SqlCon.con);
+                    DataTable dt5 = new DataTable();
+                    sAdapter5.Fill(dt5);
+                    dataGridView1.DataSource = dt5;
+                    dataGridView1.Refresh();
+                    total = total - System.Convert.ToDecimal(bill_dgv.Rows[selIndex].Cells[4].Value.ToString());
+                    total_lbl.Text = total.ToString() + " Rs";
+                    bill_dgv.Rows.RemoveAt(selIndex);
 
+                }
+            }
+            else
+            {
+                MessageBox.Show("No items to remove!");
             }
         }
 
@@ -276,9 +288,16 @@ namespace Star_Pharmacy
         private void cash_nud_ValueChanged(object sender, EventArgs e)
         {
                cash = cash_nud.Value;
-                change = cash - total;
-                total_lbl.Text = total.ToString() + " Rs";
-                change_lbl.Text = change.ToString() + " Rs";
+               if (cash_nud.Value == null)
+               {
+                   change_lbl.Text = "";
+               }
+               else
+               {
+                   change = cash - total;
+                   total_lbl.Text = total.ToString() + " Rs";
+                   change_lbl.Text = change.ToString() + " Rs";
+               }
             
             
         }

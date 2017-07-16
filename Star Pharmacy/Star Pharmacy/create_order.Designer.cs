@@ -50,8 +50,8 @@
             this.cash_nud = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.removeItem_btn = new System.Windows.Forms.Button();
+            this.cancel_btn = new System.Windows.Forms.Button();
             this.issuebill_btn = new System.Windows.Forms.Button();
             this.total_lbl = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -229,8 +229,8 @@
             this.groupBox2.Controls.Add(this.cash_nud);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.removeItem_btn);
+            this.groupBox2.Controls.Add(this.cancel_btn);
             this.groupBox2.Controls.Add(this.issuebill_btn);
             this.groupBox2.Controls.Add(this.total_lbl);
             this.groupBox2.Controls.Add(this.label5);
@@ -302,25 +302,25 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Cash";
             // 
-            // button4
+            // removeItem_btn
             // 
-            this.button4.Location = new System.Drawing.Point(337, 288);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(97, 32);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Remove Item";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.removeItem_btn.Location = new System.Drawing.Point(337, 288);
+            this.removeItem_btn.Name = "removeItem_btn";
+            this.removeItem_btn.Size = new System.Drawing.Size(97, 32);
+            this.removeItem_btn.TabIndex = 5;
+            this.removeItem_btn.Text = "Remove Item";
+            this.removeItem_btn.UseVisualStyleBackColor = true;
+            this.removeItem_btn.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button3
+            // cancel_btn
             // 
-            this.button3.Location = new System.Drawing.Point(460, 288);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(91, 32);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.cancel_btn.Location = new System.Drawing.Point(460, 288);
+            this.cancel_btn.Name = "cancel_btn";
+            this.cancel_btn.Size = new System.Drawing.Size(91, 32);
+            this.cancel_btn.TabIndex = 4;
+            this.cancel_btn.Text = "Cancel";
+            this.cancel_btn.UseVisualStyleBackColor = true;
+            this.cancel_btn.Click += new System.EventHandler(this.button3_Click);
             // 
             // issuebill_btn
             // 
@@ -445,12 +445,12 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button cancel_btn;
         private System.Windows.Forms.Button issuebill_btn;
         private System.Windows.Forms.Label total_lbl;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView bill_dgv;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button removeItem_btn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;

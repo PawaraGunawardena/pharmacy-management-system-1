@@ -41,6 +41,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buyingPrice_nud = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.buyingInvoiceNo_nud = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
             this.supplier_combobox = new System.Windows.Forms.ComboBox();
             this.supplierdetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pharmacyDataSet1 = new Star_Pharmacy.pharmacyDataSet1();
@@ -67,13 +71,11 @@
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.supplierdetailsTableAdapter = new Star_Pharmacy.pharmacyDataSet1TableAdapters.supplierdetailsTableAdapter();
-            this.label14 = new System.Windows.Forms.Label();
-            this.buyingInvoiceNo_nud = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
-            this.buyingPrice_nud = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buyingPrice_nud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buyingInvoiceNo_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
@@ -81,8 +83,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.unitprice_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buyingInvoiceNo_nud)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buyingPrice_nud)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -226,6 +226,49 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // buyingPrice_nud
+            // 
+            this.buyingPrice_nud.DecimalPlaces = 2;
+            this.buyingPrice_nud.Location = new System.Drawing.Point(408, 64);
+            this.buyingPrice_nud.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.buyingPrice_nud.Name = "buyingPrice_nud";
+            this.buyingPrice_nud.Size = new System.Drawing.Size(100, 20);
+            this.buyingPrice_nud.TabIndex = 25;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(338, 66);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(66, 13);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "Buying Price";
+            // 
+            // buyingInvoiceNo_nud
+            // 
+            this.buyingInvoiceNo_nud.Location = new System.Drawing.Point(145, 130);
+            this.buyingInvoiceNo_nud.Maximum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
+            this.buyingInvoiceNo_nud.Name = "buyingInvoiceNo_nud";
+            this.buyingInvoiceNo_nud.Size = new System.Drawing.Size(86, 20);
+            this.buyingInvoiceNo_nud.TabIndex = 23;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(22, 132);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(94, 13);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Buying Invoice No";
             // 
             // supplier_combobox
             // 
@@ -481,49 +524,6 @@
             // 
             this.supplierdetailsTableAdapter.ClearBeforeFill = true;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(22, 132);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 13);
-            this.label14.TabIndex = 22;
-            this.label14.Text = "Buying Invoice No";
-            // 
-            // buyingInvoiceNo_nud
-            // 
-            this.buyingInvoiceNo_nud.Location = new System.Drawing.Point(145, 130);
-            this.buyingInvoiceNo_nud.Maximum = new decimal(new int[] {
-            -727379968,
-            232,
-            0,
-            0});
-            this.buyingInvoiceNo_nud.Name = "buyingInvoiceNo_nud";
-            this.buyingInvoiceNo_nud.Size = new System.Drawing.Size(86, 20);
-            this.buyingInvoiceNo_nud.TabIndex = 23;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(338, 66);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(66, 13);
-            this.label15.TabIndex = 24;
-            this.label15.Text = "Buying Price";
-            // 
-            // buyingPrice_nud
-            // 
-            this.buyingPrice_nud.DecimalPlaces = 2;
-            this.buyingPrice_nud.Location = new System.Drawing.Point(408, 64);
-            this.buyingPrice_nud.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.buyingPrice_nud.Name = "buyingPrice_nud";
-            this.buyingPrice_nud.Size = new System.Drawing.Size(100, 20);
-            this.buyingPrice_nud.TabIndex = 25;
-            // 
             // modify_inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -538,12 +538,13 @@
             this.Name = "modify_inventory";
             this.Text = "modify_inventory";
             this.TopMost = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.modify_inventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buyingPrice_nud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buyingInvoiceNo_nud)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
@@ -552,8 +553,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.buyingInvoiceNo_nud)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buyingPrice_nud)).EndInit();
             this.ResumeLayout(false);
 
         }
