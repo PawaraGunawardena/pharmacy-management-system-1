@@ -207,6 +207,7 @@ namespace Star_Pharmacy
             NotificationForm nf = NotificationForm.getNotificationForm(splitContainer1, this);
             nf.Location = new Point((splitContainer1.Panel2.Width - nf.Width) / 2, (splitContainer1.Panel2.Height - nf.Height) / 2);
             nf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            //nf.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             nf.Show();
         }
     }
