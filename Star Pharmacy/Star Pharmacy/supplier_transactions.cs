@@ -19,6 +19,8 @@ namespace Star_Pharmacy
 
         private void supplier_transactions_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'pharmacyDataSet4.supplierdetails' table. You can move, or remove it, as needed.
+            this.supplierdetailsTableAdapter1.Fill(this.pharmacyDataSet4.supplierdetails);
             // TODO: This line of code loads data into the 'pharmacyDataSet3.supplierdetails' table. You can move, or remove it, as needed.
             this.supplierdetailsTableAdapter.Fill(this.pharmacyDataSet3.supplierdetails);
 

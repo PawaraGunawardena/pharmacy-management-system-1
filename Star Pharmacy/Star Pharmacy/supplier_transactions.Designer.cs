@@ -40,12 +40,17 @@
             this.supplierdetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.supplierdetailsTableAdapter = new Star_Pharmacy.pharmacyDataSet3TableAdapters.supplierdetailsTableAdapter();
             this.supplierdetailsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.pharmacyDataSet4 = new Star_Pharmacy.pharmacyDataSet4();
+            this.supplierdetailsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.supplierdetailsTableAdapter1 = new Star_Pharmacy.pharmacyDataSet4TableAdapters.supplierdetailsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.supplier_transactionsDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionID_search)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemID_search)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // supplier_transactionsDetails
@@ -102,12 +107,15 @@
             // 
             // supDetails_search
             // 
+            this.supDetails_search.DataSource = this.supplierdetailsBindingSource2;
+            this.supDetails_search.DisplayMember = "CompanyName";
             this.supDetails_search.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.supDetails_search.FormattingEnabled = true;
             this.supDetails_search.Location = new System.Drawing.Point(620, 33);
             this.supDetails_search.Name = "supDetails_search";
             this.supDetails_search.Size = new System.Drawing.Size(172, 21);
             this.supDetails_search.TabIndex = 6;
+            this.supDetails_search.ValueMember = "CompanyName";
             // 
             // pharmacyDataSet3
             // 
@@ -127,6 +135,20 @@
             // 
             this.supplierdetailsBindingSource1.DataMember = "supplierdetails";
             this.supplierdetailsBindingSource1.DataSource = this.pharmacyDataSet3;
+            // 
+            // pharmacyDataSet4
+            // 
+            this.pharmacyDataSet4.DataSetName = "pharmacyDataSet4";
+            this.pharmacyDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // supplierdetailsBindingSource2
+            // 
+            this.supplierdetailsBindingSource2.DataMember = "supplierdetails";
+            this.supplierdetailsBindingSource2.DataSource = this.pharmacyDataSet4;
+            // 
+            // supplierdetailsTableAdapter1
+            // 
+            this.supplierdetailsTableAdapter1.ClearBeforeFill = true;
             // 
             // supplier_transactions
             // 
@@ -149,6 +171,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +191,8 @@
         private System.Windows.Forms.BindingSource supplierdetailsBindingSource;
         private pharmacyDataSet3TableAdapters.supplierdetailsTableAdapter supplierdetailsTableAdapter;
         private System.Windows.Forms.BindingSource supplierdetailsBindingSource1;
+        private pharmacyDataSet4 pharmacyDataSet4;
+        private System.Windows.Forms.BindingSource supplierdetailsBindingSource2;
+        private pharmacyDataSet4TableAdapters.supplierdetailsTableAdapter supplierdetailsTableAdapter1;
     }
 }

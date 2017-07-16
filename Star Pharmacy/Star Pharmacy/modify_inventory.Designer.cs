@@ -67,6 +67,10 @@
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.supplierdetailsTableAdapter = new Star_Pharmacy.pharmacyDataSet1TableAdapters.supplierdetailsTableAdapter();
+            this.label14 = new System.Windows.Forms.Label();
+            this.buyingInvoiceNo_nud = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.buyingPrice_nud = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -77,6 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.unitprice_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buyingInvoiceNo_nud)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buyingPrice_nud)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -188,6 +194,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buyingPrice_nud);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.buyingInvoiceNo_nud);
+            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.supplier_combobox);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.button6);
@@ -243,7 +253,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(199, 26);
+            this.label13.Location = new System.Drawing.Point(238, 29);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(0, 13);
             this.label13.TabIndex = 20;
@@ -336,7 +346,7 @@
             // 
             // noofitems_nud
             // 
-            this.noofitems_nud.Location = new System.Drawing.Point(408, 92);
+            this.noofitems_nud.Location = new System.Drawing.Point(408, 127);
             this.noofitems_nud.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -349,16 +359,17 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(338, 97);
+            this.label9.Location = new System.Drawing.Point(338, 129);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 13);
             this.label9.TabIndex = 10;
             this.label9.Text = "No of Items";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // unitprice_nud
             // 
             this.unitprice_nud.DecimalPlaces = 2;
-            this.unitprice_nud.Location = new System.Drawing.Point(408, 53);
+            this.unitprice_nud.Location = new System.Drawing.Point(408, 95);
             this.unitprice_nud.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -371,7 +382,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(338, 60);
+            this.label8.Location = new System.Drawing.Point(338, 97);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 13);
             this.label8.TabIndex = 8;
@@ -388,7 +399,7 @@
             // 
             // medicalname_txtbox
             // 
-            this.medicalname_txtbox.Location = new System.Drawing.Point(106, 94);
+            this.medicalname_txtbox.Location = new System.Drawing.Point(145, 97);
             this.medicalname_txtbox.Name = "medicalname_txtbox";
             this.medicalname_txtbox.Size = new System.Drawing.Size(134, 20);
             this.medicalname_txtbox.TabIndex = 5;
@@ -404,7 +415,7 @@
             // 
             // brandName_txtbox
             // 
-            this.brandName_txtbox.Location = new System.Drawing.Point(106, 56);
+            this.brandName_txtbox.Location = new System.Drawing.Point(145, 59);
             this.brandName_txtbox.Name = "brandName_txtbox";
             this.brandName_txtbox.Size = new System.Drawing.Size(134, 20);
             this.brandName_txtbox.TabIndex = 3;
@@ -420,7 +431,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(106, 21);
+            this.numericUpDown2.Location = new System.Drawing.Point(145, 24);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -470,6 +481,49 @@
             // 
             this.supplierdetailsTableAdapter.ClearBeforeFill = true;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(22, 132);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(94, 13);
+            this.label14.TabIndex = 22;
+            this.label14.Text = "Buying Invoice No";
+            // 
+            // buyingInvoiceNo_nud
+            // 
+            this.buyingInvoiceNo_nud.Location = new System.Drawing.Point(145, 130);
+            this.buyingInvoiceNo_nud.Maximum = new decimal(new int[] {
+            -727379968,
+            232,
+            0,
+            0});
+            this.buyingInvoiceNo_nud.Name = "buyingInvoiceNo_nud";
+            this.buyingInvoiceNo_nud.Size = new System.Drawing.Size(86, 20);
+            this.buyingInvoiceNo_nud.TabIndex = 23;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(338, 66);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(66, 13);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "Buying Price";
+            // 
+            // buyingPrice_nud
+            // 
+            this.buyingPrice_nud.DecimalPlaces = 2;
+            this.buyingPrice_nud.Location = new System.Drawing.Point(408, 64);
+            this.buyingPrice_nud.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.buyingPrice_nud.Name = "buyingPrice_nud";
+            this.buyingPrice_nud.Size = new System.Drawing.Size(100, 20);
+            this.buyingPrice_nud.TabIndex = 25;
+            // 
             // modify_inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -498,6 +552,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.buyingInvoiceNo_nud)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buyingPrice_nud)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -541,5 +597,9 @@
         private pharmacyDataSet1 pharmacyDataSet1;
         private System.Windows.Forms.BindingSource supplierdetailsBindingSource;
         private pharmacyDataSet1TableAdapters.supplierdetailsTableAdapter supplierdetailsTableAdapter;
+        private System.Windows.Forms.NumericUpDown buyingPrice_nud;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.NumericUpDown buyingInvoiceNo_nud;
+        private System.Windows.Forms.Label label14;
     }
 }

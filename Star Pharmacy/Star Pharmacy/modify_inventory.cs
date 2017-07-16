@@ -86,6 +86,8 @@ namespace Star_Pharmacy
             button2.Enabled = false;
             button4.Enabled = false;
             numericUpDown2.ReadOnly = false;
+            buyingInvoiceNo_nud.ReadOnly = false;
+            buyingInvoiceNo_nud.ReadOnly = false;
             unitprice_nud.ReadOnly = false;
             numericUpDown5.ReadOnly = false;
             brandName_txtbox.ReadOnly = false;
@@ -221,6 +223,8 @@ namespace Star_Pharmacy
                 button3.Enabled = false;
                 button4.Enabled = false;
                 numericUpDown2.ReadOnly = false;
+                buyingInvoiceNo_nud.ReadOnly = false;
+                buyingPrice_nud.ReadOnly = false;
                 unitprice_nud.ReadOnly = false;
                 numericUpDown5.ReadOnly = false;
                 brandName_txtbox.ReadOnly = false;
@@ -262,6 +266,8 @@ namespace Star_Pharmacy
             numericUpDown2.ResetText();
             unitprice_nud.ResetText();
             noofitems_nud.ResetText();
+            buyingInvoiceNo_nud.ResetText();
+            buyingPrice_nud.ResetText();
             numericUpDown5.ResetText();
             brandName_txtbox.ResetText();
             medicalname_txtbox.ResetText();
@@ -335,6 +341,8 @@ namespace Star_Pharmacy
                 button2.Enabled = false;
                 button3.Enabled = false;
                 numericUpDown2.ReadOnly = true;
+                buyingPrice_nud.ReadOnly = true;
+                buyingInvoiceNo_nud.ReadOnly = true;
                 unitprice_nud.ReadOnly = true;
                 numericUpDown5.ReadOnly = true;
                 brandName_txtbox.ReadOnly = true;
@@ -382,6 +390,11 @@ namespace Star_Pharmacy
         {
             numericUpDown1.ResetText();
             textBox1.Text = null;
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

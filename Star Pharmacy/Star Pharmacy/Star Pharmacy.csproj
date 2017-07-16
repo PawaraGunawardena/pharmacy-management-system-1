@@ -127,6 +127,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>pharmacyDataSet3.xsd</DependentUpon>
     </Compile>
+    <Compile Include="pharmacyDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pharmacyDataSet4.xsd</DependentUpon>
+    </Compile>
     <Compile Include="supplier_transactions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -321,6 +326,17 @@
     </None>
     <None Include="pharmacyDataSet3.xss">
       <DependentUpon>pharmacyDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="pharmacyDataSet4.xsc">
+      <DependentUpon>pharmacyDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="pharmacyDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>pharmacyDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="pharmacyDataSet4.xss">
+      <DependentUpon>pharmacyDataSet4.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
