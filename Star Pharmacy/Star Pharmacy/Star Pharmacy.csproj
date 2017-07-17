@@ -41,19 +41,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel">
-      <HintPath>..\..\..\..\Project Assembly\GDI+\MigraDoc.DocumentObjectModel.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\New folder\GDI+\MigraDoc.DocumentObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel.resources">
       <HintPath>..\..\..\..\Project Assembly\GDI+\de\MigraDoc.DocumentObjectModel.resources.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.Rendering">
-      <HintPath>..\..\..\..\Project Assembly\GDI+\MigraDoc.Rendering.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\New folder\GDI+\MigraDoc.Rendering.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.Rendering.resources">
       <HintPath>..\..\..\..\Project Assembly\GDI+\de\MigraDoc.Rendering.resources.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.RtfRendering">
-      <HintPath>..\..\..\..\Project Assembly\GDI+\MigraDoc.RtfRendering.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\New folder\GDI+\MigraDoc.RtfRendering.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.RtfRendering.resources">
       <HintPath>..\..\..\..\Project Assembly\GDI+\de\MigraDoc.RtfRendering.resources.dll</HintPath>
@@ -63,10 +63,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="PdfSharp">
-      <HintPath>..\..\..\..\Project Assembly\GDI+\PdfSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\New folder\GDI+\PdfSharp.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp.Charting">
-      <HintPath>..\..\..\..\Project Assembly\GDI+\PdfSharp.Charting.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\New folder\GDI+\PdfSharp.Charting.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp.resources">
       <HintPath>..\..\..\..\Project Assembly\GDI+\de\PdfSharp.resources.dll</HintPath>
@@ -232,6 +232,7 @@
       <DependentUpon>supplier_info_form.cs</DependentUpon>
     </Compile>
     <Compile Include="TransactionControl.cs" />
+    <Compile Include="Utilities3.cs" />
     <EmbeddedResource Include="addNewSuppliers.resx">
       <DependentUpon>addNewSuppliers.cs</DependentUpon>
     </EmbeddedResource>

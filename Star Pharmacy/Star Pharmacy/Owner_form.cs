@@ -25,8 +25,8 @@ namespace Star_Pharmacy
         {
             MessageBox.Show("Reports are generated for the day!");
             MessageBox.Show("Reports are generated for the day22222!");
-            file = Sales_History.generatePDF();
-            Sales_History.sendEmail(file);
+            file = Utilities3.generatePDF();
+            Utilities3.sendEmail(file);
             showNotification();
             
         }
@@ -54,8 +54,8 @@ namespace Star_Pharmacy
             if (DateTime.Now.Day == 28) //Ever29th of the month, a monthly report will get emailed.
             {
 
-                file2 = Utilities.generateMothlyReportS();
-                Utilities.sendEmail(file2);
+                file2 = Utilities3.generateMothlyReportS();
+                Utilities3.sendEmail(file2);
 
             }
 
@@ -76,8 +76,8 @@ namespace Star_Pharmacy
             {
                 
                 //MessageBox.Show("Reports have been generated.", "Check Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                file = Utilities.generatePDF(); //Generates the pdf at 7PM (Or between 7PM and 12Midnight) and saves it in local computer.
-                Utilities.sendEmail(file);  //Sends the file to a given location (Location is specified at sendEmail() method.
+                file = Utilities3.generatePDF(); //Generates the pdf at 7PM (Or between 7PM and 12Midnight) and saves it in local computer.
+                Utilities3.sendEmail(file);  //Sends the file to a given location (Location is specified at sendEmail() method.
 
                 //file is a String where it comprises of the location (Address) where the generated PDF is located. You can change it in generatePDF() method.
                 //check out sendEmail(String file) for more information. 
