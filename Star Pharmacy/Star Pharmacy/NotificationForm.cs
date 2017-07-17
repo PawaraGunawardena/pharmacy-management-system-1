@@ -39,7 +39,7 @@ namespace Star_Pharmacy
         {
             
 
-            MySqlDataAdapter sAdapter = new MySqlDataAdapter("select * from pharmacy.inventory where ExpiryDate between '" +Notification.today.ToString("yyyy-MM-dd") + "' and '" +Notification.sevenDaysOnwards.ToString("yyyy-MM-dd") + "';", SqlCon.con);
+            MySqlDataAdapter sAdapter = new MySqlDataAdapter("select * from pharmacy.inventory where ExpiryDate <= '" +Notification.sevenDaysOnwards.ToString("yyyy-MM-dd") + "';", SqlCon.con);
             DataTable dt = new DataTable();
             sAdapter.Fill(dt);
             dataGridView1.DataSource = dt;

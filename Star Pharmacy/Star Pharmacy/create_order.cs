@@ -292,6 +292,11 @@ namespace Star_Pharmacy
                {
                    change_lbl.Text = "";
                }
+               else if (cash_nud.Value < Convert.ToDecimal(total))
+               {
+                   cash_nud.ResetText();
+                   MessageBox.Show("Insufficient Money", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+               }
                else
                {
                    change = cash - total;
