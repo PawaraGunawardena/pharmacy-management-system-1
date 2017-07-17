@@ -55,7 +55,31 @@ namespace Star_Pharmacy
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+                con.Open();
+                viewCredit vc = new viewCredit();
+                string connString = "Server=localhost;Database=pharmacy;Uid=root;Pwd=;";
+                command = new MySqlCommand("SELECT * FROM pharmacy.credit_details WHERE SupplierID=" + supplierDetailsDgv.SelectedRows[0].Cells[0].Value, con);
+                mdr = command.ExecuteReader();
 
+                if (mdr.Read())
+                {
+                    vc.lbl_supID.Text = mdr.GetString("SupplierID");
+                    vc.lbl_SupName.Text = mdr.GetString("SupplierName");
+                    vc.lblSup_Credit.Text = mdr.GetString("CreditAmount");
+                  
+
+                }
+
+                vc.Show();
+
+                con.Close();
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Select a supplier!");
+            }
         }
 
         public DataGridView sendDatagrid

@@ -233,6 +233,12 @@
     </Compile>
     <Compile Include="TransactionControl.cs" />
     <Compile Include="Utilities3.cs" />
+    <Compile Include="viewCredit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewCredit.Designer.cs">
+      <DependentUpon>viewCredit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="addNewSuppliers.resx">
       <DependentUpon>addNewSuppliers.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="supplier_info_form.resx">
       <DependentUpon>supplier_info_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewCredit.resx">
+      <DependentUpon>viewCredit.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
