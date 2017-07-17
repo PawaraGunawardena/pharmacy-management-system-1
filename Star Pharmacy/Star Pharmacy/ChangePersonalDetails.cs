@@ -206,38 +206,45 @@ namespace Star_Pharmacy
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (parentCashierForm != null)
+            bool result = txtLastName.Text.All(Char.IsLetter);
+            if (result)
             {
-                parentCashierForm.parentButtonActivation(true);
-            }
-            else if (stockForm != null)
-            {
-                stockForm.parentButtonActivation(true);
-            }
-           
-            string connectionString = "server=localhost;user id=root;database=pharmacy";
-            string myQuery = getNewQuery();
-
-            MySqlConnection newConnnection = new MySqlConnection(connectionString);
-            MySqlCommand newCommand = new MySqlCommand(myQuery, newConnnection);
-            MySqlDataReader newDataReader;
-
-            try
-            {
-                newConnnection.Open();
-                newDataReader = newCommand.ExecuteReader();
-
-                while (newDataReader.Read())
+                if (parentCashierForm != null)
                 {
+                    parentCashierForm.parentButtonActivation(true);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Wrong in the database writing");
-            }
-            this.Close();
-        }
+                else if (stockForm != null)
+                {
+                    stockForm.parentButtonActivation(true);
+                }
 
+                string connectionString = "server=localhost;user id=root;database=pharmacy";
+                string myQuery = getNewQuery();
+
+                MySqlConnection newConnnection = new MySqlConnection(connectionString);
+                MySqlCommand newCommand = new MySqlCommand(myQuery, newConnnection);
+                MySqlDataReader newDataReader;
+
+                try
+                {
+                    newConnnection.Open();
+                    newDataReader = newCommand.ExecuteReader();
+
+                    while (newDataReader.Read())
+                    {
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wrong in the database writing");
+                }
+                this.Close();
+            }else
+            {
+                MessageBox.Show("Wrong Last Name","Error In New Info");
+                this.Close();
+            }
+        }
 
         private void checkBoxLastName_CheckedChanged(object sender, EventArgs e)
         {

@@ -158,6 +158,7 @@
             this.dataGridViewSalesDetails.Location = new System.Drawing.Point(19, 63);
             this.dataGridViewSalesDetails.MultiSelect = false;
             this.dataGridViewSalesDetails.Name = "dataGridViewSalesDetails";
+            this.dataGridViewSalesDetails.ReadOnly = true;
             this.dataGridViewSalesDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSalesDetails.Size = new System.Drawing.Size(615, 75);
             this.dataGridViewSalesDetails.TabIndex = 0;
@@ -218,6 +219,7 @@
             this.dataGridViewReturnDetails.Location = new System.Drawing.Point(20, 31);
             this.dataGridViewReturnDetails.MultiSelect = false;
             this.dataGridViewReturnDetails.Name = "dataGridViewReturnDetails";
+            this.dataGridViewReturnDetails.ReadOnly = true;
             this.dataGridViewReturnDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewReturnDetails.Size = new System.Drawing.Size(615, 115);
             this.dataGridViewReturnDetails.TabIndex = 0;
@@ -226,46 +228,55 @@
             // 
             this.InvoiceNo.HeaderText = "Invoice No";
             this.InvoiceNo.Name = "InvoiceNo";
+            this.InvoiceNo.ReadOnly = true;
             // 
             // ProductID
             // 
             this.ProductID.HeaderText = "Product ID";
             this.ProductID.Name = "ProductID";
+            this.ProductID.ReadOnly = true;
             // 
             // ProductName
             // 
             this.ProductName.HeaderText = "Product Name";
             this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
             // 
             // CashierID
             // 
             this.CashierID.HeaderText = "Cashier ID";
             this.CashierID.Name = "CashierID";
+            this.CashierID.ReadOnly = true;
             // 
             // CreatedDate
             // 
             this.CreatedDate.HeaderText = "Created Date";
             this.CreatedDate.Name = "CreatedDate";
+            this.CreatedDate.ReadOnly = true;
             // 
             // CreatedTime
             // 
             this.CreatedTime.HeaderText = "Created Time";
             this.CreatedTime.Name = "CreatedTime";
+            this.CreatedTime.ReadOnly = true;
             // 
             // Quantity
             // 
             this.Quantity.HeaderText = "Quantity";
             this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
             // 
             // Amount
             // 
             this.Amount.HeaderText = "Amount";
             this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
             // 
             // Branch
             // 
             this.Branch.HeaderText = "Branch";
             this.Branch.Name = "Branch";
+            this.Branch.ReadOnly = true;
             // 
             // btnReturn
             // 

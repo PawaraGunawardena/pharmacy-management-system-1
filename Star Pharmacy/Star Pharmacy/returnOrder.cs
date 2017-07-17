@@ -269,28 +269,33 @@ namespace Star_Pharmacy
 
                     if (this.dataGridViewSalesDetails.SelectedRows.Count == 1)
                     {
-                        invoiceNo = this.dataGridViewSalesDetails.SelectedRows[0].Cells[0].Value.ToString();
-                        productID = this.dataGridViewSalesDetails.SelectedRows[0].Cells[1].Value.ToString();
-                        productName = this.dataGridViewSalesDetails.SelectedRows[0].Cells[2].Value.ToString();
-                        cashierID = this.dataGridViewSalesDetails.SelectedRows[0].Cells[3].Value.ToString();
-                        createdDate = this.dataGridViewSalesDetails.SelectedRows[0].Cells[4].Value.ToString();
-                        createdTime = this.dataGridViewSalesDetails.SelectedRows[0].Cells[5].Value.ToString();
-                        quantity = numericUpDownReturnQuantity.Value.ToString();
-                        amount = this.getNewReturnAmount().ToString();
-                        //unitPrice = this.getUnitPrice(newConnnection);
-                        branch = this.dataGridViewSalesDetails.SelectedRows[0].Cells[8].Value.ToString();
-                        DataGridViewRow row1 = (DataGridViewRow)dataGridViewReturnDetails.Rows[0].Clone();
-                        row1.Cells[0].Value = invoiceNo.ToString();
-                        row1.Cells[1].Value = productID.ToString();
-                        row1.Cells[2].Value = productName.ToString();
-                        row1.Cells[3].Value = cashierID.ToString();
-                        row1.Cells[4].Value = createdDate.ToString();
-                        row1.Cells[5].Value = createdTime.ToString();
-                        row1.Cells[6].Value = quantity.ToString();
-                        row1.Cells[7].Value = amount.ToString();
-                        row1.Cells[8].Value = branch.ToString();
-                        dataGridViewReturnDetails.Rows.Add(row1);
-
+                        try
+                        {
+                            invoiceNo = this.dataGridViewSalesDetails.SelectedRows[0].Cells[0].Value.ToString();
+                            productID = this.dataGridViewSalesDetails.SelectedRows[0].Cells[1].Value.ToString();
+                            productName = this.dataGridViewSalesDetails.SelectedRows[0].Cells[2].Value.ToString();
+                            cashierID = this.dataGridViewSalesDetails.SelectedRows[0].Cells[3].Value.ToString();
+                            createdDate = this.dataGridViewSalesDetails.SelectedRows[0].Cells[4].Value.ToString();
+                            createdTime = this.dataGridViewSalesDetails.SelectedRows[0].Cells[5].Value.ToString();
+                            quantity = numericUpDownReturnQuantity.Value.ToString();
+                            amount = this.getNewReturnAmount().ToString();
+                            //unitPrice = this.getUnitPrice(newConnnection);
+                            branch = this.dataGridViewSalesDetails.SelectedRows[0].Cells[8].Value.ToString();
+                            DataGridViewRow row1 = (DataGridViewRow)dataGridViewReturnDetails.Rows[0].Clone();
+                            row1.Cells[0].Value = invoiceNo.ToString();
+                            row1.Cells[1].Value = productID.ToString();
+                            row1.Cells[2].Value = productName.ToString();
+                            row1.Cells[3].Value = cashierID.ToString();
+                            row1.Cells[4].Value = createdDate.ToString();
+                            row1.Cells[5].Value = createdTime.ToString();
+                            row1.Cells[6].Value = quantity.ToString();
+                            row1.Cells[7].Value = amount.ToString();
+                            row1.Cells[8].Value = branch.ToString();
+                            dataGridViewReturnDetails.Rows.Add(row1);
+                        }catch(Exception ex)
+                        {
+                            MessageBox.Show("Invalid Item Selection!!!","Error in Item");
+                        }
                         try
                         {
                             updateCustomerOrderTransactionsForReturn_AddButton(getReturnItemQuery_order_transactions_table(), newConnnection);
@@ -298,7 +303,7 @@ namespace Star_Pharmacy
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show(ex.Message);
+                            //MessageBox.Show(ex.Message);
                         }
                     }
                 }
@@ -451,9 +456,17 @@ namespace Star_Pharmacy
             }
             cmbBoxProductID.Text = null;
             cmbBoxInvoiceNo.Text = null;
-            dataGridViewSalesDetails.DataSource = null;
+            try
+            {
+                dataGridViewSalesDetails.DataSource = null;
+            }catch(Exception ex)
+            {
 
-        }//DONE --look more
+            }
+        }
+        
+        
+        //DONE --look more
         public void setParentForm(cashierForm parentCashierForm)
         {
             this.parentCashierForm = parentCashierForm;
@@ -504,14 +517,21 @@ namespace Star_Pharmacy
                 }
                 else
                 {
-                    MessageBox.Show("Wrong Query");
+                    //MessageBox.Show("Wrong Query");
                 }
 
                 foreach (DataGridViewRow row in dataGridViewReturnDetails.SelectedRows)
                 {
-                    if (this.dataGridViewReturnDetails.SelectedRows.Count == 1)
+                    try
                     {
-                        this.dataGridViewReturnDetails.Rows.RemoveAt(this.dataGridViewReturnDetails.SelectedRows[0].Index);
+                        if (this.dataGridViewReturnDetails.SelectedRows.Count == 1)
+                        {
+                            this.dataGridViewReturnDetails.Rows.RemoveAt(this.dataGridViewReturnDetails.SelectedRows[0].Index);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
                     }
                 }
                 if (dataGridViewReturnDetails.RowCount == 1)
@@ -554,7 +574,7 @@ namespace Star_Pharmacy
                         //MessageBox.Show(query);
                     } catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                       // MessageBox.Show(ex.Message);
                     }
                 }
             }
@@ -592,7 +612,7 @@ namespace Star_Pharmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(myQuery, ex.Message + " GetReturnQuantity() ");
+                //MessageBox.Show(myQuery, ex.Message + " GetReturnQuantity() ");
             }
             return ReturnQuantity;
         }//DONE
@@ -627,7 +647,7 @@ namespace Star_Pharmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(myQuery, ex.Message + " GetQuantity() ");
+                //MessageBox.Show(myQuery, ex.Message + " GetQuantity() ");
             }
             return Quantity;
         } // DONE
@@ -740,17 +760,24 @@ namespace Star_Pharmacy
                 {
 
                     foreach (DataGridViewRow row in dataGridViewReturnDetails.SelectedRows)
-                    {
+                {
+                    try {
                         productID1 = row.Cells["ProductID"].Value.ToString();
                         invoiceNo1 = row.Cells["InvoiceNo"].Value.ToString();
                         returnQuantity1 = row.Cells["Quantity"].Value.ToString();
+
                         break;
+                    }
+                    catch (Exception ex) { 
+                        
+                    }
                     }
                 }
                 else
                 {
                     MessageBox.Show("Please select item!");
                 }
+            try { 
                 int returnQuantity2 = currentReturnQuantity - Int32.Parse(returnQuantity1); ;
 
                 string query1 = "UPDATE pharmacy.order_transactions SET ReturnQuantity = " + returnQuantity2 + " WHERE ProductID = " + productID1 + " AND InvoiceNo = " + invoiceNo1 + " ;";
@@ -764,8 +791,7 @@ namespace Star_Pharmacy
                 //DataGridViewComboBoxColumn newRow = this.dataGridView1.
                 //DataGridViewComboBoxCell newCell = newRow.Cells["Invoice No"];
 
-                try
-                {
+                
                     newConnnection.Open();
                     newDataReader = newCommand.ExecuteReader();
                     while (newDataReader.Read())
@@ -777,7 +803,7 @@ namespace Star_Pharmacy
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show("Error In the Item");
                 }
             }//DONE
         }

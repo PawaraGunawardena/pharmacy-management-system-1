@@ -41,19 +41,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel">
-      <HintPath>D:\Semester 3 Project\references\GDI+\MigraDoc.DocumentObjectModel.dll</HintPath>
+      <HintPath>..\..\..\..\OOSD Project\Project Assembly\GDI+\MigraDoc.DocumentObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel.resources">
       <HintPath>..\..\..\..\OOSD Project\Project Assembly\GDI+\de\MigraDoc.DocumentObjectModel.resources.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.Rendering">
-      <HintPath>D:\Semester 3 Project\references\GDI+\MigraDoc.Rendering.dll</HintPath>
+      <HintPath>..\..\..\..\OOSD Project\Project Assembly\GDI+\MigraDoc.Rendering.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.Rendering.resources">
       <HintPath>..\..\..\..\OOSD Project\Project Assembly\GDI+\de\MigraDoc.Rendering.resources.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.RtfRendering">
-      <HintPath>D:\Semester 3 Project\references\GDI+\MigraDoc.RtfRendering.dll</HintPath>
+      <HintPath>..\..\..\..\OOSD Project\Project Assembly\GDI+\MigraDoc.RtfRendering.dll</HintPath>
     </Reference>
     <Reference Include="MigraDoc.RtfRendering.resources">
       <HintPath>..\..\..\..\OOSD Project\Project Assembly\GDI+\de\MigraDoc.RtfRendering.resources.dll</HintPath>
@@ -63,10 +63,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="PdfSharp">
-      <HintPath>D:\Semester 3 Project\references\GDI+\PdfSharp.dll</HintPath>
+      <HintPath>..\..\..\..\OOSD Project\Project Assembly\GDI+\PdfSharp.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp.Charting">
-      <HintPath>D:\Semester 3 Project\references\GDI+\PdfSharp.Charting.dll</HintPath>
+      <HintPath>..\..\..\..\OOSD Project\Project Assembly\GDI+\PdfSharp.Charting.dll</HintPath>
     </Reference>
     <Reference Include="PdfSharp.resources">
       <HintPath>..\..\..\..\OOSD Project\Project Assembly\GDI+\de\PdfSharp.resources.dll</HintPath>
@@ -219,7 +219,6 @@
     </Compile>
     <Compile Include="pharmacyDataSet2.cs">
       <DependentUpon>pharmacyDataSet2.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="pharmacyDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
