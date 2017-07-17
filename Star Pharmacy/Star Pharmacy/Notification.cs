@@ -21,7 +21,7 @@ namespace Star_Pharmacy
                 today = DateTime.Today;
                 sevenDaysOnwards = today.AddDays(7);
 
-                MySqlDataAdapter sAdapter = new MySqlDataAdapter("select * from pharmacy.inventory where ExpiryDate between '" + today.ToString("yyyy-MM-dd") + "' and '" + sevenDaysOnwards.ToString("yyyy-MM-dd") + "';", SqlCon.con);
+                MySqlDataAdapter sAdapter = new MySqlDataAdapter("select * from pharmacy.inventory where ExpiryDate <= '" + sevenDaysOnwards.ToString("yyyy-MM-dd") + "';", SqlCon.con);
                 DataTable dt = new DataTable();
                 sAdapter.Fill(dt);
                 MySqlDataAdapter sAdapter2 = new MySqlDataAdapter("SELECT * from inventory where `InStock`<`Reorderlevel`;", SqlCon.con);

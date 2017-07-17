@@ -46,7 +46,7 @@
             this.groupBox1.Size = new System.Drawing.Size(719, 201);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Items to be expired in a week";
+            this.groupBox1.Text = "Items to be expired in a week and Expired Items";
             // 
             // dataGridView1
             // 
