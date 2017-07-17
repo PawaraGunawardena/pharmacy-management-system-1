@@ -71,6 +71,12 @@
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.supplierdetailsTableAdapter = new Star_Pharmacy.pharmacyDataSet1TableAdapters.supplierdetailsTableAdapter();
+            this.pharmacyDataSet5 = new Star_Pharmacy.pharmacyDataSet5();
+            this.supplierdetailsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.supplierdetailsTableAdapter1 = new Star_Pharmacy.pharmacyDataSet5TableAdapters.supplierdetailsTableAdapter();
+            this.pharmacyDataSet6 = new Star_Pharmacy.pharmacyDataSet6();
+            this.supplierdetailsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.supplierdetailsTableAdapter2 = new Star_Pharmacy.pharmacyDataSet6TableAdapters.supplierdetailsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -83,6 +89,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.unitprice_nud)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -273,7 +283,7 @@
             // supplier_combobox
             // 
             this.supplier_combobox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.supplier_combobox.DataSource = this.supplierdetailsBindingSource;
+            this.supplier_combobox.DataSource = this.supplierdetailsBindingSource2;
             this.supplier_combobox.DisplayMember = "CompanyName";
             this.supplier_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.supplier_combobox.FormattingEnabled = true;
@@ -526,6 +536,34 @@
             // 
             this.supplierdetailsTableAdapter.ClearBeforeFill = true;
             // 
+            // pharmacyDataSet5
+            // 
+            this.pharmacyDataSet5.DataSetName = "pharmacyDataSet5";
+            this.pharmacyDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // supplierdetailsBindingSource1
+            // 
+            this.supplierdetailsBindingSource1.DataMember = "supplierdetails";
+            this.supplierdetailsBindingSource1.DataSource = this.pharmacyDataSet5;
+            // 
+            // supplierdetailsTableAdapter1
+            // 
+            this.supplierdetailsTableAdapter1.ClearBeforeFill = true;
+            // 
+            // pharmacyDataSet6
+            // 
+            this.pharmacyDataSet6.DataSetName = "pharmacyDataSet6";
+            this.pharmacyDataSet6.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // supplierdetailsBindingSource2
+            // 
+            this.supplierdetailsBindingSource2.DataMember = "supplierdetails";
+            this.supplierdetailsBindingSource2.DataSource = this.pharmacyDataSet6;
+            // 
+            // supplierdetailsTableAdapter2
+            // 
+            this.supplierdetailsTableAdapter2.ClearBeforeFill = true;
+            // 
             // modify_inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -555,6 +593,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -602,5 +644,11 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown buyingInvoiceNo_nud;
         private System.Windows.Forms.Label label14;
+        private pharmacyDataSet5 pharmacyDataSet5;
+        private System.Windows.Forms.BindingSource supplierdetailsBindingSource1;
+        private pharmacyDataSet5TableAdapters.supplierdetailsTableAdapter supplierdetailsTableAdapter1;
+        private pharmacyDataSet6 pharmacyDataSet6;
+        private System.Windows.Forms.BindingSource supplierdetailsBindingSource2;
+        private pharmacyDataSet6TableAdapters.supplierdetailsTableAdapter supplierdetailsTableAdapter2;
     }
 }

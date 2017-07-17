@@ -202,6 +202,8 @@ namespace Star_Pharmacy
             {
                 SqlCon.con.Open();
                 MySqlCommand cmd = new MySqlCommand("INSERT INTO `supplierdetails`(`SupplierID`, `CompanyName`, `ContactPerson`, `ContactPersonTelephone`, `CompanyTelephone`) VALUES ('"+supID_nud.Value.ToString()+"','"+textBox1.Text+"','"+textBox2.Text+"','"+textBox3.Text+"','"+textBox4.Text+"');",SqlCon.con);
+                MySqlCommand cmd1 = new MySqlCommand("INSERT INTO `credit_details`(`SupplierID`, `SupplierName`, `CreditAmount`) VALUES ('"+supID_nud.Value.ToString()+"','"+textBox1.Text+"','"+0+"');",SqlCon.con);
+                cmd1.ExecuteNonQuery();
                 cmd.ExecuteNonQuery();
                 SqlCon.con.Close();
                 MessageBox.Show("Supplier Details Inserted!");

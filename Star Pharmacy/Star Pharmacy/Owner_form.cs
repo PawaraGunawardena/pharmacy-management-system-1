@@ -212,6 +212,7 @@ namespace Star_Pharmacy
         {
             hideUnwantedForms();
             supplier_transactions suptrans = supplier_transactions.getSupTransactions(splitContainer1, this);
+            suptrans.refreshdatagrid();
             suptrans.Location = new Point((splitContainer1.Panel2.Width - suptrans.Width) / 2, (splitContainer1.Panel2.Height - suptrans.Height) / 2);
             suptrans.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             suptrans.Show();

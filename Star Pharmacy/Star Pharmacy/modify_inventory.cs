@@ -40,6 +40,10 @@ namespace Star_Pharmacy
 
         private void modify_inventory_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'pharmacyDataSet6.supplierdetails' table. You can move, or remove it, as needed.
+            this.supplierdetailsTableAdapter2.Fill(this.pharmacyDataSet6.supplierdetails);
+            // TODO: This line of code loads data into the 'pharmacyDataSet5.supplierdetails' table. You can move, or remove it, as needed.
+            this.supplierdetailsTableAdapter1.Fill(this.pharmacyDataSet5.supplierdetails);
             // TODO: This line of code loads data into the 'pharmacyDataSet1.supplierdetails' table. You can move, or remove it, as needed.
             this.supplierdetailsTableAdapter.Fill(this.pharmacyDataSet1.supplierdetails);
             String query = "Select * from pharmacy.inventory;";

@@ -158,29 +158,13 @@ namespace Star_Pharmacy
                 SqlCon.con.Open();
                 MySqlCommand cmd1 = new MySqlCommand(@"insert into pharmacy.debit_balances (DebitID,SupplierName,PaidAmount,Date,Time) values ('" + null + "','" + supName_select.Text + "','" + payAmount.Value.ToString() + "','" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToShortTimeString() + "');", SqlCon.con);
                 cmd1.ExecuteNonQuery();
-
-                //MySqlCommand cmd2 = new MySqlCommand(@"select sum('Value') from pharmacy.supplier_transactions where SupplierName='"+supName_select.Text+"';", SqlCon.con);
-                //double totalValue = double.Parse(cmd2.ExecuteScalar().ToString());
-               
-
-                double debitValue;
-                try
-                {
-                    MySqlCommand cmd3 = new MySqlCommand(@"select sum('PaidAmount') from pharmacy.debit_balances where SupplierName='" + supName_select.Text + "';", SqlCon.con);
-                    debitValue = double.Parse(cmd3.ExecuteScalar().ToString());
-                }
-
-                catch
-                {
-                    debitValue = 0;
-                }
-
-                MySqlCommand cmd2 = new MySqlCommand("update credit_details set CreditAmount = (CreditAmount -'" + debitValue.ToString() +"') from credit_details where SupplierName='" + supName_select.Text + "';", SqlCon.con);
+                Decimal paidAmount = payAmount.Value;
+                MySqlCommand cmd2 = new MySqlCommand("update credit_details set creditamount = creditamount -'" + paidAmount.ToString() + "' where suppliername = '" + supName_select.Text + "';", SqlCon.con);
                 cmd2.ExecuteNonQuery();
+                refreshdatagrid();
+                cancelBtn_Click(sender, e);
+                MessageBox.Show("Payment Success!");
                 
-
-                SqlCon.con.Close();
-                creditDetails.Refresh();
 
             }
             else
@@ -212,6 +196,14 @@ namespace Star_Pharmacy
         {
             debitDetails debD = debitDetails.getDebitDetails();
             debD.Show();
+        }
+        public void refreshdatagrid()
+        {
+            String query1 = "Select * from pharmacy.supplier_transactions";
+            SqlCon.updateDataGridView(query1, supplier_transactionsDetails);
+
+            String query2 = "Select * from pharmacy.credit_details";
+            SqlCon.updateDataGridView(query2, creditDetails);
         }
     }
 }
