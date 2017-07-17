@@ -133,6 +133,8 @@ namespace Star_Pharmacy
         private void btnAddSuppliers_Click(object sender, EventArgs e)
         {
             groupBox1.Enabled = true;
+            groupBox2.Enabled = false;
+
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -169,6 +171,44 @@ namespace Star_Pharmacy
 
             btnViewSupplierDetails.Enabled = true;
             btnViewCredit.Enabled = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            groupBox2.Enabled = true;
+            groupBox1.Enabled = false;
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            MySqlDataAdapter sda1 = new MySqlDataAdapter("select * from supplierdetails where SupplierID ='" + supID_nud.Value.ToString() + "';",SqlCon.con);
+            MySqlDataAdapter sda2 = new MySqlDataAdapter("Select * from supplierdetails where CompanyName= '" + textBox1.Text + "';",SqlCon.con);
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            sda1.Fill(dt1);
+            sda2.Fill(dt2);
+            bool notcorrect = false;
+            if (dt1.Rows.Count > 0 || dt2.Rows.Count > 0 || textBox1.Text =="")
+            {
+                notcorrect = true;
+            }
+
+
+            if (notcorrect)
+            {
+                MessageBox.Show("Check Details Again!!");
+            }
+            else
+            {
+                SqlCon.con.Open();
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO `supplierdetails`(`SupplierID`, `CompanyName`, `ContactPerson`, `ContactPersonTelephone`, `CompanyTelephone`) VALUES ('"+supID_nud.Value.ToString()+"','"+textBox1.Text+"','"+textBox2.Text+"','"+textBox3.Text+"','"+textBox4.Text+"');",SqlCon.con);
+                cmd.ExecuteNonQuery();
+                SqlCon.con.Close();
+                MessageBox.Show("Supplier Details Inserted!");
+                refreshDatagrid(sender,e);
+                button3_Click(sender, e);
+
+            }
         }
     }
 }
