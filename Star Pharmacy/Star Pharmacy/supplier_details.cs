@@ -188,7 +188,7 @@ namespace Star_Pharmacy
             sda1.Fill(dt1);
             sda2.Fill(dt2);
             bool notcorrect = false;
-            if (dt1.Rows.Count > 0 || dt2.Rows.Count > 0 || textBox1.Text =="")
+            if (dt1.Rows.Count > 0 || dt2.Rows.Count > 0 || textBox1.Text =="" || textBox2.Text =="" || textBox3.Text == "" || textBox4.Text=="")
             {
                 notcorrect = true;
             }
