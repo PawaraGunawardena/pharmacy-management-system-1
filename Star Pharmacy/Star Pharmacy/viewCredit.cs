@@ -16,5 +16,11 @@ namespace Star_Pharmacy
         {
             InitializeComponent();
         }
+
+        private void viewCredit_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+            this.MaximizeBox = false;
+        }
     }
 }

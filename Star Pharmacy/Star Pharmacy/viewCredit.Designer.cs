@@ -119,8 +119,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "viewCredit";
             this.Text = "View Credit";
+            this.Load += new System.EventHandler(this.viewCredit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

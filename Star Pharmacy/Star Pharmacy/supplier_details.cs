@@ -45,6 +45,8 @@ namespace Star_Pharmacy
         private void supplier_details_Load(object sender, EventArgs e)
         {
             //con.Open();
+            btnViewSupplierDetails.Enabled = false;
+            btnViewCredit.Enabled = false;
         }
 
         private void btnViewSupliers_Click(object sender, EventArgs e)
@@ -160,6 +162,13 @@ namespace Star_Pharmacy
             SqlCon.updateDataGridView(query, supplierDetailsDgv);
 
             con.Close();
+        }
+
+        private void supplierDetailsDgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            btnViewSupplierDetails.Enabled = true;
+            btnViewCredit.Enabled = true;
         }
     }
 }

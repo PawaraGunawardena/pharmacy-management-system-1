@@ -54,6 +54,7 @@
             this.supplierDetailsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.supplierDetailsDgv.Size = new System.Drawing.Size(579, 340);
             this.supplierDetailsDgv.TabIndex = 0;
+            this.supplierDetailsDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierDetailsDgv_CellContentClick);
             // 
             // btnViewSupliers
             // 
