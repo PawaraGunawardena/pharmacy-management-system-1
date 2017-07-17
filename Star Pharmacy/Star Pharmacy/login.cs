@@ -73,7 +73,7 @@ namespace Star_Pharmacy
                 else if (dt.Rows.Count == 1 && dt.Rows[0][3].ToString() == "StockManager")
                 {
                     Program.logged_id = Convert.ToInt32(dt.Rows[0][0].ToString());
-                    StockManagerForm of = new StockManagerForm();
+                    StockManagerForm of = new StockManagerForm(Program.logged_id, TransactionControl.findBranch(Program.logged_id.ToString()));
                     this.Hide();
                     of.Show();
                 }

@@ -38,6 +38,8 @@ namespace Star_Pharmacy
         private int enablePassword = 0;
         CheckBox[] check =new  CheckBox[4];
         cashierForm parentCashierForm;
+        StockManagerForm stockForm;
+
 
         public ChangePersonalDetails(string fName, string lName,int id, string adress, string UName, string password, string branch , int working, string type, string dob, int salary )
         {
@@ -115,6 +117,7 @@ namespace Star_Pharmacy
         {
             if (checkExistingPasswordAndUserName())
             {
+                MessageBox.Show(firstName +lastName+adress,"f l a ");
                 checkBoxAddress.Enabled = true;
                 checkBoxLastName.Enabled = true;
                 checkBoxPassword.Enabled = true;
@@ -126,7 +129,8 @@ namespace Star_Pharmacy
                 MessageBox.Show("Your enetered current username or password incorrect. Fill again and try", "Invalid Username or password");
                 txtBoxOldPassword.Text = "";
                 txtBoxOldUName.Text = "";
-               
+                MessageBox.Show(firstName + lastName + adress, "f l a ");
+
             }
         }
 
@@ -202,7 +206,7 @@ namespace Star_Pharmacy
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            parentCashierForm.parentButtonActivation(true);
+            stockForm.parentButtonActivation(true);
             string connectionString = "server=localhost;user id=root;database=pharmacy";
             string myQuery = getNewQuery();
 
@@ -334,7 +338,7 @@ namespace Star_Pharmacy
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-            parentCashierForm.parentButtonActivation(true);
+            stockForm.parentButtonActivation(true);
         }
 
         private bool getCheckedAndnonEmpty()
@@ -351,6 +355,11 @@ namespace Star_Pharmacy
                 }
             }
             return enableupadate;
+        }
+        public void setParentStock(StockManagerForm stockForm)
+        {
+            this.stockForm = stockForm;
+
         }
         
     }

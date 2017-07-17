@@ -33,6 +33,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnChnageDetails = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -47,6 +48,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.splitContainer1.Panel1.Controls.Add(this.btnChnageDetails);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.button2);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
@@ -55,11 +57,9 @@
             // 
             this.splitContainer1.Panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("splitContainer1.Panel2.BackgroundImage")));
             this.splitContainer1.Panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            //this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(821, 713);
             this.splitContainer1.SplitterDistance = 218;
             this.splitContainer1.TabIndex = 0;
-            //this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // button3
             // 
@@ -91,18 +91,27 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // owner_form2
+            // btnChnageDetails
+            // 
+            this.btnChnageDetails.Location = new System.Drawing.Point(21, 290);
+            this.btnChnageDetails.Name = "btnChnageDetails";
+            this.btnChnageDetails.Size = new System.Drawing.Size(179, 62);
+            this.btnChnageDetails.TabIndex = 3;
+            this.btnChnageDetails.Text = "Change Personal Details";
+            this.btnChnageDetails.UseVisualStyleBackColor = true;
+            this.btnChnageDetails.Click += new System.EventHandler(this.btnChnageDetails_Click);
+            // 
+            // StockManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 713);
             this.Controls.Add(this.splitContainer1);
             this.IsMdiContainer = true;
-            this.Name = "owner_form2";
+            this.Name = "StockManagerForm";
             this.Text = "Control Panel";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.cashier_form_FormClosed);
-            //this.Load += new System.EventHandler(this.cashier_form_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -116,5 +125,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnChnageDetails;
     }
 }
