@@ -63,6 +63,7 @@ namespace Star_Pharmacy
             String query = "Select * from pharmacy.people";
             SqlCon.updateDataGridView(query, emp_details);
             groupBox1.Enabled = false;
+            bdayPicker.MaxDate = DateTime.Today;
 
         }
 
