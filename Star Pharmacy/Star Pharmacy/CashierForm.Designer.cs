@@ -32,6 +32,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.btnReturnOrder = new System.Windows.Forms.Button();
             this.btnNewOrder = new System.Windows.Forms.Button();
+            this.btnChangeDetails = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -46,6 +47,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.splitContainer1.Panel1.Controls.Add(this.btnChangeDetails);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.btnReturnOrder);
             this.splitContainer1.Panel1.Controls.Add(this.btnNewOrder);
@@ -83,6 +85,16 @@
             this.btnNewOrder.UseVisualStyleBackColor = true;
             this.btnNewOrder.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnChangeDetails
+            // 
+            this.btnChangeDetails.Location = new System.Drawing.Point(20, 337);
+            this.btnChangeDetails.Name = "btnChangeDetails";
+            this.btnChangeDetails.Size = new System.Drawing.Size(181, 60);
+            this.btnChangeDetails.TabIndex = 3;
+            this.btnChangeDetails.Text = "Change Details";
+            this.btnChangeDetails.UseVisualStyleBackColor = true;
+            this.btnChangeDetails.Click += new System.EventHandler(this.btnChangeDetails_Click);
+            // 
             // cashierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -108,5 +120,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnReturnOrder;
         private System.Windows.Forms.Button btnNewOrder;
+        private System.Windows.Forms.Button btnChangeDetails;
     }
 }

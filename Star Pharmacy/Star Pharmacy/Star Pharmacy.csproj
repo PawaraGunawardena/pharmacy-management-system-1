@@ -103,6 +103,12 @@
     <Compile Include="cashierForm.Designer.cs">
       <DependentUpon>cashierForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangePersonalDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePersonalDetails.Designer.cs">
+      <DependentUpon>ChangePersonalDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="create_order.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cashierForm.resx">
       <DependentUpon>cashierForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePersonalDetails.resx">
+      <DependentUpon>ChangePersonalDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="create_order.resx">
       <DependentUpon>create_order.cs</DependentUpon>

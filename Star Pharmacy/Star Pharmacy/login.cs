@@ -13,7 +13,8 @@ namespace Star_Pharmacy
 {
     public partial class login : Form
     {
-        
+        int logged_id;
+
         public login()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace Star_Pharmacy
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -60,10 +61,14 @@ namespace Star_Pharmacy
                 }
                 else if (dt.Rows.Count == 1 && dt.Rows[0][3].ToString() == "Cashier")
                 {
-                    cashierForm cashier = new cashierForm();
+                    Program.logged_id = Convert.ToInt32(dt.Rows[0][0].ToString());
+                    logged_id = Program.logged_id;
+                    
+                    cashierForm cashier = new cashierForm(Program.logged_id, TransactionControl.findBranch(Program.logged_id.ToString()));
                     this.Hide();
                     cashier.Show();
-                    Program.logged_id = Convert.ToInt32(dt.Rows[0][0].ToString());
+
+
                 }
                 else if (dt.Rows.Count == 1 && dt.Rows[0][3].ToString() == "StockManager")
                 {
@@ -75,25 +80,32 @@ namespace Star_Pharmacy
                 else
                 {
                     MessageBox.Show("Incorrect Password or Username!");
-                    
+
                 }
             }
             catch (Exception ex)
-           {
-          
+            {
+
                 MessageBox.Show(ex.Message);
-                
+
             }
         }
 
         private void login_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 }
