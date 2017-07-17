@@ -337,6 +337,7 @@ namespace Star_Pharmacy
                         SqlCon.con.Close();
                         String query = "Select * from pharmacy.people;";
                         SqlCon.updateDataGridView(query, emp_details);
+                        MessageBox.Show("Employee Successfully added!");
                     }
                     else
                     {
@@ -372,6 +373,7 @@ namespace Star_Pharmacy
                     String query = "Select * from pharmacy.people;";
                     SqlCon.updateDataGridView(query, emp_details);
                     cancelBtn_Click(sender, e);
+                    MessageBox.Show("Employee Details changed successfully!");
                 }
 
                 else

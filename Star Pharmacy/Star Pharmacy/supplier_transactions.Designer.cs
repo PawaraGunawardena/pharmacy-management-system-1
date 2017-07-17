@@ -63,6 +63,9 @@
             this.supplierID_search2 = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.pharmacyDataSet7 = new Star_Pharmacy.pharmacyDataSet7();
+            this.supplierdetailsBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.supplierdetailsTableAdapter2 = new Star_Pharmacy.pharmacyDataSet7TableAdapters.supplierdetailsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.supplier_transactionsDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet4)).BeginInit();
@@ -77,6 +80,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.transactionID_search1)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.supplierID_search2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // supplier_transactionsDetails
@@ -374,7 +379,7 @@
             // 
             // supplierName_search2
             // 
-            this.supplierName_search2.DataSource = this.supplierdetailsBindingSource2;
+            this.supplierName_search2.DataSource = this.supplierdetailsBindingSource3;
             this.supplierName_search2.DisplayMember = "CompanyName";
             this.supplierName_search2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.supplierName_search2.FormattingEnabled = true;
@@ -416,6 +421,20 @@
             this.label9.TabIndex = 7;
             this.label9.Text = "Supplier ID";
             // 
+            // pharmacyDataSet7
+            // 
+            this.pharmacyDataSet7.DataSetName = "pharmacyDataSet7";
+            this.pharmacyDataSet7.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // supplierdetailsBindingSource3
+            // 
+            this.supplierdetailsBindingSource3.DataMember = "supplierdetails";
+            this.supplierdetailsBindingSource3.DataSource = this.pharmacyDataSet7;
+            // 
+            // supplierdetailsTableAdapter2
+            // 
+            this.supplierdetailsTableAdapter2.ClearBeforeFill = true;
+            // 
             // supplier_transactions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,6 +469,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.supplierID_search2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -491,5 +512,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button clrBtn;
         private System.Windows.Forms.Button ClrBtn2;
+        private pharmacyDataSet7 pharmacyDataSet7;
+        private System.Windows.Forms.BindingSource supplierdetailsBindingSource3;
+        private pharmacyDataSet7TableAdapters.supplierdetailsTableAdapter supplierdetailsTableAdapter2;
     }
 }
