@@ -181,14 +181,14 @@ namespace Star_Pharmacy
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            MySqlDataAdapter sda1 = new MySqlDataAdapter("select * from supplierdetails where SupplierID ='" + supID_nud.Value.ToString() + "';",SqlCon.con);
-            MySqlDataAdapter sda2 = new MySqlDataAdapter("Select * from supplierdetails where CompanyName= '" + textBox1.Text + "';",SqlCon.con);
+            MySqlDataAdapter sda1 = new MySqlDataAdapter("select * from supplierdetails where SupplierID ='" + supID_nud.Value.ToString() + "';", SqlCon.con);
+            MySqlDataAdapter sda2 = new MySqlDataAdapter("Select * from supplierdetails where CompanyName= '" + textBox1.Text + "';", SqlCon.con);
             DataTable dt1 = new DataTable();
             DataTable dt2 = new DataTable();
             sda1.Fill(dt1);
             sda2.Fill(dt2);
             bool notcorrect = false;
-            if (dt1.Rows.Count > 0 || dt2.Rows.Count > 0 || textBox1.Text =="" || textBox2.Text =="" || textBox3.Text == "" || textBox4.Text=="")
+            if (dt1.Rows.Count > 0 || dt2.Rows.Count > 0 || textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "" || textBox4.Text.Length > 9 || textBox4.Text.Length < 9)
             {
                 notcorrect = true;
             }
@@ -215,12 +215,37 @@ namespace Star_Pharmacy
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar == 8 || e.KeyChar == 46 || e.KeyChar == 32);
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
-            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back || e.KeyChar ==8 || e.KeyChar == 46 || e.KeyChar == 32);
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+
+            if(!Char.IsDigit(ch)&& ch != 8 && ch!= 46)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+
+            if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
