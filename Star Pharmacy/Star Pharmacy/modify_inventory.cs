@@ -418,5 +418,25 @@ namespace Star_Pharmacy
         {
             unitprice_nud.Minimum = buyingPrice_nud.Value;
         }
+
+        private void supplier_combobox_Click(object sender, EventArgs e)
+        {
+            supplier_combobox.DataSource = supplierdetailsBindingSource2;
+        }
+
+        private void brandName_txtbox_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void brandName_txtbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void medicalname_txtbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
     }
 }
