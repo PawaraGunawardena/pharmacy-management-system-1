@@ -24,6 +24,8 @@ namespace Star_Pharmacy
 
         private void supplier_transactions_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'pharmacyDataSet7.supplierdetails' table. You can move, or remove it, as needed.
+            this.supplierdetailsTableAdapter2.Fill(this.pharmacyDataSet7.supplierdetails);
             // TODO: This line of code loads data into the 'pharmacyDataSet4.supplierdetails' table. You can move, or remove it, as needed.
             this.supplierdetailsTableAdapter1.Fill(this.pharmacyDataSet4.supplierdetails);
             // TODO: This line of code loads data into the 'pharmacyDataSet3.supplierdetails' table. You can move, or remove it, as needed.
@@ -135,6 +137,8 @@ namespace Star_Pharmacy
                 groupBox3.Enabled = false;
                 viewDebit.Enabled = false;
                 supName_select.Enabled = false;
+                creditDetails.Enabled = false;
+                supplier_transactionsDetails.Enabled = false;
                 string supD = creditDetails.SelectedRows[0].Cells[1].Value.ToString();
                 supName_select.Text = supD;
             }

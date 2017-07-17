@@ -144,6 +144,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>pharmacyDataSet6.xsd</DependentUpon>
     </Compile>
+    <Compile Include="pharmacyDataSet7.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>pharmacyDataSet7.xsd</DependentUpon>
+    </Compile>
     <Compile Include="StckManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -406,6 +411,17 @@
     </None>
     <None Include="pharmacyDataSet6.xss">
       <DependentUpon>pharmacyDataSet6.xsd</DependentUpon>
+    </None>
+    <None Include="pharmacyDataSet7.xsc">
+      <DependentUpon>pharmacyDataSet7.xsd</DependentUpon>
+    </None>
+    <None Include="pharmacyDataSet7.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>pharmacyDataSet7.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="pharmacyDataSet7.xss">
+      <DependentUpon>pharmacyDataSet7.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
