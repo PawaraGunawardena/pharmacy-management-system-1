@@ -86,7 +86,7 @@ namespace Star_Pharmacy
             update_clicked = false;
             groupBox1.Enabled = true;
             groupBox2.Enabled = false;
-            button1.Enabled = false;
+            //button1.Enabled = false;
             button2.Enabled = false;
             button4.Enabled = false;
             numericUpDown2.ReadOnly = false;
@@ -185,28 +185,42 @@ namespace Star_Pharmacy
             }
             else if (edit_clicked)
             {
-                SqlCon.con.Open();
-                MySqlCommand locktable = new MySqlCommand("lock tables pharmacy.inventory write;",SqlCon.con);
-                locktable.ExecuteNonQuery();
-                MySqlCommand cmd = new MySqlCommand("delete from pharmacy.inventory where ProductID='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
-                cmd.ExecuteNonQuery();
-                MySqlCommand cmd1 = new MySqlCommand(@"insert into pharmacy.inventory (ProductID,BrandName,MedicalName,Supplier
+                if (brandName_txtbox.Text == "" || medicalname_txtbox.Text == "" || branch_combobox.SelectedItem == null)
+                {
+                    MessageBox.Show("Check details again!");
+                }
+                else if (label13.Text == "Unavailable")
+                {
+                    MessageBox.Show("Check productID again!");
+                }
+                else
+                {
+                    decimal value = buyingPrice_nud.Value * noofitems_nud.Value;
+                    SqlCon.con.Open();
+                    MySqlCommand locktable = new MySqlCommand("lock tables pharmacy.inventory write;", SqlCon.con);
+                    locktable.ExecuteNonQuery();
+                    MySqlCommand cmd = new MySqlCommand("delete from pharmacy.inventory where ProductID='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
+                    cmd.ExecuteNonQuery();
+                    MySqlCommand cmd1 = new MySqlCommand(@"insert into pharmacy.inventory (ProductID,BrandName,MedicalName,Supplier
                                         ,UnitPrice,ExpiryDate,InStock,Reorderlevel,Branch) values ('" + numericUpDown2.Value.ToString() + "','" + brandName_txtbox.Text + "','" + medicalname_txtbox.Text + "','" + supplier_combobox.Text + "','" + unitprice_nud.Value.ToString() + "','" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "','" + noofitems_nud.Value.ToString() + "','" + numericUpDown5.Value.ToString() + "','" + branch_combobox.Text + "');", SqlCon.con);
-               
-
-                cmd1.ExecuteNonQuery();
-                MySqlCommand unlock = new MySqlCommand("unlock tables;", SqlCon.con);
-                unlock.ExecuteNonQuery();
-                SqlCon.con.Close();
-                String query = "Select * from pharmacy.inventory;";
-                SqlCon.updateDataGridView(query, dataGridView1);
-                button6_Click(sender, e);
+                    MySqlCommand cmd_suptransac = new MySqlCommand("INSERT INTO supplier_transactions (`TransactionID`, `InvoiceNo`, `ItemID`, `Quantity`, `BuyingPrice`, `SupplierName`, `Date`, `Time`, `Value`) VALUES(NULL,'" + buyingInvoiceNo_nud.Value.ToString() + "','" + numericUpDown2.Value.ToString() + "','" + noofitems_nud.Value.ToString() + "','" + buyingPrice_nud.Value.ToString() + "','" + supplier_combobox.Text + "','" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToShortTimeString() + "','" + value.ToString() + "');", SqlCon.con);
+                    MySqlCommand cmd_creditdetails = new MySqlCommand("update credit_details set creditamount = creditamount + '" + value.ToString() + "' where suppliername = '" + supplier_combobox.Text + "';", SqlCon.con);
+                    cmd_suptransac.ExecuteNonQuery();
+                    cmd_creditdetails.ExecuteNonQuery();
+                    cmd1.ExecuteNonQuery();
+                    MySqlCommand unlock = new MySqlCommand("unlock tables;", SqlCon.con);
+                    unlock.ExecuteNonQuery();
+                    SqlCon.con.Close();
+                    String query = "Select * from pharmacy.inventory;";
+                    SqlCon.updateDataGridView(query, dataGridView1);
+                    button6_Click(sender, e);
+                }
 
             }
             else if (update_clicked)
             {
                 SqlCon.con.Open();
-                MySqlCommand cmd = new MySqlCommand("update pharmacy.inventory set InStock='" + noofitems_nud.Value.ToString() + "' where ProductID ='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
+                MySqlCommand cmd = new MySqlCommand("update pharmacy.inventory set UnitPrice='" + unitprice_nud.Value.ToString() + "' where ProductID ='" + dataGridView1.SelectedRows[0].Cells[0].Value.ToString() + "';", SqlCon.con);
                 cmd.ExecuteNonQuery();
                 SqlCon.con.Close();
                 SqlCon.updateDataGridView("select * from pharmacy.inventory;", dataGridView1);
@@ -222,7 +236,7 @@ namespace Star_Pharmacy
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+      /*  private void button1_Click(object sender, EventArgs e)
         {
             add_clicked = false;
             remove_clicked = false;
@@ -261,11 +275,11 @@ namespace Star_Pharmacy
                 MessageBox.Show("Select a product first!","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
-        }
+        }*/
         private void resetState()
         {
             groupBox2.Enabled = true;
-            button1.Enabled = true;
+            //button1.Enabled = true;
             button2.Enabled = true;
             button3.Enabled = true;
             button4.Enabled = true;
@@ -349,13 +363,14 @@ namespace Star_Pharmacy
                 update_clicked = true;
                 groupBox1.Enabled = true;
                 groupBox2.Enabled = false;
-                button1.Enabled = false;
+                //button1.Enabled = false;
                 button2.Enabled = false;
                 button3.Enabled = false;
                 numericUpDown2.ReadOnly = true;
                 buyingPrice_nud.ReadOnly = true;
                 buyingInvoiceNo_nud.ReadOnly = true;
-                unitprice_nud.ReadOnly = true;
+                unitprice_nud.ReadOnly = false;
+                noofitems_nud.ReadOnly = true;
                 numericUpDown5.ReadOnly = true;
                 brandName_txtbox.ReadOnly = true;
                 medicalname_txtbox.ReadOnly = true;
