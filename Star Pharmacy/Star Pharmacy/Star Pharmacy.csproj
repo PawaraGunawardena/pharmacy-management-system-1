@@ -204,6 +204,7 @@
     </Compile>
     <Compile Include="pharmacyDataSet2.cs">
       <DependentUpon>pharmacyDataSet2.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="pharmacyDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
