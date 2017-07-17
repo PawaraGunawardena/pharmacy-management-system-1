@@ -25,8 +25,8 @@ namespace Star_Pharmacy
         {
             MessageBox.Show("Reports are generated for the day!");
             MessageBox.Show("Reports are generated for the day22222!");
-            file = Sales_History.generatePDF();
-            Sales_History.sendEmail(file);
+            file = Utilities3.generatePDF();
+            Utilities3.sendEmail(file);
             showNotification();
             
         }
@@ -44,9 +44,6 @@ namespace Star_Pharmacy
             id.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             id.inventory_details_Load(sender,e);
             id.Show();
-            
-            
-            
         }
 
         private void cashier_form_Load(object sender, EventArgs e)
@@ -54,13 +51,13 @@ namespace Star_Pharmacy
 
             showNotification();
             //Initiating the timer
-            if (DateTime.Now.Day == 29) //Ever29th of the month, a monthly report will get emailed.
+            if (DateTime.Now.Day == 28) //Ever29th of the month, a monthly report will get emailed.
             {
-                file2 = Sales_History.generateMothlyReportS();
-                Sales_History.sendEmail(file2);
+
+                file2 = Utilities3.generateMothlyReportS();
+                Utilities3.sendEmail(file2);
 
             }
-
 
             timer = new System.Timers.Timer();
             timer.Interval = 1000;
@@ -79,8 +76,8 @@ namespace Star_Pharmacy
             {
                 
                 //MessageBox.Show("Reports have been generated.", "Check Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                file = Sales_History.generatePDF(); //Generates the pdf at 7PM (Or between 7PM and 12Midnight) and saves it in local computer.
-                Sales_History.sendEmail(file);  //Sends the file to a given location (Location is specified at sendEmail() method.
+                file = Utilities3.generatePDF(); //Generates the pdf at 7PM (Or between 7PM and 12Midnight) and saves it in local computer.
+                Utilities3.sendEmail(file);  //Sends the file to a given location (Location is specified at sendEmail() method.
 
                 //file is a String where it comprises of the location (Address) where the generated PDF is located. You can change it in generatePDF() method.
                 //check out sendEmail(String file) for more information. 
@@ -209,6 +206,15 @@ namespace Star_Pharmacy
             nf.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             //nf.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             nf.Show();
+        }
+
+        private void supTransaction_Btn_Click(object sender, EventArgs e)
+        {
+            hideUnwantedForms();
+            supplier_transactions suptrans = supplier_transactions.getSupTransactions(splitContainer1, this);
+            suptrans.Location = new Point((splitContainer1.Panel2.Width - suptrans.Width) / 2, (splitContainer1.Panel2.Height - suptrans.Height) / 2);
+            suptrans.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            suptrans.Show();
         }
     }
 }

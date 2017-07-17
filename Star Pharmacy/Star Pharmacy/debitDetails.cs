@@ -25,6 +25,21 @@ namespace Star_Pharmacy
             SqlCon.updateDataGridView(query, debitDetails_dgv);
         }
 
+        private static debitDetails instance;
+
+        public static debitDetails getDebitDetails()
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new debitDetails();
+                return instance;
+            }
+            else
+            {
+                return instance;
+            }
+        }
+
         private void debitID_search_ValueChanged(object sender, EventArgs e)
         {
             String query;
@@ -61,8 +76,8 @@ namespace Star_Pharmacy
 
         private void clrBtn_Click(object sender, EventArgs e)
         {
-            debitID_search.ResetText();
-            Amount_search.ResetText();
+            debitID_search.Value = 0;
+            Amount_search.Value = 0;
             supDetails_search.ResetText();
         }
     }

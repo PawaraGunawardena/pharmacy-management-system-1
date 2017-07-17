@@ -145,10 +145,13 @@
             // 
             this.creditDetails.AllowUserToAddRows = false;
             this.creditDetails.AllowUserToDeleteRows = false;
+            this.creditDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.creditDetails.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.creditDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.creditDetails.Location = new System.Drawing.Point(23, 360);
             this.creditDetails.MultiSelect = false;
             this.creditDetails.Name = "creditDetails";
+            this.creditDetails.ReadOnly = true;
             this.creditDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.creditDetails.Size = new System.Drawing.Size(795, 171);
             this.creditDetails.TabIndex = 9;
@@ -250,6 +253,7 @@
             this.viewDebit.TabIndex = 13;
             this.viewDebit.Text = "View Debit Details";
             this.viewDebit.UseVisualStyleBackColor = true;
+            this.viewDebit.Click += new System.EventHandler(this.viewDebit_Click);
             // 
             // groupBox2
             // 

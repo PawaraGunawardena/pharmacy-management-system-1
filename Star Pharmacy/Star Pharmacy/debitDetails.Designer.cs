@@ -127,7 +127,7 @@
             this.debitDetails_dgv.AllowUserToAddRows = false;
             this.debitDetails_dgv.AllowUserToDeleteRows = false;
             this.debitDetails_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.debitDetails_dgv.Location = new System.Drawing.Point(25, 97);
+            this.debitDetails_dgv.Location = new System.Drawing.Point(25, 102);
             this.debitDetails_dgv.Name = "debitDetails_dgv";
             this.debitDetails_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.debitDetails_dgv.Size = new System.Drawing.Size(799, 302);
@@ -149,7 +149,7 @@
             // 
             // clrBtn
             // 
-            this.clrBtn.Location = new System.Drawing.Point(718, 21);
+            this.clrBtn.Location = new System.Drawing.Point(718, 19);
             this.clrBtn.Name = "clrBtn";
             this.clrBtn.Size = new System.Drawing.Size(75, 23);
             this.clrBtn.TabIndex = 13;
@@ -166,6 +166,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "debitDetails";
             this.Text = "Debit Details";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.debitDetails_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

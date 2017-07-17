@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(owner_form));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button6 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -37,7 +38,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.supTransaction_Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -52,6 +53,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.splitContainer1.Panel1.Controls.Add(this.supTransaction_Btn);
             this.splitContainer1.Panel1.Controls.Add(this.button6);
             this.splitContainer1.Panel1.Controls.Add(this.button8);
             this.splitContainer1.Panel1.Controls.Add(this.button7);
@@ -71,11 +73,21 @@
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(23, 468);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(181, 61);
+            this.button6.TabIndex = 8;
+            this.button6.Text = "Notifications";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
+            // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(19, 443);
+            this.button8.Location = new System.Drawing.Point(23, 391);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(181, 64);
+            this.button8.Size = new System.Drawing.Size(181, 55);
             this.button8.TabIndex = 7;
             this.button8.Text = "Sales History";
             this.button8.UseVisualStyleBackColor = true;
@@ -83,9 +95,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(19, 599);
+            this.button7.Location = new System.Drawing.Point(23, 551);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(181, 64);
+            this.button7.Size = new System.Drawing.Size(181, 57);
             this.button7.TabIndex = 6;
             this.button7.Text = "Create Order";
             this.button7.UseVisualStyleBackColor = true;
@@ -93,9 +105,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(21, 360);
+            this.button5.Location = new System.Drawing.Point(21, 313);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(181, 64);
+            this.button5.Size = new System.Drawing.Size(183, 59);
             this.button5.TabIndex = 4;
             this.button5.Text = "Employees";
             this.button5.UseVisualStyleBackColor = true;
@@ -103,9 +115,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(21, 282);
+            this.button4.Location = new System.Drawing.Point(19, 237);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(181, 64);
+            this.button4.Size = new System.Drawing.Size(183, 55);
             this.button4.TabIndex = 3;
             this.button4.Text = "Manage Suppliers";
             this.button4.UseVisualStyleBackColor = true;
@@ -113,9 +125,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(19, 201);
+            this.button3.Location = new System.Drawing.Point(21, 168);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(181, 64);
+            this.button3.Size = new System.Drawing.Size(183, 53);
             this.button3.TabIndex = 2;
             this.button3.Text = "Modify Inventory";
             this.button3.UseVisualStyleBackColor = true;
@@ -123,9 +135,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(21, 117);
+            this.button2.Location = new System.Drawing.Point(21, 89);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(181, 64);
+            this.button2.Size = new System.Drawing.Size(183, 57);
             this.button2.TabIndex = 1;
             this.button2.Text = "Inventory-Welivita";
             this.button2.UseVisualStyleBackColor = true;
@@ -133,23 +145,23 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(21, 37);
+            this.button1.Location = new System.Drawing.Point(19, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(183, 63);
+            this.button1.Size = new System.Drawing.Size(183, 55);
             this.button1.TabIndex = 0;
             this.button1.Text = "Inventory-Mulleriyawa";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button6
+            // supTransaction_Btn
             // 
-            this.button6.Location = new System.Drawing.Point(19, 519);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(181, 64);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Notifications";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click_1);
+            this.supTransaction_Btn.Location = new System.Drawing.Point(23, 626);
+            this.supTransaction_Btn.Name = "supTransaction_Btn";
+            this.supTransaction_Btn.Size = new System.Drawing.Size(181, 64);
+            this.supTransaction_Btn.TabIndex = 9;
+            this.supTransaction_Btn.Text = "Manage Supplier Transactions";
+            this.supTransaction_Btn.UseVisualStyleBackColor = true;
+            this.supTransaction_Btn.Click += new System.EventHandler(this.supTransaction_Btn_Click);
             // 
             // owner_form
             // 
@@ -181,5 +193,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button supTransaction_Btn;
     }
 }
