@@ -37,7 +37,7 @@ namespace Star_Pharmacy
         private void button2_Click(object sender, EventArgs e)
         {
             parentButtonActivation(false);
-            lblProductID returnOrder = new lblProductID();
+            lblProductID returnOrder = new lblProductID(logged_id,branch);
             returnOrder.MdiParent = this;
             splitContainer1.Panel2.Controls.Add(returnOrder);
             returnOrder.Location = new Point((splitContainer1.Panel2.Width - returnOrder.Width) / 2, (splitContainer1.Panel2.Height - returnOrder.Height) / 2);
@@ -62,7 +62,7 @@ namespace Star_Pharmacy
         private void button3_Click(object sender, EventArgs e)
         {
             parentButtonActivation(false);
-            LookupItemAvailability availabilityForm = new LookupItemAvailability();
+            LookupItemAvailability availabilityForm = new LookupItemAvailability(logged_id,branch);
             availabilityForm.MdiParent = this;
             splitContainer1.Panel2.Controls.Add(availabilityForm);
             availabilityForm.Location = new Point((splitContainer1.Panel2.Width - availabilityForm.Width) / 2, (splitContainer1.Panel2.Height - availabilityForm.Height) / 2);

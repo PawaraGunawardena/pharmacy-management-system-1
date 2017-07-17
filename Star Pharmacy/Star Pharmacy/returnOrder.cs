@@ -22,11 +22,14 @@ namespace Star_Pharmacy
         string connectionString;
         MySqlConnection newConnnection;
         int unitPrice;
+        int logged_id;
+         string branchOriginal;
 
 
-
-        public lblProductID()
+        public lblProductID(int logged_id, string branch)
         {
+            this.logged_id = logged_id;
+            this.branchOriginal = branch;
             InitializeComponent();
             CreditNoteNo = getCreditNoteNo();
             setTxtCreditNoteNo();
@@ -237,7 +240,7 @@ namespace Star_Pharmacy
         } //DONE
         private string getReturnItemsQuery()
         {
-            string query = "INSERT INTO customer_return_item (PrimaryID, CreditNoteNo, InvoiceNo, ProductNo, NumberOfUnits, ReturnDate, ReturnTime, ReturnCashierID, Amount) VALUES (0," + CreditNoteNo + "," + invoiceNo + ", " + productID + ", " + quantity + ", '" + currentDate + "', '" + currentTime + "', 1 ," + amount + " ) ;";
+            string query = "INSERT INTO customer_return_item (PrimaryID, CreditNoteNo, InvoiceNo, ProductNo, NumberOfUnits, ReturnDate, ReturnTime, ReturnCashierID, Amount) VALUES (0," + CreditNoteNo + "," + invoiceNo + ", " + productID + ", " + quantity + ", '" + currentDate + "', '" + currentTime + "', "+logged_id+" ," + amount + " ) ;";
             return query;
             //MessageBox.Show(query, "getReturnItemsQuery()");
         }

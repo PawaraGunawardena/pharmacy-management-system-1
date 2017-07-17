@@ -14,10 +14,13 @@ namespace Star_Pharmacy
     public partial class LookupItemAvailability : Form
     {
         private cashierForm parentCashierForm;
+        private int logged_id;
+        private string branch;
 
-        public LookupItemAvailability()
+        public LookupItemAvailability(int logged_id, string branch)
         {
-            
+            this.logged_id = logged_id;
+            this.branch = branch;
            
             InitializeComponent();
             ComboBoxPoductIDFill();
