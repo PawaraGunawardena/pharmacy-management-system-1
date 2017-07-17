@@ -30,6 +30,7 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnGenerateAndSend = new System.Windows.Forms.Button();
             this.btnHTMLReport = new System.Windows.Forms.Button();
             this.invoice_chkbox = new System.Windows.Forms.CheckBox();
@@ -45,7 +46,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.from_dtp = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -55,6 +55,7 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(22, 159);
             this.dataGridView1.Name = "dataGridView1";
@@ -87,6 +88,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Show by";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(656, 76);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(66, 36);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "Monthly Report";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // btnGenerateAndSend
             // 
@@ -243,16 +254,6 @@
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "From";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(656, 76);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(66, 36);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "Monthly";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // Sales_History
             // 

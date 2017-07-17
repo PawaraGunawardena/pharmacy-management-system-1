@@ -98,7 +98,7 @@ namespace Star_Pharmacy
 
        
 
-        private void button7_Click(object sender, EventArgs e)
+       /* private void button7_Click(object sender, EventArgs e)
         {
             hideUnwantedForms();
             create_order co = create_order.getCreateOrder(splitContainer1,this);
@@ -107,7 +107,7 @@ namespace Star_Pharmacy
             co.Location = new Point((splitContainer1.Panel2.Width - co.Width) / 2, (splitContainer1.Panel2.Height - co.Height) / 2);
             co.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             co.Show();
-        }
+        }*/
 
         private void cashier_form_FormClosed(object sender, FormClosedEventArgs e)
         {

@@ -30,15 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(owner_form));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.supTransaction_Btn = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.supTransaction_Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -56,7 +55,6 @@
             this.splitContainer1.Panel1.Controls.Add(this.supTransaction_Btn);
             this.splitContainer1.Panel1.Controls.Add(this.button6);
             this.splitContainer1.Panel1.Controls.Add(this.button8);
-            this.splitContainer1.Panel1.Controls.Add(this.button7);
             this.splitContainer1.Panel1.Controls.Add(this.button5);
             this.splitContainer1.Panel1.Controls.Add(this.button4);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
@@ -72,6 +70,16 @@
             this.splitContainer1.SplitterDistance = 218;
             this.splitContainer1.TabIndex = 0;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            // 
+            // supTransaction_Btn
+            // 
+            this.supTransaction_Btn.Location = new System.Drawing.Point(23, 553);
+            this.supTransaction_Btn.Name = "supTransaction_Btn";
+            this.supTransaction_Btn.Size = new System.Drawing.Size(181, 64);
+            this.supTransaction_Btn.TabIndex = 9;
+            this.supTransaction_Btn.Text = "Manage Supplier Transactions";
+            this.supTransaction_Btn.UseVisualStyleBackColor = true;
+            this.supTransaction_Btn.Click += new System.EventHandler(this.supTransaction_Btn_Click);
             // 
             // button6
             // 
@@ -92,16 +100,6 @@
             this.button8.Text = "Sales History";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(23, 551);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(181, 57);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Create Order";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button5
             // 
@@ -153,16 +151,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // supTransaction_Btn
-            // 
-            this.supTransaction_Btn.Location = new System.Drawing.Point(23, 626);
-            this.supTransaction_Btn.Name = "supTransaction_Btn";
-            this.supTransaction_Btn.Size = new System.Drawing.Size(181, 64);
-            this.supTransaction_Btn.TabIndex = 9;
-            this.supTransaction_Btn.Text = "Manage Supplier Transactions";
-            this.supTransaction_Btn.UseVisualStyleBackColor = true;
-            this.supTransaction_Btn.Click += new System.EventHandler(this.supTransaction_Btn_Click);
-            // 
             // owner_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,7 +178,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button supTransaction_Btn;
