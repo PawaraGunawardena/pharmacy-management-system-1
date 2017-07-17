@@ -45,11 +45,12 @@ namespace Star_Pharmacy
         private void supplier_details_Load(object sender, EventArgs e)
         {
             //con.Open();
+            refreshDatagrid(sender,e);
             btnViewSupplierDetails.Enabled = false;
             btnViewCredit.Enabled = false;
         }
 
-        private void btnViewSupliers_Click(object sender, EventArgs e)
+        private void refreshDatagrid(object sender, EventArgs e)
         {
             String query = "Select * from pharmacy.supplierdetails;";
             SqlCon.updateDataGridView(query, supplierDetailsDgv);
@@ -131,8 +132,7 @@ namespace Star_Pharmacy
 
         private void btnAddSuppliers_Click(object sender, EventArgs e)
         {
-            addNewSuppliers addNewSuppliers_form = new addNewSuppliers();
-            addNewSuppliers_form.Show();
+            groupBox1.Enabled = true;
         }
 
         private void button1_Click_1(object sender, EventArgs e)
