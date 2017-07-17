@@ -50,6 +50,7 @@ namespace Star_Pharmacy
         {
             parentButtonActivation(false);
             create_order co = create_order.getCreateOrder(splitContainer1, this);
+            co.setParentForm(this);
             co.MdiParent = this;
             splitContainer1.Panel2.Controls.Add(co);
             co.Location = new Point((splitContainer1.Panel2.Width - co.Width) / 2, (splitContainer1.Panel2.Height - co.Height) / 2);
@@ -86,10 +87,12 @@ namespace Star_Pharmacy
             Button returnBtn = this.btnReturnOrder;
             Button newOrderBtn = this.btnNewOrder;
             Button availabilityBtn = this.button3;
+            Button btnChangeDetails = this.btnChangeDetails;
 
             returnBtn.Enabled = activation;
             newOrderBtn.Enabled = activation;
             availabilityBtn.Enabled = activation;
+            btnChangeDetails.Enabled = activation;
         }
 
         public void readDetails()
@@ -127,6 +130,7 @@ namespace Star_Pharmacy
 
         private void btnChangeDetails_Click(object sender, EventArgs e)
         {
+            parentButtonActivation(false);
             readDetails();
             ChangePersonalDetails availabilityForm = new ChangePersonalDetails(firstName,lastName, logged_id, address, userName, password, branch, working, type,dob, salary);
             availabilityForm.MdiParent = this;
@@ -135,7 +139,7 @@ namespace Star_Pharmacy
             availabilityForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             availabilityForm.Show();
             //availabilityForm.buttonDeactivate();
-           // availabilityForm.setParentForm(this);
+          availabilityForm.setParentForm(this);
         }
     }
 }

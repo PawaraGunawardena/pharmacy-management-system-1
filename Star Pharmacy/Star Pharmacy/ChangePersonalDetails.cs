@@ -37,6 +37,7 @@ namespace Star_Pharmacy
         private int enablUserName = 0;
         private int enablePassword = 0;
         CheckBox[] check =new  CheckBox[4];
+        cashierForm parentCashierForm;
 
         public ChangePersonalDetails(string fName, string lName,int id, string adress, string UName, string password, string branch , int working, string type, string dob, int salary )
         {
@@ -75,6 +76,11 @@ namespace Star_Pharmacy
         private void label7_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void setParentForm(cashierForm parentCashierForm)
+        {
+            this.parentCashierForm = parentCashierForm;
         }
         private void existingDetailsFill()
         {
@@ -196,7 +202,7 @@ namespace Star_Pharmacy
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            
+            parentCashierForm.parentButtonActivation(true);
             string connectionString = "server=localhost;user id=root;database=pharmacy";
             string myQuery = getNewQuery();
 
@@ -217,6 +223,7 @@ namespace Star_Pharmacy
             {
                 MessageBox.Show("Wrong in the database writing");
             }
+            this.Close();
         }
 
 
@@ -327,6 +334,7 @@ namespace Star_Pharmacy
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+            parentCashierForm.parentButtonActivation(true);
         }
 
         private bool getCheckedAndnonEmpty()
@@ -344,5 +352,6 @@ namespace Star_Pharmacy
             }
             return enableupadate;
         }
+        
     }
 }

@@ -24,6 +24,7 @@ namespace Star_Pharmacy
         int unitPrice;
 
 
+
         public lblProductID()
         {
             InitializeComponent();

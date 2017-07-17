@@ -20,6 +20,7 @@ namespace Star_Pharmacy
         private decimal cash;
         private decimal change;
         private String branch = TransactionControl.findBranch(Program.logged_id.ToString());
+        cashierForm parentCashierForm;
 
         public static create_order getCreateOrder(SplitContainer s, Form f)
         {
@@ -35,6 +36,10 @@ namespace Star_Pharmacy
             {
                 return inst4;
             }
+        }
+        public void setParentForm(cashierForm parentCashierForm)
+        {
+            this.parentCashierForm = parentCashierForm;
         }
         public create_order()
         {
@@ -260,6 +265,8 @@ namespace Star_Pharmacy
             {
                 button4_Click(sender, e);
             }
+            parentCashierForm.parentButtonActivation(true);
+            this.Close();
             
         }
 
@@ -273,6 +280,7 @@ namespace Star_Pharmacy
                 bill_dgv.Rows.Clear();
                 total_lbl.ResetText();
                 change_lbl.ResetText();
+                parentCashierForm.parentButtonActivation(true);
             }
             else if (cash_nud.Value < Convert.ToDecimal(total))
             {
@@ -283,6 +291,8 @@ namespace Star_Pharmacy
             {
                 MessageBox.Show("Select Atleast One Product!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            
+           // thic.close();
         }
 
         private void cash_nud_ValueChanged(object sender, EventArgs e)
