@@ -83,9 +83,11 @@
             // 
             this.supplier_transactionsDetails.AllowUserToAddRows = false;
             this.supplier_transactionsDetails.AllowUserToDeleteRows = false;
+            this.supplier_transactionsDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.supplier_transactionsDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.supplier_transactionsDetails.Location = new System.Drawing.Point(22, 92);
             this.supplier_transactionsDetails.Name = "supplier_transactionsDetails";
+            this.supplier_transactionsDetails.ReadOnly = true;
             this.supplier_transactionsDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.supplier_transactionsDetails.Size = new System.Drawing.Size(795, 171);
             this.supplier_transactionsDetails.TabIndex = 0;

@@ -30,23 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.clrBtn = new System.Windows.Forms.Button();
             this.supDetails_search = new System.Windows.Forms.ComboBox();
+            this.supplierdetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pharmacyDataSet1 = new Star_Pharmacy.pharmacyDataSet1();
             this.Amount_search = new System.Windows.Forms.NumericUpDown();
             this.debitID_search = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.debitDetails_dgv = new System.Windows.Forms.DataGridView();
-            this.pharmacyDataSet1 = new Star_Pharmacy.pharmacyDataSet1();
-            this.supplierdetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.supplierdetailsTableAdapter = new Star_Pharmacy.pharmacyDataSet1TableAdapters.supplierdetailsTableAdapter();
-            this.clrBtn = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Amount_search)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.debitID_search)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.debitDetails_dgv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -65,6 +65,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search Debit Details";
             // 
+            // clrBtn
+            // 
+            this.clrBtn.Location = new System.Drawing.Point(718, 19);
+            this.clrBtn.Name = "clrBtn";
+            this.clrBtn.Size = new System.Drawing.Size(75, 23);
+            this.clrBtn.TabIndex = 13;
+            this.clrBtn.Text = "Clear";
+            this.clrBtn.UseVisualStyleBackColor = true;
+            this.clrBtn.Click += new System.EventHandler(this.clrBtn_Click);
+            // 
             // supDetails_search
             // 
             this.supDetails_search.DataSource = this.supplierdetailsBindingSource;
@@ -77,6 +87,16 @@
             this.supDetails_search.TabIndex = 12;
             this.supDetails_search.ValueMember = "CompanyName";
             this.supDetails_search.SelectedIndexChanged += new System.EventHandler(this.supDetails_search_SelectedIndexChanged);
+            // 
+            // supplierdetailsBindingSource
+            // 
+            this.supplierdetailsBindingSource.DataMember = "supplierdetails";
+            this.supplierdetailsBindingSource.DataSource = this.pharmacyDataSet1;
+            // 
+            // pharmacyDataSet1
+            // 
+            this.pharmacyDataSet1.DataSetName = "pharmacyDataSet1";
+            this.pharmacyDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Amount_search
             // 
@@ -126,36 +146,18 @@
             // 
             this.debitDetails_dgv.AllowUserToAddRows = false;
             this.debitDetails_dgv.AllowUserToDeleteRows = false;
+            this.debitDetails_dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.debitDetails_dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.debitDetails_dgv.Location = new System.Drawing.Point(25, 102);
             this.debitDetails_dgv.Name = "debitDetails_dgv";
+            this.debitDetails_dgv.ReadOnly = true;
             this.debitDetails_dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.debitDetails_dgv.Size = new System.Drawing.Size(799, 302);
             this.debitDetails_dgv.TabIndex = 17;
             // 
-            // pharmacyDataSet1
-            // 
-            this.pharmacyDataSet1.DataSetName = "pharmacyDataSet1";
-            this.pharmacyDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // supplierdetailsBindingSource
-            // 
-            this.supplierdetailsBindingSource.DataMember = "supplierdetails";
-            this.supplierdetailsBindingSource.DataSource = this.pharmacyDataSet1;
-            // 
             // supplierdetailsTableAdapter
             // 
             this.supplierdetailsTableAdapter.ClearBeforeFill = true;
-            // 
-            // clrBtn
-            // 
-            this.clrBtn.Location = new System.Drawing.Point(718, 19);
-            this.clrBtn.Name = "clrBtn";
-            this.clrBtn.Size = new System.Drawing.Size(75, 23);
-            this.clrBtn.TabIndex = 13;
-            this.clrBtn.Text = "Clear";
-            this.clrBtn.UseVisualStyleBackColor = true;
-            this.clrBtn.Click += new System.EventHandler(this.clrBtn_Click);
             // 
             // debitDetails
             // 
@@ -170,11 +172,11 @@
             this.Load += new System.EventHandler(this.debitDetails_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Amount_search)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.debitID_search)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.debitDetails_dgv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pharmacyDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

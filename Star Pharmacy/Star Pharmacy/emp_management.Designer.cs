@@ -98,6 +98,7 @@
             // 
             this.emp_details.AllowUserToAddRows = false;
             this.emp_details.AllowUserToDeleteRows = false;
+            this.emp_details.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.emp_details.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.emp_details.Location = new System.Drawing.Point(29, 110);
             this.emp_details.MultiSelect = false;
