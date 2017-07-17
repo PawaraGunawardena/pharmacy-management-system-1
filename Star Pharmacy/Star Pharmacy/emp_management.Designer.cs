@@ -277,6 +277,7 @@
             this.lName_txtBox.Name = "lName_txtBox";
             this.lName_txtBox.Size = new System.Drawing.Size(147, 20);
             this.lName_txtBox.TabIndex = 12;
+            this.lName_txtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lName_txtBox_KeyPress);
             // 
             // fName_txtBox
             // 
@@ -285,6 +286,7 @@
             this.fName_txtBox.Size = new System.Drawing.Size(147, 20);
             this.fName_txtBox.TabIndex = 11;
             this.fName_txtBox.TextChanged += new System.EventHandler(this.fName_txtBox_TextChanged);
+            this.fName_txtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fName_txtBox_KeyPress);
             // 
             // label11
             // 
@@ -386,6 +388,7 @@
             this.emplastName_txtBox.Size = new System.Drawing.Size(120, 20);
             this.emplastName_txtBox.TabIndex = 16;
             this.emplastName_txtBox.TextChanged += new System.EventHandler(this.emplastName_txtBox_TextChanged);
+            this.emplastName_txtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.emplastName_txtBox_KeyPress);
             // 
             // label13
             // 
@@ -430,6 +433,8 @@
             this.empfirstName_txtBox.Size = new System.Drawing.Size(120, 20);
             this.empfirstName_txtBox.TabIndex = 12;
             this.empfirstName_txtBox.TextChanged += new System.EventHandler(this.empfirstName_txtBox_TextChanged);
+            this.empfirstName_txtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.empfirstName_txtBox_KeyPress);
+            this.empfirstName_txtBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.empfirstName_txtBox_KeyUp);
             // 
             // label3
             // 

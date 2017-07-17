@@ -415,5 +415,30 @@ namespace Star_Pharmacy
                 MessageBox.Show("Please select an Employee!");
             }
         }
+
+        private void empfirstName_txtBox_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void empfirstName_txtBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void emplastName_txtBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void fName_txtBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void lName_txtBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
     }
 }
