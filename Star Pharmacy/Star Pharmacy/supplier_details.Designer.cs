@@ -36,6 +36,7 @@
             this.btnAddSuppliers = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.supplierDetailsDgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,11 +49,12 @@
             this.supplierDetailsDgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.supplierDetailsDgv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.supplierDetailsDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.supplierDetailsDgv.Location = new System.Drawing.Point(72, 183);
+            this.supplierDetailsDgv.Location = new System.Drawing.Point(27, 183);
             this.supplierDetailsDgv.MultiSelect = false;
             this.supplierDetailsDgv.Name = "supplierDetailsDgv";
+            this.supplierDetailsDgv.ReadOnly = true;
             this.supplierDetailsDgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.supplierDetailsDgv.Size = new System.Drawing.Size(579, 340);
+            this.supplierDetailsDgv.Size = new System.Drawing.Size(669, 340);
             this.supplierDetailsDgv.TabIndex = 0;
             this.supplierDetailsDgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierDetailsDgv_CellContentClick);
             // 
@@ -126,11 +128,21 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(304, 154);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Note - Select a Row first.";
+            // 
             // supplier_details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 614);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnAddSuppliers);
@@ -140,7 +152,7 @@
             this.Controls.Add(this.btnViewSupliers);
             this.Controls.Add(this.supplierDetailsDgv);
             this.Name = "supplier_details";
-            this.Text = "supplier_details";
+            this.Text = "Supplier Details";
             this.Load += new System.EventHandler(this.supplier_details_Load);
             ((System.ComponentModel.ISupportInitialize)(this.supplierDetailsDgv)).EndInit();
             this.ResumeLayout(false);
@@ -157,5 +169,6 @@
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button button2;
         protected System.Windows.Forms.DataGridView supplierDetailsDgv;
+        private System.Windows.Forms.Label label2;
     }
 }
