@@ -338,6 +338,7 @@ namespace Star_Pharmacy
                         String query = "Select * from pharmacy.people;";
                         SqlCon.updateDataGridView(query, emp_details);
                         MessageBox.Show("Employee Successfully added!");
+                        cancelBtn_Click(sender, e);
                     }
                     else
                     {
