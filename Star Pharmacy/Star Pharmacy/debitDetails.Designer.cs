@@ -102,6 +102,11 @@
             // 
             this.Amount_search.DecimalPlaces = 2;
             this.Amount_search.Location = new System.Drawing.Point(288, 22);
+            this.Amount_search.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
             this.Amount_search.Name = "Amount_search";
             this.Amount_search.Size = new System.Drawing.Size(121, 20);
             this.Amount_search.TabIndex = 11;

@@ -21,6 +21,7 @@ namespace Star_Pharmacy
         private decimal change;
         private String branch = TransactionControl.findBranch(Program.logged_id.ToString());
         cashierForm parentCashierForm;
+        owner_form ownerForm;
 
         public static create_order getCreateOrder(SplitContainer s, Form f)
         {
@@ -40,6 +41,10 @@ namespace Star_Pharmacy
         public void setParentForm(cashierForm parentCashierForm)
         {
             this.parentCashierForm = parentCashierForm;
+        }
+        public void setParentOwnerForm(owner_form ownerForm)
+        {
+            this.ownerForm = ownerForm;
         }
         public create_order()
         {
@@ -265,8 +270,14 @@ namespace Star_Pharmacy
             {
                 button4_Click(sender, e);
             }
-            parentCashierForm.parentButtonActivation(true);
-            this.Close();
+            if (parentCashierForm != null)
+            {
+                parentCashierForm.parentButtonActivation(true);
+                this.Close();
+                //parentCashierForm.parentButtonActivation(true);
+            }
+            //parentCashierForm.parentButtonActivation(true);
+            
             
         }
 
@@ -280,7 +291,11 @@ namespace Star_Pharmacy
                 bill_dgv.Rows.Clear();
                 total_lbl.ResetText();
                 change_lbl.ResetText();
-                parentCashierForm.parentButtonActivation(true);
+                if (parentCashierForm != null)
+                {
+                    parentCashierForm.parentButtonActivation(true);
+                }
+               
             }
             else if (cash_nud.Value < Convert.ToDecimal(total))
             {

@@ -114,12 +114,16 @@ namespace Star_Pharmacy
             groupBox3.Enabled = true;
             payDebit.Enabled = true;
             viewDebit.Enabled = true;
+
             supplier_transactionsDetails.Enabled = true;
             creditDetails.Enabled = true;
             supplier_transactionsDetails.ClearSelection();
             creditDetails.ClearSelection();
-            supplier_transactionsDetails.Refresh();
-            creditDetails.Refresh();
+            String query1 = "Select * from pharmacy.supplier_transactions";
+            SqlCon.updateDataGridView(query1, supplier_transactionsDetails);
+
+            String query2 = "Select * from pharmacy.credit_details";
+            SqlCon.updateDataGridView(query2, creditDetails);
         }
 
         private void payDebit_Click(object sender, EventArgs e)
@@ -130,7 +134,9 @@ namespace Star_Pharmacy
                 groupBox2.Enabled = false;
                 groupBox3.Enabled = false;
                 viewDebit.Enabled = false;
-                supName_select.Text = creditDetails.SelectedRows[0].Cells[1].Value.ToString();
+                supName_select.Enabled = false;
+                string supD = creditDetails.SelectedRows[0].Cells[1].Value.ToString();
+                supName_select.Text = supD;
             }
             else
             {
@@ -169,7 +175,7 @@ namespace Star_Pharmacy
                     debitValue = 0;
                 }
 
-                MySqlCommand cmd2 = new MySqlCommand(@"update credit_details set CreditAmount = CreditAmount -'"+debitValue.ToString()+"' from pharmacy.credit_details where SupplierName='" + supName_select.Text + "';", SqlCon.con);
+                MySqlCommand cmd2 = new MySqlCommand("update credit_details set CreditAmount = (CreditAmount -'" + debitValue.ToString() +"') from credit_details where SupplierName='" + supName_select.Text + "';", SqlCon.con);
                 cmd2.ExecuteNonQuery();
                 
 
@@ -189,13 +195,17 @@ namespace Star_Pharmacy
             transactionID_search1.Value = 0;
             itemID_search.Value = 0;
             supDetails_search1.ResetText();
-        
+            String query = "Select * from pharmacy.supplier_transactions";
+            SqlCon.updateDataGridView(query, supplier_transactionsDetails);
+
         }
 
         private void ClrBtn2_Click(object sender, EventArgs e)
         {
             supplierID_search2.Value = 0;
             supplierName_search2.ResetText();
+            String query = "Select * from pharmacy.credit_details";
+            SqlCon.updateDataGridView(query, creditDetails);
         }
 
         private void viewDebit_Click(object sender, EventArgs e)

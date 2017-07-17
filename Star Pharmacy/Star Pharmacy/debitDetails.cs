@@ -79,6 +79,8 @@ namespace Star_Pharmacy
             debitID_search.Value = 0;
             Amount_search.Value = 0;
             supDetails_search.ResetText();
+            String query = "Select * from pharmacy.debit_balances";
+            SqlCon.updateDataGridView(query, debitDetails_dgv);
         }
     }
 }
