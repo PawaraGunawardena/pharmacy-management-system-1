@@ -173,7 +173,6 @@
             this.supName_select.DataSource = this.supplierdetailsBindingSource2;
             this.supName_select.DisplayMember = "CompanyName";
             this.supName_select.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.supName_select.Enabled = false;
             this.supName_select.FormattingEnabled = true;
             this.supName_select.Location = new System.Drawing.Point(409, 32);
             this.supName_select.Name = "supName_select";
