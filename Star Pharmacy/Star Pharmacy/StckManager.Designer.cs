@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StockManagerForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnChnageDetails = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnChnageDetails = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -61,8 +61,20 @@
             this.splitContainer1.SplitterDistance = 218;
             this.splitContainer1.TabIndex = 0;
             // 
+            // btnChnageDetails
+            // 
+            this.btnChnageDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnChnageDetails.Location = new System.Drawing.Point(21, 290);
+            this.btnChnageDetails.Name = "btnChnageDetails";
+            this.btnChnageDetails.Size = new System.Drawing.Size(179, 62);
+            this.btnChnageDetails.TabIndex = 3;
+            this.btnChnageDetails.Text = "Change Personal Details";
+            this.btnChnageDetails.UseVisualStyleBackColor = true;
+            this.btnChnageDetails.Click += new System.EventHandler(this.btnChnageDetails_Click);
+            // 
             // button3
             // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button3.Location = new System.Drawing.Point(19, 201);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(181, 64);
@@ -73,6 +85,7 @@
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.Location = new System.Drawing.Point(21, 117);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(181, 64);
@@ -83,6 +96,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.Location = new System.Drawing.Point(21, 37);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(183, 63);
@@ -90,16 +104,6 @@
             this.button1.Text = "Inventory-Mulleriyawa";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnChnageDetails
-            // 
-            this.btnChnageDetails.Location = new System.Drawing.Point(21, 290);
-            this.btnChnageDetails.Name = "btnChnageDetails";
-            this.btnChnageDetails.Size = new System.Drawing.Size(179, 62);
-            this.btnChnageDetails.TabIndex = 3;
-            this.btnChnageDetails.Text = "Change Personal Details";
-            this.btnChnageDetails.UseVisualStyleBackColor = true;
-            this.btnChnageDetails.Click += new System.EventHandler(this.btnChnageDetails_Click);
             // 
             // StockManagerForm
             // 

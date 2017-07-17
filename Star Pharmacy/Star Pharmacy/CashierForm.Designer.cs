@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnChangeDetails = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnReturnOrder = new System.Windows.Forms.Button();
             this.btnNewOrder = new System.Windows.Forms.Button();
-            this.btnChangeDetails = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -55,8 +55,20 @@
             this.splitContainer1.SplitterDistance = 208;
             this.splitContainer1.TabIndex = 0;
             // 
+            // btnChangeDetails
+            // 
+            this.btnChangeDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnChangeDetails.Location = new System.Drawing.Point(20, 337);
+            this.btnChangeDetails.Name = "btnChangeDetails";
+            this.btnChangeDetails.Size = new System.Drawing.Size(181, 60);
+            this.btnChangeDetails.TabIndex = 3;
+            this.btnChangeDetails.Text = "Change Details";
+            this.btnChangeDetails.UseVisualStyleBackColor = true;
+            this.btnChangeDetails.Click += new System.EventHandler(this.btnChangeDetails_Click);
+            // 
             // button3
             // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button3.Location = new System.Drawing.Point(20, 243);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(181, 64);
@@ -67,6 +79,7 @@
             // 
             // btnReturnOrder
             // 
+            this.btnReturnOrder.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnReturnOrder.Location = new System.Drawing.Point(20, 138);
             this.btnReturnOrder.Name = "btnReturnOrder";
             this.btnReturnOrder.Size = new System.Drawing.Size(181, 64);
@@ -77,6 +90,7 @@
             // 
             // btnNewOrder
             // 
+            this.btnNewOrder.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnNewOrder.Location = new System.Drawing.Point(20, 33);
             this.btnNewOrder.Name = "btnNewOrder";
             this.btnNewOrder.Size = new System.Drawing.Size(181, 64);
@@ -84,16 +98,6 @@
             this.btnNewOrder.Text = "New Order";
             this.btnNewOrder.UseVisualStyleBackColor = true;
             this.btnNewOrder.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnChangeDetails
-            // 
-            this.btnChangeDetails.Location = new System.Drawing.Point(20, 337);
-            this.btnChangeDetails.Name = "btnChangeDetails";
-            this.btnChangeDetails.Size = new System.Drawing.Size(181, 60);
-            this.btnChangeDetails.TabIndex = 3;
-            this.btnChangeDetails.Text = "Change Details";
-            this.btnChangeDetails.UseVisualStyleBackColor = true;
-            this.btnChangeDetails.Click += new System.EventHandler(this.btnChangeDetails_Click);
             // 
             // cashierForm
             // 
