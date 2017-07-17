@@ -83,6 +83,7 @@ namespace Star_Pharmacy
 
         private void btnChnageDetails_Click(object sender, EventArgs e)
         {
+            hideUnwantedForms();
             parentButtonActivation(false);
             readDetails();
             ChangePersonalDetails availabilityForm = new ChangePersonalDetails(firstName, lastName, logged_id, address, userName, password, branch, working, type, dob, salary);
@@ -96,6 +97,7 @@ namespace Star_Pharmacy
         }
         public void parentButtonActivation(bool activation)
         {
+
             Button mulleriyawa = this.button1;
             Button welivita = this.button2;
             Button inventory = this.button3;
