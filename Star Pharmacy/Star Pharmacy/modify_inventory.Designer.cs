@@ -421,6 +421,8 @@
             this.unitprice_nud.Name = "unitprice_nud";
             this.unitprice_nud.Size = new System.Drawing.Size(100, 20);
             this.unitprice_nud.TabIndex = 9;
+            this.unitprice_nud.ValueChanged += new System.EventHandler(this.unitprice_nud_ValueChanged);
+            this.unitprice_nud.MouseClick += new System.Windows.Forms.MouseEventHandler(this.unitprice_nud_MouseClick);
             // 
             // label8
             // 

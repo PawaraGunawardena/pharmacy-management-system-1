@@ -43,13 +43,14 @@
             this.payDebit = new System.Windows.Forms.Button();
             this.supName_select = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.payingAmount = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.saveBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.payAmount = new System.Windows.Forms.NumericUpDown();
+            this.payingAmount = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.viewDebit = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.clrBtn = new System.Windows.Forms.Button();
             this.supDetails_search1 = new System.Windows.Forms.ComboBox();
             this.itemID_search = new System.Windows.Forms.NumericUpDown();
             this.transactionID_search1 = new System.Windows.Forms.NumericUpDown();
@@ -57,6 +58,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ClrBtn2 = new System.Windows.Forms.Button();
             this.supplierName_search2 = new System.Windows.Forms.ComboBox();
             this.supplierID_search2 = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
@@ -69,7 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.supplierdetailsBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.creditDetails)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payAmount)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemID_search)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.transactionID_search1)).BeginInit();
@@ -143,9 +145,13 @@
             // 
             this.creditDetails.AllowUserToAddRows = false;
             this.creditDetails.AllowUserToDeleteRows = false;
+            this.creditDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.creditDetails.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.creditDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.creditDetails.Location = new System.Drawing.Point(23, 360);
+            this.creditDetails.MultiSelect = false;
             this.creditDetails.Name = "creditDetails";
+            this.creditDetails.ReadOnly = true;
             this.creditDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.creditDetails.Size = new System.Drawing.Size(795, 171);
             this.creditDetails.TabIndex = 9;
@@ -165,6 +171,7 @@
             this.supName_select.DataSource = this.supplierdetailsBindingSource2;
             this.supName_select.DisplayMember = "CompanyName";
             this.supName_select.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.supName_select.Enabled = false;
             this.supName_select.FormattingEnabled = true;
             this.supName_select.Location = new System.Drawing.Point(409, 32);
             this.supName_select.Name = "supName_select";
@@ -176,7 +183,7 @@
             // 
             this.groupBox1.Controls.Add(this.cancelBtn);
             this.groupBox1.Controls.Add(this.saveBtn);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.payAmount);
             this.groupBox1.Controls.Add(this.payingAmount);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.supName_select);
@@ -187,14 +194,38 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Payment Details";
             // 
-            // label6
+            // cancelBtn
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(327, 35);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Supplier Name";
+            this.cancelBtn.Location = new System.Drawing.Point(330, 79);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(139, 23);
+            this.cancelBtn.TabIndex = 16;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Location = new System.Drawing.Point(154, 79);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(139, 23);
+            this.saveBtn.TabIndex = 15;
+            this.saveBtn.Text = "Save Changes";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // payAmount
+            // 
+            this.payAmount.DecimalPlaces = 2;
+            this.payAmount.Location = new System.Drawing.Point(102, 31);
+            this.payAmount.Maximum = new decimal(new int[] {
+            -727379969,
+            232,
+            0,
+            0});
+            this.payAmount.Name = "payAmount";
+            this.payAmount.Size = new System.Drawing.Size(163, 20);
+            this.payAmount.TabIndex = 14;
             // 
             // payingAmount
             // 
@@ -205,36 +236,14 @@
             this.payingAmount.TabIndex = 13;
             this.payingAmount.Text = "Paying Amount";
             // 
-            // numericUpDown1
+            // label6
             // 
-            this.numericUpDown1.DecimalPlaces = 2;
-            this.numericUpDown1.Location = new System.Drawing.Point(102, 31);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            -727379969,
-            232,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(163, 20);
-            this.numericUpDown1.TabIndex = 14;
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.Location = new System.Drawing.Point(154, 79);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(139, 23);
-            this.saveBtn.TabIndex = 15;
-            this.saveBtn.Text = "Save Changes";
-            this.saveBtn.UseVisualStyleBackColor = true;
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.Location = new System.Drawing.Point(330, 79);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(139, 23);
-            this.cancelBtn.TabIndex = 16;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(327, 35);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Supplier Name";
             // 
             // viewDebit
             // 
@@ -244,9 +253,11 @@
             this.viewDebit.TabIndex = 13;
             this.viewDebit.Text = "View Debit Details";
             this.viewDebit.UseVisualStyleBackColor = true;
+            this.viewDebit.Click += new System.EventHandler(this.viewDebit_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.clrBtn);
             this.groupBox2.Controls.Add(this.supDetails_search1);
             this.groupBox2.Controls.Add(this.itemID_search);
             this.groupBox2.Controls.Add(this.transactionID_search1);
@@ -260,13 +271,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search Buying Details";
             // 
+            // clrBtn
+            // 
+            this.clrBtn.Location = new System.Drawing.Point(713, 19);
+            this.clrBtn.Name = "clrBtn";
+            this.clrBtn.Size = new System.Drawing.Size(75, 23);
+            this.clrBtn.TabIndex = 13;
+            this.clrBtn.Text = "Clear";
+            this.clrBtn.UseVisualStyleBackColor = true;
+            this.clrBtn.Click += new System.EventHandler(this.clrBtn_Click);
+            // 
             // supDetails_search1
             // 
             this.supDetails_search1.DataSource = this.supplierdetailsBindingSource2;
             this.supDetails_search1.DisplayMember = "CompanyName";
             this.supDetails_search1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.supDetails_search1.FormattingEnabled = true;
-            this.supDetails_search1.Location = new System.Drawing.Point(599, 21);
+            this.supDetails_search1.Location = new System.Drawing.Point(517, 21);
             this.supDetails_search1.Name = "supDetails_search1";
             this.supDetails_search1.Size = new System.Drawing.Size(175, 21);
             this.supDetails_search1.TabIndex = 12;
@@ -275,7 +296,7 @@
             // 
             // itemID_search
             // 
-            this.itemID_search.Location = new System.Drawing.Point(323, 22);
+            this.itemID_search.Location = new System.Drawing.Point(285, 22);
             this.itemID_search.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -302,7 +323,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(276, 24);
+            this.label3.Location = new System.Drawing.Point(238, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 9;
@@ -311,7 +332,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(517, 24);
+            this.label2.Location = new System.Drawing.Point(435, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 8;
@@ -328,6 +349,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.ClrBtn2);
             this.groupBox3.Controls.Add(this.supplierName_search2);
             this.groupBox3.Controls.Add(this.supplierID_search2);
             this.groupBox3.Controls.Add(this.label8);
@@ -338,6 +360,16 @@
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search Credit Details";
+            // 
+            // ClrBtn2
+            // 
+            this.ClrBtn2.Location = new System.Drawing.Point(713, 19);
+            this.ClrBtn2.Name = "ClrBtn2";
+            this.ClrBtn2.Size = new System.Drawing.Size(75, 23);
+            this.ClrBtn2.TabIndex = 14;
+            this.ClrBtn2.Text = "Clear";
+            this.ClrBtn2.UseVisualStyleBackColor = true;
+            this.ClrBtn2.Click += new System.EventHandler(this.ClrBtn2_Click);
             // 
             // supplierName_search2
             // 
@@ -409,7 +441,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.creditDetails)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payAmount)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemID_search)).EndInit();
@@ -440,7 +472,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button saveBtn;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown payAmount;
         private System.Windows.Forms.Label payingAmount;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button viewDebit;
@@ -456,5 +488,7 @@
         private System.Windows.Forms.NumericUpDown supplierID_search2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button clrBtn;
+        private System.Windows.Forms.Button ClrBtn2;
     }
 }

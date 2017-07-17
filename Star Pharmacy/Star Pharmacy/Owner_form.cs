@@ -207,5 +207,14 @@ namespace Star_Pharmacy
             //nf.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             nf.Show();
         }
+
+        private void supTransaction_Btn_Click(object sender, EventArgs e)
+        {
+            hideUnwantedForms();
+            supplier_transactions suptrans = supplier_transactions.getSupTransactions(splitContainer1, this);
+            suptrans.Location = new Point((splitContainer1.Panel2.Width - suptrans.Width) / 2, (splitContainer1.Panel2.Height - suptrans.Height) / 2);
+            suptrans.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            suptrans.Show();
+        }
     }
 }

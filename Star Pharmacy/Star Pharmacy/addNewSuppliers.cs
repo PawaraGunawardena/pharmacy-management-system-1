@@ -52,12 +52,14 @@ namespace Star_Pharmacy
             MySqlCommand cmd1 = new MySqlCommand(@"insert into pharmacy.supplier_transactions (PayingAmount,SupplierName,Date) values ('" + amnt.Text + "','" + txtCompanyName.Text + "','" +
                dtp.Value.ToString("yyyy-MM-dd") + "');", SqlCon.con);
 
+            MySqlCommand cmd2 = new MySqlCommand("insert into pharmacy.credit_details (SupplierID,SupplierName,CreditAmount) values ('" + txtSupplierId.Text + "','" + txtCompanyName.Text + "','" + "0" + "');", SqlCon.con);
+
             try
             {
                 if (cmd.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("Data Inserted!");
-                    
+                    cmd2.ExecuteNonQuery();
                 }
 
                 else

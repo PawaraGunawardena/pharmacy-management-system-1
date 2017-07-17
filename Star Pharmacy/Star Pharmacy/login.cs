@@ -65,6 +65,13 @@ namespace Star_Pharmacy
                     cashier.Show();
                     Program.logged_id = Convert.ToInt32(dt.Rows[0][0].ToString());
                 }
+                else if (dt.Rows.Count == 1 && dt.Rows[0][3].ToString() == "StockManager")
+                {
+                    Program.logged_id = Convert.ToInt32(dt.Rows[0][0].ToString());
+                    StockManagerForm of = new StockManagerForm();
+                    this.Hide();
+                    of.Show();
+                }
                 else
                 {
                     MessageBox.Show("Incorrect Password or Username!");

@@ -36,6 +36,23 @@ namespace Star_Pharmacy
 
         }
 
+        private static supplier_transactions instance;
+
+        public static supplier_transactions getSupTransactions(SplitContainer scon, Form form)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new supplier_transactions();
+                instance.MdiParent = form;
+                scon.Panel2.Controls.Add(instance);
+                return instance;
+            }
+            else
+            {
+                return instance;
+            }
+        }
+
         private void transactionID_search1_ValueChanged(object sender, EventArgs e)
         {
             String query;
@@ -90,11 +107,101 @@ namespace Star_Pharmacy
             SqlCon.updateDataGridView(query, creditDetails);
         }
 
+        private void resetAll()
+        {
+            groupBox1.Enabled = false;
+            groupBox2.Enabled = true;
+            groupBox3.Enabled = true;
+            payDebit.Enabled = true;
+            viewDebit.Enabled = true;
+            supplier_transactionsDetails.Enabled = true;
+            creditDetails.Enabled = true;
+            supplier_transactionsDetails.ClearSelection();
+            creditDetails.ClearSelection();
+            supplier_transactionsDetails.Refresh();
+            creditDetails.Refresh();
+        }
+
         private void payDebit_Click(object sender, EventArgs e)
         {
-            groupBox1.Enabled = true;
-            groupBox2.Enabled = false;
-            groupBox3.Enabled = false;
+            if (creditDetails.SelectedRows.Count == 1)
+            {
+                groupBox1.Enabled = true;
+                groupBox2.Enabled = false;
+                groupBox3.Enabled = false;
+                viewDebit.Enabled = false;
+                supName_select.Text = creditDetails.SelectedRows[0].Cells[1].Value.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Please select a supplier from above credit details!");
+            }
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            resetAll();
+            payAmount.ResetText();
+            supName_select.ResetText();
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            if (payAmount.Value != 0 && supName_select.Text != "")
+            {
+                SqlCon.con.Open();
+                MySqlCommand cmd1 = new MySqlCommand(@"insert into pharmacy.debit_balances (DebitID,SupplierName,PaidAmount,Date,Time) values ('" + null + "','" + supName_select.Text + "','" + payAmount.Value.ToString() + "','" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + DateTime.Now.ToShortTimeString() + "');", SqlCon.con);
+                cmd1.ExecuteNonQuery();
+
+                //MySqlCommand cmd2 = new MySqlCommand(@"select sum('Value') from pharmacy.supplier_transactions where SupplierName='"+supName_select.Text+"';", SqlCon.con);
+                //double totalValue = double.Parse(cmd2.ExecuteScalar().ToString());
+               
+
+                double debitValue;
+                try
+                {
+                    MySqlCommand cmd3 = new MySqlCommand(@"select sum('PaidAmount') from pharmacy.debit_balances where SupplierName='" + supName_select.Text + "';", SqlCon.con);
+                    debitValue = double.Parse(cmd3.ExecuteScalar().ToString());
+                }
+
+                catch
+                {
+                    debitValue = 0;
+                }
+
+                MySqlCommand cmd2 = new MySqlCommand(@"update credit_details set CreditAmount = CreditAmount -'"+debitValue.ToString()+"' from pharmacy.credit_details where SupplierName='" + supName_select.Text + "';", SqlCon.con);
+                cmd2.ExecuteNonQuery();
+                
+
+                SqlCon.con.Close();
+                creditDetails.Refresh();
+
+            }
+            else
+            {
+                MessageBox.Show("Invalid Enrty. Check the inputs!");
+            }
+            
+        }
+
+        private void clrBtn_Click(object sender, EventArgs e)
+        {
+            transactionID_search1.Value = 0;
+            itemID_search.Value = 0;
+            supDetails_search1.ResetText();
+        
+        }
+
+        private void ClrBtn2_Click(object sender, EventArgs e)
+        {
+            supplierID_search2.Value = 0;
+            supplierName_search2.ResetText();
+        }
+
+        private void viewDebit_Click(object sender, EventArgs e)
+        {
+            debitDetails debD = debitDetails.getDebitDetails();
+            debD.Show();
         }
     }
 }
