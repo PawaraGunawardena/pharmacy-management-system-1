@@ -25,12 +25,24 @@ namespace Star_Pharmacy
         private string dob;
         private int salary;
 
-        public cashierForm(int id, string branch)
+        private static cashierForm singleCashierForm;
+        private cashierForm(int id, string branch)
         {
             InitializeComponent();
             this.logged_id = id;
             this.branch = branch;
             readDetails();
+            pictureBoxName.Enabled = false; 
+
+        } 
+        public static cashierForm getCashierForm(int id, string branch)
+        {
+            if (singleCashierForm == null)
+            {
+                singleCashierForm = new cashierForm(id,branch);
+            }
+            
+            return singleCashierForm;
             
         }
 
@@ -62,7 +74,7 @@ namespace Star_Pharmacy
         private void button3_Click(object sender, EventArgs e)
         {
             parentButtonActivation(false);
-            LookupItemAvailability availabilityForm = new LookupItemAvailability(logged_id,branch);
+            LookupItemAvailability availabilityForm = LookupItemAvailability.getCashierForm(logged_id,branch);
             availabilityForm.MdiParent = this;
             splitContainer1.Panel2.Controls.Add(availabilityForm);
             availabilityForm.Location = new Point((splitContainer1.Panel2.Width - availabilityForm.Width) / 2, (splitContainer1.Panel2.Height - availabilityForm.Height) / 2);
@@ -80,19 +92,22 @@ namespace Star_Pharmacy
 
         private void cashierForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
+
         public void parentButtonActivation(bool activation)
         {
             Button returnBtn = this.btnReturnOrder;
             Button newOrderBtn = this.btnNewOrder;
             Button availabilityBtn = this.button3;
             Button btnChangeDetails = this.btnChangeDetails;
+            PictureBox pictureBox = this.pictureBoxName;
 
             returnBtn.Enabled = activation;
             newOrderBtn.Enabled = activation;
             availabilityBtn.Enabled = activation;
             btnChangeDetails.Enabled = activation;
+            pictureBoxName.Visible = activation;
         }
 
         public void readDetails()
@@ -132,14 +147,21 @@ namespace Star_Pharmacy
         {
             parentButtonActivation(false);
             readDetails();
-            ChangePersonalDetails availabilityForm = new ChangePersonalDetails(firstName,lastName, logged_id, address, userName, password, branch, working, type,dob, salary);
+            //ChangePersonalDetails availabilityForm = ChangePersonalDetails.getChangePersonalDetails(firstName,lastName, logged_id, address, userName, password, branch, working, type,dob, salary);
+            ChangePersonalDetails availabilityForm = new ChangePersonalDetails(firstName, lastName, logged_id, address, userName, password, branch, working, type, dob, salary);
             availabilityForm.MdiParent = this;
             splitContainer1.Panel2.Controls.Add(availabilityForm);
             availabilityForm.Location = new Point((splitContainer1.Panel2.Width - availabilityForm.Width) / 2, (splitContainer1.Panel2.Height - availabilityForm.Height) / 2);
             availabilityForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             availabilityForm.Show();
             //availabilityForm.buttonDeactivate();
-          availabilityForm.setParentForm(this);
+            availabilityForm.setParentForm(this);
+            
+        }
+
+        private void cashierForm_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

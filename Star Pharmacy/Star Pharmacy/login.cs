@@ -64,7 +64,7 @@ namespace Star_Pharmacy
                     Program.logged_id = Convert.ToInt32(dt.Rows[0][0].ToString());
                     logged_id = Program.logged_id;
                     
-                    cashierForm cashier = new cashierForm(Program.logged_id, TransactionControl.findBranch(Program.logged_id.ToString()));
+                    cashierForm cashier = cashierForm.getCashierForm(Program.logged_id, TransactionControl.findBranch(Program.logged_id.ToString()));
                     this.Hide();
                     cashier.Show();
 

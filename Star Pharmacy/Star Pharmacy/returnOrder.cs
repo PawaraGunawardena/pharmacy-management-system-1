@@ -180,7 +180,7 @@ namespace Star_Pharmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
         }
         private string getQuery()
@@ -387,7 +387,7 @@ namespace Star_Pharmacy
             string invoiceNo1 = "";
             int currentReturnQuantity = 0;
 
-            if (dataGridViewReturnDetails.SelectedRows.Count > 0)
+            if (dataGridViewReturnDetails.Rows.Count > 1)
             {
                 int index = dataGridViewReturnDetails.RowCount - 1;
                 //MessageBox.Show(dataGridViewReturnDetails.RowCount.ToString(), "row count");
@@ -435,7 +435,7 @@ namespace Star_Pharmacy
             }
             else
             {
-                MessageBox.Show("Please select item!");
+                //MessageBox.Show("Please select item!");
             }
 
 
@@ -456,10 +456,17 @@ namespace Star_Pharmacy
             }
             cmbBoxProductID.Text = null;
             cmbBoxInvoiceNo.Text = null;
+           // dataGridViewSalesDetails.Rows.Clear();
             try
             {
-                dataGridViewSalesDetails.DataSource = null;
-            }catch(Exception ex)
+                // dataGridViewSalesDetails.DataSource = null;
+                // dataGridViewSalesDetails.Rows.Clear();
+                while (dataGridViewSalesDetails.Rows.Count > 1)
+                {
+                    dataGridViewSalesDetails.Rows.RemoveAt(0);
+                }
+            }
+            catch(Exception ex)
             {
 
             }
@@ -474,7 +481,7 @@ namespace Star_Pharmacy
 
         private void numericUpDownReturnQuantity_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDownReturnQuantity.Value <= 0)
+            if (numericUpDownReturnQuantity.Value < 0)
             {
                 MessageBox.Show("Invalid Quantity !!!", "Update Quantity");
                 btnAdd.Enabled = false;

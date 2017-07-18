@@ -86,7 +86,7 @@ namespace Star_Pharmacy
             hideUnwantedForms();
             parentButtonActivation(false);
             readDetails();
-            ChangePersonalDetails availabilityForm = new ChangePersonalDetails(firstName, lastName, logged_id, address, userName, password, branch, working, type, dob, salary);
+            ChangePersonalDetails availabilityForm = ChangePersonalDetails.getChangePersonalDetails(firstName, lastName, logged_id, address, userName, password, branch, working, type, dob, salary);
             availabilityForm.MdiParent = this;
             splitContainer1.Panel2.Controls.Add(availabilityForm);
             availabilityForm.Location = new Point((splitContainer1.Panel2.Width - availabilityForm.Width) / 2, (splitContainer1.Panel2.Height - availabilityForm.Height) / 2);

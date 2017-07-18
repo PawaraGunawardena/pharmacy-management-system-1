@@ -17,6 +17,7 @@ namespace Star_Pharmacy
         private int logged_id;
         private string branch;
 
+        private static LookupItemAvailability lookUpItemAvailability;
         public LookupItemAvailability(int logged_id, string branch)
         {
             this.logged_id = logged_id;
@@ -27,6 +28,34 @@ namespace Star_Pharmacy
             ComboBoxSupplierFill();
             ComboBoxMedicalNameFill();
             ComboBOxBrandNameFill();
+            selections(true);
+        }
+
+        public static LookupItemAvailability getCashierForm(int id, string branch)
+        {
+            if (lookUpItemAvailability == null)
+            {
+                lookUpItemAvailability = new LookupItemAvailability(id, branch);
+                
+            }
+         
+            return lookUpItemAvailability;
+
+        }
+
+
+        public void selections(bool activation)
+        {
+            cBoxBrandName.Checked = activation;
+            cBoxExpiryDate.Checked = activation;
+            cBoxInStockAmount.Checked = activation;
+            //cBoxInStockAmount.Checked = activation;
+            cBoxMedicalName.Checked = activation;
+            cBoxProductID.Checked = activation;
+            cBoxReoderLevel.Checked = activation;
+            cBoxSupplierName.Checked = activation;
+            cBoxUnitPrice.Checked = activation;
+            radioButtonBothBranches.Checked = activation;
         }
 
         public void buttonDeactivate()
@@ -140,10 +169,64 @@ namespace Star_Pharmacy
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private string setQuery()
+        {
+            string query = "SELECT ";
+            if (cBoxBrandName.Checked)
+            {
+                query += " ,BrandName ";
+            }
+            if (cBoxExpiryDate.Checked)
+            {
+                query += " ,ExpiryDate ";
+            }
+            if (cBoxInStockAmount.Checked)
+            {
+                query += " ,InStock ";
+            }
+            if (cBoxMedicalName.Checked)
+            {
+                query += " ,MedicalName ";
+            }
+            if (cBoxProductID.Checked)
+            {
+                query += " ,ProductID ";
+            }
+            if (cBoxReoderLevel.Checked)
+            {
+                query += " ,Reorderlevel ";
+            }
+            if (cBoxSupplierName.Checked)
+            {
+                query += " ,Supplier ";
+            }
+            if (cBoxUnitPrice.Checked)
+            {
+                query += " ,UnitPrice ";
+            }
+            if (radioButtonBothBranches.Checked)
+            {
+                query += " ,Branch ";
+            }
+            if (radioButtonMelleriawa.Checked)
+            {
+                query += " ,Branch ";
+            }
+            if (radioButtonWelivita.Checked)
+            {
+                query += " ,Branch ";
+            }
+            query = query.Remove(query.IndexOf(","), 1);
+            return query;
+        }
         private string getQuery()
         {
-            string myQuery = "SELECT InStock, UnitPrice, MedicalName, BrandName, Supplier, ExpiryDate FROM pharmacy.inventory WHERE";
-            if(cmbBoxProductID.Text.Length!=0)
+            string myQuery = setQuery();
+            //"SELECT InStock, UnitPrice, MedicalName, BrandName, Supplier, ExpiryDate FROM pharmacy.inventory WHERE AND InStock != 0 ";
+            myQuery += " FROM pharmacy.inventory WHERE AND InStock != 0 ";
+
+            if (cmbBoxProductID.Text.Length!=0)
             {
                 myQuery += " AND ProductID = " + cmbBoxProductID.Text;
             }
@@ -159,8 +242,21 @@ namespace Star_Pharmacy
             {
                 myQuery += " AND Supplier = '" + cmbBoxSupplierName.Text + "'";
             }
-
+            if (radioButtonBothBranches.Checked)
+            {
+                //myQuery += " AND Branch = '" + " + "'";
+            }
+            if (radioButtonMelleriawa.Checked)
+            {
+                myQuery += " AND Branch = '" +"Mulleriyawa"+ "'";
+            }
+            if (radioButtonWelivita.Checked)
+            {
+                myQuery += " AND Branch = '" + "Welivita" + "'";
+            }
             myQuery = myQuery.Remove(myQuery.IndexOf("AND"), 4);
+
+            //MessageBox.Show(myQuery,"MyQuery");
             return myQuery;
         }
 
@@ -229,25 +325,61 @@ namespace Star_Pharmacy
                     Button refreshBtn = this.btnRefresh;
                     refreshBtn.Enabled = true;
                     //refreshBtn.Enabled = true;
+                    cBoxBrandName.Enabled = true;
+                    cBoxExpiryDate.Enabled = true;
+                    cBoxInStockAmount.Enabled = true;
+                    //cBoxInStockAmount.Checked = true;
+                    cBoxMedicalName.Enabled = true;
+                    cBoxProductID.Enabled = true;
+                    cBoxReoderLevel.Enabled = true;
+                    cBoxSupplierName.Enabled = true;
+                    cBoxUnitPrice.Enabled = true;
+                    radioButtonBothBranches.Enabled = true;
+                    radioButtonMelleriawa.Enabled = true;
+                    radioButtonWelivita.Enabled = true;
+
+
+
+
                 }
                 else
                 {
-                    MessageBox.Show("Item not available", "Availability Message");
+                    
+                    MessageBox.Show("Item not available. Invalid Selection", "Availability Message");
                     Button refreshBtn = this.btnRefresh;
                     refreshBtn.Enabled = true;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                bool checker = cmbBoxProductID.Text.ToString().All(char.IsNumber);// IsAllDigits(cmbBoxProductID.Text);
+                if (!checker)
+                {
+                    MessageBox.Show("Wrong Primary ID. It should be an integer!!!", "Availablity Message");
+                    btnRefresh.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Error in Selected Data!!!");
+                }
             }
 
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             parentCashierForm.parentButtonActivation(true);
+            ItemDetailActivation(true);
+
+            cmbBoxBrandName.Text = null;
+            cmbBoxMedicalName.Text = null;
+            cmbBoxProductID.Text = null;
+            cmbBoxSupplierName.Text = null;
+            dataGridViewAvailabilityDetails.DataSource = null;
+            // dataGridViewAvailabilityDetails = new DataGridView();
+            buttonDeactivate();
+
         }
 
         private void cmbBoxProductID_SelectedIndexChanged(object sender, EventArgs e)
@@ -310,6 +442,19 @@ namespace Star_Pharmacy
             availabilityGroup.Enabled = activation;
             availabilityDataGridView.Enabled = activation;
             btnShow.Enabled = activation;
+            cBoxBrandName.Enabled = activation;
+            cBoxExpiryDate.Enabled = activation;
+            cBoxInStockAmount.Enabled = activation;
+            //cBoxInStockAmount.Checked = activation;
+            cBoxMedicalName.Enabled = activation;
+            cBoxProductID.Enabled = activation;
+            cBoxReoderLevel.Enabled = activation;
+            cBoxSupplierName.Enabled = activation;
+            cBoxUnitPrice.Enabled = activation;
+            radioButtonBothBranches.Enabled = activation;
+            radioButtonMelleriawa.Enabled = activation;
+            radioButtonWelivita.Enabled = activation;
+            
 
         }
 
@@ -346,6 +491,20 @@ namespace Star_Pharmacy
             moreDetailActivation(true);
             btnShow.Enabled = false;
             availabilityButton.Enabled = false;
+
+            cBoxBrandName.Enabled = false;
+            cBoxExpiryDate.Enabled = false;
+            cBoxInStockAmount.Enabled = false;
+            //cBoxInStockAmount.Checked = true;
+            cBoxMedicalName.Enabled = false;
+            cBoxProductID.Enabled = false;
+            cBoxReoderLevel.Enabled = false;
+            cBoxSupplierName.Enabled = false;
+            cBoxUnitPrice.Enabled = false;
+            radioButtonBothBranches.Enabled = false;
+            radioButtonMelleriawa.Enabled = false;
+            radioButtonWelivita.Enabled = false;
+
 
             fillDataGridViewAvailability();
         }

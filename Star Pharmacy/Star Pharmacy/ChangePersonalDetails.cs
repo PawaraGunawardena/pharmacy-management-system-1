@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+using System.Collections;
 
 namespace Star_Pharmacy
 {
@@ -37,9 +37,11 @@ namespace Star_Pharmacy
         private int enablUserName = 0;
         private int enablePassword = 0;
         CheckBox[] check =new  CheckBox[4];
+        List<CheckBox> chkBoxes = new List<CheckBox>();
         cashierForm parentCashierForm;
         StockManagerForm stockForm ;
 
+        private static ChangePersonalDetails  changePersonalDetails;
 
         public ChangePersonalDetails(string fName, string lName,int id, string adress, string UName, string password, string branch , int working, string type, string dob, int salary )
         {
@@ -72,7 +74,11 @@ namespace Star_Pharmacy
             check[1] = checkBoxAddress;
             check[2] = checkBoxUserName;
             check[3] = checkBoxPassword;
-
+            chkBoxes.Add(checkBoxLastName);
+            chkBoxes.Add(checkBoxAddress);
+            chkBoxes.Add(checkBoxUserName);
+            chkBoxes.Add(checkBoxPassword);
+            
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -84,6 +90,21 @@ namespace Star_Pharmacy
         {
             this.parentCashierForm = parentCashierForm;
         }
+
+
+        public static ChangePersonalDetails getChangePersonalDetails(string fName, string lName, int id, string adress, string UName, string password, string branch, int working, string type, string dob, int salary)
+        {
+            if (changePersonalDetails == null)
+            {
+                changePersonalDetails = new ChangePersonalDetails( fName,  lName,  id,  adress,  UName,  password,  branch,  working,  type,  dob,  salary);
+
+            }
+
+            return changePersonalDetails;
+
+        }
+
+
         private void existingDetailsFill()
         {
             lblgetAddress.Text = adress;
@@ -201,49 +222,125 @@ namespace Star_Pharmacy
             return query;
 
         }
+        private int possibility()
+        {
+            int i = 0;
+            if (checkBoxAddress.Checked)
+            {
+                if (txtAdress.Text.Length == 0)
+                {
+                    i = 1;
+                }
+                else { i = 0; }
 
+            }
+            if (checkBoxPassword.Checked)
+            {
+                if (txtPasswordNew.Text.Length == 0)
+                {
+                    i = 1;
+                }
+                else { i = 0; }
+                if (txtConfirmPasswordNew.Text.Length == 0)
+                {
+                    i = 1;
+                }
+                else { i = 0; }
+
+            }
+            if (checkBoxLastName.Checked)
+            {
+                if (txtLastName.Text.Length == 0)
+                {
+                    i = 1;
+                }
+                else { i = 0; }
+            }
+            if (checkBoxUserName.Checked)
+            {
+                if (txtUserNameNew.Text.Length == 0)
+                {
+                    i = 1;
+                }
+                else { i = 0; }
+            }
+            return i;
+
+        }
 
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            bool result = txtLastName.Text.All(Char.IsLetter);
-            if (result)
+            if (possibility() ==0)
             {
-                if (parentCashierForm != null)
+                bool result = txtLastName.Text.All(Char.IsLetter);
+                if (result)
                 {
-                    parentCashierForm.parentButtonActivation(true);
-                }
-                else if (stockForm != null)
-                {
-                    stockForm.parentButtonActivation(true);
-                }
-
-                string connectionString = "server=localhost;user id=root;database=pharmacy";
-                string myQuery = getNewQuery();
-
-                MySqlConnection newConnnection = new MySqlConnection(connectionString);
-                MySqlCommand newCommand = new MySqlCommand(myQuery, newConnnection);
-                MySqlDataReader newDataReader;
-
-                try
-                {
-                    newConnnection.Open();
-                    newDataReader = newCommand.ExecuteReader();
-
-                    while (newDataReader.Read())
+                    if (parentCashierForm != null)
                     {
+                        parentCashierForm.parentButtonActivation(true);
                     }
+                    else if (stockForm != null)
+                    {
+                        stockForm.parentButtonActivation(true);
+                    }
+
+                    string connectionString = "server=localhost;user id=root;database=pharmacy";
+                    string myQuery = getNewQuery();
+
+                    MySqlConnection newConnnection = new MySqlConnection(connectionString);
+                    MySqlCommand newCommand = new MySqlCommand(myQuery, newConnnection);
+                    MySqlDataReader newDataReader;
+
+                    try
+                    {
+                        newConnnection.Open();
+                        newDataReader = newCommand.ExecuteReader();
+
+                        while (newDataReader.Read())
+                        {
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Wrong in the database writing");
+                    }
+                    this.Hide();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Wrong in the database writing");
+                    MessageBox.Show("Wrong Last Name", "Error In New Info");
+                    this.Hide();
                 }
-                this.Close();
+
+                emptyInfo();
+
             }else
             {
-                MessageBox.Show("Wrong Last Name","Error In New Info");
-                this.Close();
+                MessageBox.Show("Wrong Info Confirmation to update","Data Password Error");
             }
+        }
+
+        private void emptyInfo()
+        {
+            txtAdress.Text = null;
+            txtBoxOldPassword.Text = null;
+            txtBoxOldUName.Text = null;
+            txtConfirmPasswordNew.Text = null;
+            txtLastName.Text = null;
+            txtPasswordNew.Text = null;
+            txtUserNameNew.Text = null;
+            checkBoxAddress.Checked = false;
+            checkBoxLastName.Checked = false;
+            checkBoxPassword.Checked = false;
+            checkBoxUserName.Checked = false;
+            btnCancel.Enabled = false;
+            btnUpdate.Enabled = false;
+            button1.Enabled = false;
+            checkBoxAddress.Enabled = false;
+            checkBoxLastName.Enabled = false;
+            checkBoxPassword.Enabled = false;
+            checkBoxUserName.Enabled = false;
         }
 
         private void checkBoxLastName_CheckedChanged(object sender, EventArgs e)
@@ -352,7 +449,7 @@ namespace Star_Pharmacy
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             if (parentCashierForm != null)
             {
                 parentCashierForm.parentButtonActivation(true);
@@ -360,9 +457,9 @@ namespace Star_Pharmacy
             {
                 stockForm.parentButtonActivation(true);
             }
-            
-         //   StockManagerForm stockForm;
-            
+            emptyInfo();
+            //   StockManagerForm stockForm;
+
         }
 
         private bool getCheckedAndnonEmpty()

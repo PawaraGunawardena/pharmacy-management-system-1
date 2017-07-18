@@ -28,14 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cashierForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnChangeDetails = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnReturnOrder = new System.Windows.Forms.Button();
             this.btnNewOrder = new System.Windows.Forms.Button();
+
+            this.pictureBoxName = new System.Windows.Forms.PictureBox();
+
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxName)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -51,13 +57,19 @@
             this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.btnReturnOrder);
             this.splitContainer1.Panel1.Controls.Add(this.btnNewOrder);
-            this.splitContainer1.Size = new System.Drawing.Size(784, 422);
-            this.splitContainer1.SplitterDistance = 208;
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.pictureBoxName);
+            this.splitContainer1.Size = new System.Drawing.Size(830, 541);
+            this.splitContainer1.SplitterDistance = 220;
             this.splitContainer1.TabIndex = 0;
             // 
             // btnChangeDetails
             // 
+
             this.btnChangeDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
+
             this.btnChangeDetails.Location = new System.Drawing.Point(20, 337);
             this.btnChangeDetails.Name = "btnChangeDetails";
             this.btnChangeDetails.Size = new System.Drawing.Size(181, 60);
@@ -99,21 +111,35 @@
             this.btnNewOrder.UseVisualStyleBackColor = true;
             this.btnNewOrder.Click += new System.EventHandler(this.button1_Click);
             // 
+
+            // pictureBoxName
+            // 
+            this.pictureBoxName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxName.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxName.Image")));
+            this.pictureBoxName.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxName.Name = "pictureBoxName";
+            this.pictureBoxName.Size = new System.Drawing.Size(606, 541);
+            this.pictureBoxName.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxName.TabIndex = 0;
+            this.pictureBoxName.TabStop = false;
+
             // cashierForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 422);
+            this.ClientSize = new System.Drawing.Size(830, 541);
             this.Controls.Add(this.splitContainer1);
             this.IsMdiContainer = true;
             this.Name = "cashierForm";
             this.Text = "Cashier LogIn";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.cashierForm_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.cashierForm_FormClosing_1);
             this.Load += new System.EventHandler(this.cashierForm_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxName)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,5 +151,6 @@
         private System.Windows.Forms.Button btnReturnOrder;
         private System.Windows.Forms.Button btnNewOrder;
         private System.Windows.Forms.Button btnChangeDetails;
+        private System.Windows.Forms.PictureBox pictureBoxName;
     }
 }
