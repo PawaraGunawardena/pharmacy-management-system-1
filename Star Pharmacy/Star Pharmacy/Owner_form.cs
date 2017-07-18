@@ -72,7 +72,7 @@ namespace Star_Pharmacy
         {
             DateTime current = DateTime.Now;
             //Setting the time to 7PM
-            if(current.Hour == 19 &&  current.Minute == 00 && current.Second == 00)
+            if((current.Hour == 7 &&  current.Minute == 30 && current.Second == 00) || (current.Hour < 00 && current.Minute == 0 && current.Second ==0) )
             {
                 
                 //MessageBox.Show("Reports have been generated.", "Check Notifications", MessageBoxButtons.OK, MessageBoxIcon.Information);

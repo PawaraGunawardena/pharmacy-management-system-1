@@ -681,7 +681,7 @@ namespace Star_Pharmacy
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
             }
 
             return pdfFilename;
